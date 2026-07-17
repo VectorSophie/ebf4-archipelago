@@ -101,6 +101,8 @@ package
 
       public static var AP_PORT:int = 26510;
 
+      public static var AP_managed:Object = null;
+
       public static function AP_init() : *
       {
          if(AP_socket != null)
@@ -143,11 +145,17 @@ package
       {
          AP_connected = true;
          Main.log("[AP] connected to bridge at " + AP_HOST + ":" + AP_PORT);
+         AP_sendHello();
+      }
+
+      public static function AP_sendHello() : *
+      {
          AP_send({
             "type":"hello",
             "game":"EBF4",
-            "protocol":1,
-            "itemIndex":AP_state.data.itemIndex
+            "protocol":2,
+            "itemIndex":AP_state.data.itemIndex,
+            "session":AP_state.data.session is String ? AP_state.data.session : ""
          });
       }
 
@@ -238,10 +246,36 @@ package
          {
             AP_queue.push(_loc2_);
          }
+         else if(_loc2_.type == "session")
+         {
+            AP_managed = {};
+            for each(var _loc3_:String in _loc2_.locations)
+            {
+               AP_managed[_loc3_] = true;
+            }
+            if(AP_state.data.session != _loc2_.session)
+            {
+               Main.log("[AP] new session " + _loc2_.session + ", resetting item index");
+               AP_state.data.session = _loc2_.session;
+               AP_state.data.itemIndex = 0;
+               AP_state.flush();
+            }
+            Main.log("[AP] session " + _loc2_.session + ", managing " + _loc2_.locations.length + " locations");
+            AP_sendHello();
+         }
          else if(_loc2_.type == "ping")
          {
             AP_send({"type":"pong"});
          }
+      }
+
+      public static function AP_isManaged(param1:int, param2:int) : Boolean
+      {
+         if(AP_managed == null)
+         {
+            return false;
+         }
+         return AP_managed["chest_" + param1 + "_" + param2] == true;
       }
 
       public static function AP_tick() : *
@@ -251,28 +285,33 @@ package
          {
             return;
          }
-         if(!SaveData.inGame || mode != MAP)
+         if(!SaveData.inGame || mode != MAP || maps == null)
          {
             return;
          }
-         while(AP_queue.length > 0)
+         if((maps.parent as MapMenu).treasurebox.visible)
          {
-            _loc1_ = AP_queue.shift();
-            if(_loc1_.index >= AP_state.data.itemIndex)
-            {
-               AP_applyItem(_loc1_);
-               AP_state.data.itemIndex = _loc1_.index + 1;
-               AP_state.flush();
-            }
-            else
-            {
-               Main.log("[AP] skipping already-applied item index " + _loc1_.index);
-            }
+            return;
+         }
+         _loc1_ = AP_queue.shift();
+         if(_loc1_.index >= AP_state.data.itemIndex)
+         {
+            AP_applyItem(_loc1_);
+            AP_state.data.itemIndex = _loc1_.index + 1;
+            AP_state.flush();
+         }
+         else
+         {
+            Main.log("[AP] skipping already-applied item index " + _loc1_.index);
          }
       }
 
       public static function AP_applyItem(param1:Object) : *
       {
+         var _loc2_:Array = [];
+         var _loc3_:Object = null;
+         var _loc4_:* = undefined;
+         // legacy test-bridge form: {"item":"money","amount":N}
          if(param1.item == "money")
          {
             SaveData.money += int(param1.amount);
@@ -281,10 +320,45 @@ package
                SaveData.money = SaveData.moneyMax;
             }
             Main.log("[AP] received item " + param1.index + ": " + param1.amount + " gold");
+            return;
          }
-         else
+         // AP form: {"grant":[["i","turnip",3],["e","cloverpin",1],["s","rain",0],["money","",100]]}
+         for each(_loc3_ in param1.grant)
          {
-            Main.log("[AP] received unknown item type: " + param1.item);
+            if(_loc3_[0] == "money")
+            {
+               SaveData.money += int(_loc3_[2]);
+               if(SaveData.money > SaveData.moneyMax)
+               {
+                  SaveData.money = SaveData.moneyMax;
+               }
+               continue;
+            }
+            _loc4_ = null;
+            if(_loc3_[0] == "i")
+            {
+               _loc4_ = Items[_loc3_[1]];
+            }
+            else if(_loc3_[0] == "e")
+            {
+               _loc4_ = Equips[_loc3_[1]];
+            }
+            else if(_loc3_[0] == "s")
+            {
+               _loc4_ = Spells[_loc3_[1]];
+            }
+            if(_loc4_ == null)
+            {
+               Main.log("[AP] unknown grant object: " + _loc3_[0] + ":" + _loc3_[1]);
+               continue;
+            }
+            _loc2_.push(_loc4_);
+            _loc2_.push(int(_loc3_[2]));
+         }
+         Main.log("[AP] received item " + param1.index + ": " + param1.name);
+         if(_loc2_.length > 0)
+         {
+            (maps.parent as MapMenu).showTreasure(_loc2_);
          }
       }
 

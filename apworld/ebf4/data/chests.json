@@ -1,0 +1,377 @@
+[
+ {
+  "map": 9,
+  "chest": 0,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "e",
+    "cloverpin",
+    1
+   ],
+   [
+    "i",
+    "turnip",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 9,
+  "chest": 1,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "berry",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 9,
+  "chest": 2,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "s",
+    "rain",
+    0
+   ],
+   [
+    "i",
+    "amber",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 10,
+  "chest": 0,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "chicken",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 10,
+  "chest": 1,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "wood",
+    1
+   ],
+   [
+    "i",
+    "brick",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 10,
+  "chest": 2,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "dirtball",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 12,
+  "chest": 2,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "mushroom",
+    2
+   ],
+   [
+    "i",
+    "cherry",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 12,
+  "chest": 0,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "kiwi",
+    3
+   ],
+   [
+    "i",
+    "cherry",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 12,
+  "chest": 1,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "cake",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "coffee",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 13,
+  "chest": 0,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "s",
+    "slimebunny",
+    0
+   ],
+   [
+    "i",
+    "holywater",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 14,
+  "chest": 0,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "panties",
+    1
+   ],
+   [
+    "i",
+    "orangejuice",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 15,
+  "chest": 0,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "cheese",
+    1
+   ],
+   [
+    "i",
+    "brick",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 15,
+  "chest": 1,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "e",
+    "potionbadge",
+    1
+   ],
+   [
+    "i",
+    "muffin",
+    3
+   ],
+   [
+    "i",
+    "milk",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 15,
+  "chest": 2,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "e",
+    "dreamcatcher",
+    1
+   ],
+   [
+    "i",
+    "feather",
+    3
+   ],
+   [
+    "i",
+    "talisman",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 15,
+  "chest": 3,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "iron",
+    1
+   ],
+   [
+    "i",
+    "brick",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 16,
+  "chest": 0,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "e",
+    "goldcrown",
+    1
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "holywater",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 17,
+  "chest": 0,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "turnip",
+    3
+   ],
+   [
+    "i",
+    "root",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 17,
+  "chest": 1,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "nut",
+    2
+   ],
+   [
+    "i",
+    "bugwing",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 17,
+  "chest": 2,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "i",
+    "berry",
+    6
+   ],
+   [
+    "i",
+    "wood",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 17,
+  "chest": 3,
+  "area": "TOWN1",
+  "contents": [
+   [
+    "s",
+    "greenbush",
+    0
+   ],
+   [
+    "i",
+    "bugwing",
+    1
+   ]
+  ]
+ }
+]

@@ -33,17 +33,37 @@ python bridge/bridge.py --auto-item
 python tools/patch.py --restore  # back to vanilla
 ```
 
-## Wire protocol (v1)
+## Playing a seed (demo world: the 20 Greenwood chests)
+
+```
+# one-time: install the world into your Archipelago checkout
+cp -r apworld/ebf4 reference/Archipelago/worlds/
+
+cd reference/Archipelago
+python Generate.py                      # with a Players/*.yaml for "Epic Battle Fantasy 4"
+python MultiServer.py output/AP_*.zip
+cd ../..
+python bridge/ap_client.py --connect localhost:38281 --name <slot>
+# launch the patched game and play; Greenwood chests are checks
+```
+
+Opening a managed chest suppresses its vanilla loot and sends the check; received
+multiworld items pop the normal "Found treasure!" box. Item delivery is idempotent and
+scoped per seed+slot (`EBF4AP.sol` stores `session` + `itemIndex`).
+
+## Wire protocol (v2)
 
 4-byte big-endian length prefix + UTF-8 JSON, over `127.0.0.1:26510`.
 
 | direction | message |
 |---|---|
-| game → bridge | `{"type":"hello","game":"EBF4","protocol":1,"itemIndex":N}` |
-| game → bridge | `{"type":"check","location":"chest_<map>_<idx>"}` |
-| game → bridge | `{"type":"pong"}` |
-| bridge → game | `{"type":"item","index":N,"item":"money","amount":M}` |
-| bridge → game | `{"type":"ping"}` |
+| game → client | `{"type":"hello","game":"EBF4","protocol":2,"itemIndex":N,"session":S}` |
+| game → client | `{"type":"check","location":"chest_<map>_<idx>"}` |
+| game → client | `{"type":"pong"}` |
+| client → game | `{"type":"session","session":"<seed>:<slot>","locations":["chest_9_0",...]}` |
+| client → game | `{"type":"item","index":N,"name":"...","grant":[["i","turnip",3],["e","cloverpin",1],["s","rain",0],["money","",100]]}` |
+| client → game | `{"type":"ping"}` |
 
-The game applies items only in map mode, stores the next expected index in a SharedObject
-(`EBF4AP.sol`), and skips any index it has already applied.
+Handshake: game says hello → client sends session config → game resets its item index if
+the session changed and re-hellos → client replays items from the game's index. The game
+applies items only in map mode and skips indices it has already applied.
