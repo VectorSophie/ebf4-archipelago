@@ -1,0 +1,7 @@
+# Never commit game assets or SWFs
+*.swf
+*.meow
+build/
+tools-dl/
+reference/
+__pycache__/
