@@ -22,6 +22,7 @@ os.environ.setdefault("SKIP_REQUIREMENTS_UPDATE", "1")
 sys.path.insert(0, str(AP_REPO))
 
 from CommonClient import CommonContext, get_base_parser, logger, server_loop  # noqa: E402
+from NetUtils import ClientStatus  # noqa: E402
 
 
 class EBF4Context(CommonContext):
@@ -35,6 +36,7 @@ class EBF4Context(CommonContext):
         self.location_keys = {}       # "chest_9_0" -> AP location id (slot_data)
         self.item_grants = {}         # AP item id -> grant list (slot_data)
         self.session = None           # seed_name:slot, scopes the game's item index
+        self.goal_sent = False
 
     async def server_auth(self, password_requested: bool = False):
         if password_requested and not self.password:
@@ -54,8 +56,14 @@ class EBF4Context(CommonContext):
             logger.info(f"EBF4: session {self.session}, "
                         f"{len(self.location_keys)} managed locations")
             self.game_send_config()
+            # scout everything so checks can show "Sent X to Y" immediately
+            asyncio.create_task(self.send_msgs([{
+                "cmd": "LocationScouts",
+                "locations": list(self.location_keys.values()),
+                "create_as_hint": 0}]))
         elif cmd == "ReceivedItems":
             self.game_sync_items()
+            self.check_goal()
 
     # ---- game socket ----
 
@@ -81,10 +89,30 @@ class EBF4Context(CommonContext):
             name = self.item_names.lookup_in_game(net_item.item)
             if grant is None:
                 logger.warning(f"EBF4: no grant data for item {name}, skipping")
-            self.game_send({"type": "item", "index": idx,
-                            "name": name, "grant": grant or []})
+            sender = self.player_names.get(net_item.player, "the server")
+            text = (f"Received {name.removeprefix('EBF4: ')} from {sender}"
+                    if net_item.player != self.slot else None)
+            self.game_send({"type": "item", "index": idx, "name": name,
+                            "text": text, "grant": grant or []})
             logger.info(f"EBF4: sent item {idx}: {name}")
             self.game_next_index += 1
+
+    def check_goal(self):
+        if self.goal_sent:
+            return
+        received = {i.item for i in self.items_received}
+        if received >= set(self.item_grants):
+            self.goal_sent = True
+            logger.info("EBF4: all bundles received - goal complete!")
+            asyncio.create_task(self.send_msgs(
+                [{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}]))
+            self.game_send({"type": "msg",
+                            "text": "GOAL! All Greenwood bundles collected."})
+
+    def on_deathlink(self, data):
+        super().on_deathlink(data)
+        self.game_send({"type": "deathlink",
+                        "source": data.get("source", "someone")})
 
     async def handle_game(self, reader, writer):
         peer = writer.get_extra_info("peername")
@@ -107,22 +135,36 @@ class EBF4Context(CommonContext):
         t = msg.get("type")
         if t == "hello":
             game_session = msg.get("session", "")
+            # config is idempotent and triggers the game's offline-check resend
+            self.game_send_config()
             if self.session and game_session == self.session:
                 # game confirmed our session: safe to replay from its index
                 self.game_next_index = int(msg.get("itemIndex", 0))
                 logger.info(f"EBF4: game in session, next item index {self.game_next_index}")
                 self.game_sync_items()
             else:
-                logger.info("EBF4: game hello, sending session config")
-                self.game_send_config()
+                logger.info("EBF4: game hello with stale session, awaiting re-hello")
         elif t == "check":
             key = msg.get("location")
             loc_id = self.location_keys.get(key)
             if loc_id is None:
                 logger.info(f"EBF4: ignoring non-managed location {key}")
                 return
-            logger.info(f"EBF4: check {key} -> {loc_id}")
+            new = loc_id not in self.checked_locations
+            logger.info(f"EBF4: check {key} -> {loc_id}{'' if new else ' (already sent)'}")
             await self.check_locations([loc_id])
+            if new:
+                scouted = self.locations_info.get(loc_id)
+                if scouted:
+                    item = self.item_names.lookup_in_slot(scouted.item, scouted.player)
+                    receiver = self.player_names.get(scouted.player, "?")
+                    if scouted.player != self.slot:
+                        self.game_send({"type": "msg",
+                                        "text": f"Sent {item} to {receiver}"})
+        elif t == "death":
+            if "DeathLink" in self.tags:
+                logger.info("EBF4: party wiped, sending DeathLink")
+                await self.send_death(f"{self.player_names.get(self.slot)} was defeated in EBF4")
 
 
 async def main():
@@ -131,11 +173,14 @@ async def main():
     parser = get_base_parser(description="EBF4 Archipelago client")
     parser.add_argument("--name", default=None, help="slot name")
     parser.add_argument("--game-port", type=int, default=26510)
+    parser.add_argument("--death-link", action="store_true")
     args = parser.parse_args()
 
     ctx = EBF4Context(args.connect, args.password)
     if args.name:
         ctx.auth = args.name
+    if args.death_link:
+        ctx.tags.add("DeathLink")
     ctx.server_task = asyncio.create_task(server_loop(ctx), name="server loop")
 
     game_server = await asyncio.start_server(ctx.handle_game, "127.0.0.1", args.game_port)

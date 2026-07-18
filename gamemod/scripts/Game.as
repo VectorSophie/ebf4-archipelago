@@ -9,6 +9,8 @@ package
    import flash.events.SecurityErrorEvent;
    import flash.net.SharedObject;
    import flash.net.Socket;
+   import flash.text.TextField;
+   import flash.text.TextFormat;
    import flash.utils.ByteArray;
    
    public class Game
@@ -102,6 +104,18 @@ package
       public static var AP_PORT:int = 26510;
 
       public static var AP_managed:Object = null;
+
+      public static var AP_toastField:TextField = null;
+
+      public static var AP_toastQueue:Array = [];
+
+      public static var AP_toastTimer:int = 0;
+
+      public static var AP_deathQueued:String = null;
+
+      public static var AP_deathSuppress:Boolean = false;
+
+      public static var AP_deathShown:Boolean = false;
 
       public static function AP_init() : *
       {
@@ -258,15 +272,126 @@ package
                Main.log("[AP] new session " + _loc2_.session + ", resetting item index");
                AP_state.data.session = _loc2_.session;
                AP_state.data.itemIndex = 0;
+               AP_state.data.checks = [];
                AP_state.flush();
+               AP_sendHello();
             }
             Main.log("[AP] session " + _loc2_.session + ", managing " + _loc2_.locations.length + " locations");
-            AP_sendHello();
+            AP_resendChecks();
+         }
+         else if(_loc2_.type == "msg")
+         {
+            AP_toast(_loc2_.text);
+         }
+         else if(_loc2_.type == "deathlink")
+         {
+            AP_deathQueued = _loc2_.source is String ? _loc2_.source : "someone";
          }
          else if(_loc2_.type == "ping")
          {
             AP_send({"type":"pong"});
          }
+      }
+
+      public static function AP_toast(param1:String) : *
+      {
+         AP_toastQueue.push(param1);
+      }
+
+      public static function AP_toastTick() : *
+      {
+         var _loc1_:TextFormat = null;
+         if(AP_toastTimer > 0)
+         {
+            --AP_toastTimer;
+            if(AP_toastTimer == 0 && AP_toastField != null)
+            {
+               AP_toastField.visible = false;
+            }
+            else if(AP_toastTimer < 20 && AP_toastField != null)
+            {
+               AP_toastField.alpha = AP_toastTimer / 20;
+            }
+            return;
+         }
+         if(AP_toastQueue.length == 0 || root == null || root.stage == null)
+         {
+            return;
+         }
+         if(AP_toastField == null)
+         {
+            AP_toastField = new TextField();
+            _loc1_ = new TextFormat("Verdana",14,0xFFFFFF,true);
+            _loc1_.align = "center";
+            AP_toastField.defaultTextFormat = _loc1_;
+            AP_toastField.background = true;
+            AP_toastField.backgroundColor = 0x1B1B4B;
+            AP_toastField.border = true;
+            AP_toastField.borderColor = 0x88AAFF;
+            AP_toastField.selectable = false;
+            AP_toastField.mouseEnabled = false;
+            AP_toastField.width = 560;
+            AP_toastField.height = 26;
+            AP_toastField.x = (root.stage.stageWidth - 560) / 2;
+            AP_toastField.y = 8;
+         }
+         AP_toastField.text = String(AP_toastQueue.shift());
+         AP_toastField.alpha = 0.9;
+         AP_toastField.visible = true;
+         root.stage.addChild(AP_toastField);
+         AP_toastTimer = 130;
+      }
+
+      public static function AP_partyWiped() : *
+      {
+         if(AP_deathSuppress)
+         {
+            AP_deathSuppress = false;
+            return;
+         }
+         if(AP_connected)
+         {
+            AP_send({"type":"death"});
+         }
+      }
+
+      public static function AP_deathTick() : *
+      {
+         var _loc1_:Object = null;
+         if(AP_deathQueued == null)
+         {
+            return;
+         }
+         // outside battle: kill the party's map HP so they lose the next fight,
+         // and show it immediately.
+         if(mode != BATTLE)
+         {
+            AP_toast("DeathLink: " + AP_deathQueued + " has died.");
+            for each(_loc1_ in party)
+            {
+               _loc1_.realHP = 0;
+            }
+            AP_deathQueued = null;
+            return;
+         }
+         if(Battle.players == null || Battle.end || Battle.menu == null || !Battle.menu.visible)
+         {
+            return; // wait for a stable player-turn state so wave-init can't revive us
+         }
+         if(!AP_deathShown)
+         {
+            AP_toast("DeathLink: " + AP_deathQueued + " has died, and so do you.");
+            AP_deathShown = true;
+         }
+         AP_deathSuppress = true;
+         for each(_loc1_ in Battle.players)
+         {
+            _loc1_.realHP = 0;
+            _loc1_.dead = true;
+         }
+         AP_deathQueued = null;
+         AP_deathShown = false;
+         Battle.gameover();
       }
 
       public static function AP_isManaged(param1:int, param2:int) : Boolean
@@ -356,6 +481,10 @@ package
             _loc2_.push(int(_loc3_[2]));
          }
          Main.log("[AP] received item " + param1.index + ": " + param1.name);
+         if(param1.text is String)
+         {
+            AP_toast(param1.text);
+         }
          if(_loc2_.length > 0)
          {
             (maps.parent as MapMenu).showTreasure(_loc2_);
@@ -364,11 +493,37 @@ package
 
       public static function AP_chestOpened(param1:int, param2:int) : *
       {
-         Main.log("[AP] chest opened: map " + param1 + " chest " + param2);
+         var _loc3_:String = "chest_" + param1 + "_" + param2;
+         Main.log("[AP] chest opened: " + _loc3_);
+         if(!(AP_state.data.checks is Array))
+         {
+            AP_state.data.checks = [];
+         }
+         if(AP_state.data.checks.indexOf(_loc3_) < 0)
+         {
+            AP_state.data.checks.push(_loc3_);
+            AP_state.flush();
+         }
          AP_send({
             "type":"check",
-            "location":"chest_" + param1 + "_" + param2
+            "location":_loc3_
          });
+      }
+
+      public static function AP_resendChecks() : *
+      {
+         var _loc1_:String = null;
+         if(!(AP_state.data.checks is Array))
+         {
+            return;
+         }
+         for each(_loc1_ in AP_state.data.checks)
+         {
+            AP_send({
+               "type":"check",
+               "location":_loc1_
+            });
+         }
       }
 
       public static function AP_retry() : *
@@ -514,6 +669,8 @@ package
          try
          {
             AP_tick();
+            AP_toastTick();
+            AP_deathTick();
          }
          catch(e:Error)
          {

@@ -49,7 +49,18 @@ python bridge/ap_client.py --connect localhost:38281 --name <slot>
 
 Opening a managed chest suppresses its vanilla loot and sends the check; received
 multiworld items pop the normal "Found treasure!" box. Item delivery is idempotent and
-scoped per seed+slot (`EBF4AP.sol` stores `session` + `itemIndex`).
+scoped per seed+slot (`EBF4AP.sol` stores `session`, `itemIndex`, and buffered `checks`).
+
+## Quality-of-life features
+
+- **On-screen toasts** — an overlay banner (added to `stage`, above the game's frame) shows
+  "Received X from Y", "Sent X to Z", goal completion, and DeathLink messages.
+- **Offline check buffer** — checks made while the client is down are stored in `EBF4AP.sol`
+  and re-sent on reconnect.
+- **DeathLink** (`--death-link`) — a party wipe (`Battle.gameover`) broadcasts a death; an
+  incoming death shows a toast and defeats your party via the game's own game-over path.
+  A suppress flag prevents a received death from echoing back out.
+- **Goal** — collecting every bundle sends `StatusUpdate: CLIENT_GOAL`.
 
 ## Wire protocol (v2)
 
@@ -59,9 +70,12 @@ scoped per seed+slot (`EBF4AP.sol` stores `session` + `itemIndex`).
 |---|---|
 | game → client | `{"type":"hello","game":"EBF4","protocol":2,"itemIndex":N,"session":S}` |
 | game → client | `{"type":"check","location":"chest_<map>_<idx>"}` |
+| game → client | `{"type":"death"}` (party wiped) |
 | game → client | `{"type":"pong"}` |
 | client → game | `{"type":"session","session":"<seed>:<slot>","locations":["chest_9_0",...]}` |
-| client → game | `{"type":"item","index":N,"name":"...","grant":[["i","turnip",3],["e","cloverpin",1],["s","rain",0],["money","",100]]}` |
+| client → game | `{"type":"item","index":N,"name":"...","text":"...","grant":[["i","turnip",3],["e","cloverpin",1],["s","rain",0],["money","",100]]}` |
+| client → game | `{"type":"msg","text":"..."}` (toast) |
+| client → game | `{"type":"deathlink","source":"..."}` |
 | client → game | `{"type":"ping"}` |
 
 Handshake: game says hello → client sends session config → game resets its item index if
