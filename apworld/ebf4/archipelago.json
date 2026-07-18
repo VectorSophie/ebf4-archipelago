@@ -1,6 +1,7 @@
 {
     "game": "Epic Battle Fantasy 4",
     "authors": ["VectorSophie"],
-    "world_version": "0.1.0",
-    "minimum_ap_version": "0.6.0"
+    "world_version": "1.0.0",
+    "minimum_ap_version": "0.6.0",
+    "compatible_version": 7
 }

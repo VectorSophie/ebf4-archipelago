@@ -373,5 +373,8975 @@
     1
    ]
   ]
+ },
+ {
+  "map": 18,
+  "chest": 4,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "i",
+    "horn",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 18,
+  "chest": 5,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "i",
+    "spike",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 18,
+  "chest": 0,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "s",
+    "wraith",
+    0
+   ],
+   [
+    "i",
+    "darkness",
+    1
+   ],
+   [
+    "i",
+    "beef",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 18,
+  "chest": 1,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "e",
+    "thedeparted",
+    1
+   ],
+   [
+    "i",
+    "powder",
+    2
+   ],
+   [
+    "i",
+    "virus",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 18,
+  "chest": 2,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "e",
+    "doombringer",
+    1
+   ],
+   [
+    "i",
+    "iron",
+    3
+   ],
+   [
+    "i",
+    "horn",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 18,
+  "chest": 3,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "e",
+    "crossbonepin",
+    1
+   ],
+   [
+    "i",
+    "spike",
+    1
+   ],
+   [
+    "i",
+    "chain",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 20,
+  "chest": 0,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "s",
+    "darkflare",
+    0
+   ],
+   [
+    "i",
+    "amber",
+    4
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 20,
+  "chest": 1,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "e",
+    "bonearmor",
+    1
+   ],
+   [
+    "i",
+    "silver",
+    1
+   ],
+   [
+    "i",
+    "silk",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 20,
+  "chest": 2,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "e",
+    "demonskull",
+    1
+   ],
+   [
+    "i",
+    "gems",
+    3
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 20,
+  "chest": 3,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "e",
+    "boneblade",
+    1
+   ],
+   [
+    "i",
+    "horn",
+    2
+   ],
+   [
+    "i",
+    "spike",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 21,
+  "chest": 0,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "s",
+    "sacrifice",
+    0
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "pineapple",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 21,
+  "chest": 1,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "e",
+    "darkbauble",
+    1
+   ],
+   [
+    "i",
+    "bomb",
+    5
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 21,
+  "chest": 2,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "e",
+    "darkgown",
+    1
+   ],
+   [
+    "i",
+    "silk",
+    3
+   ],
+   [
+    "i",
+    "wool",
+    22
+   ]
+  ]
+ },
+ {
+  "map": 22,
+  "chest": 0,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "i",
+    "powder",
+    3
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 23,
+  "chest": 0,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "e",
+    "quakemaker",
+    1
+   ],
+   [
+    "i",
+    "dirtball",
+    14
+   ],
+   [
+    "i",
+    "beef",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 23,
+  "chest": 1,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "e",
+    "pentagram",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "coffee",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 23,
+  "chest": 2,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "e",
+    "bloodblade",
+    1
+   ],
+   [
+    "i",
+    "concrete",
+    2
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 23,
+  "chest": 3,
+  "area": "GRAVEYARD",
+  "contents": [
+   [
+    "i",
+    "root",
+    6
+   ],
+   [
+    "i",
+    "horn",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 24,
+  "chest": 0,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "e",
+    "rockbadge",
+    1
+   ],
+   [
+    "i",
+    "cherry",
+    3
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 24,
+  "chest": 1,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "e",
+    "headband",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "chocolate",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 24,
+  "chest": 2,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "cd",
+    4
+   ],
+   [
+    "i",
+    "iron",
+    3
+   ],
+   [
+    "i",
+    "led",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 24,
+  "chest": 3,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "bugwing",
+    7
+   ],
+   [
+    "i",
+    "turnip",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 25,
+  "chest": 0,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "e",
+    "flameheart",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    2
+   ],
+   [
+    "i",
+    "chicken",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 25,
+  "chest": 1,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ],
+   [
+    "i",
+    "muffin",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 25,
+  "chest": 2,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "iron",
+    2
+   ],
+   [
+    "i",
+    "concrete",
+    1
+   ],
+   [
+    "i",
+    "spring",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 26,
+  "chest": 0,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "softdrink",
+    2
+   ],
+   [
+    "i",
+    "energydrink",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 26,
+  "chest": 1,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "orangejuice",
+    1
+   ],
+   [
+    "i",
+    "beer",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 26,
+  "chest": 2,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "e",
+    "flameskirt",
+    1
+   ],
+   [
+    "i",
+    "wool",
+    12
+   ],
+   [
+    "i",
+    "feather",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 26,
+  "chest": 3,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "cheese",
+    1
+   ],
+   [
+    "i",
+    "brick",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 26,
+  "chest": 4,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "garlic",
+    3
+   ],
+   [
+    "i",
+    "bugwing",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 27,
+  "chest": 0,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "seaweed",
+    3
+   ],
+   [
+    "i",
+    "mushroom",
+    1
+   ],
+   [
+    "i",
+    "berry",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 27,
+  "chest": 1,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "e",
+    "gashclub",
+    1
+   ],
+   [
+    "i",
+    "root",
+    2
+   ],
+   [
+    "i",
+    "nut",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 27,
+  "chest": 2,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "cake",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "chocolate",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 28,
+  "chest": 0,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "s",
+    "bind",
+    0
+   ],
+   [
+    "i",
+    "microcontroller",
+    5
+   ],
+   [
+    "i",
+    "cd",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 28,
+  "chest": 1,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "garlic",
+    2
+   ],
+   [
+    "i",
+    "coffee",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 28,
+  "chest": 2,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "cake",
+    1
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 28,
+  "chest": 3,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "e",
+    "devilssunrise",
+    1
+   ],
+   [
+    "i",
+    "shuriken",
+    33
+   ],
+   [
+    "i",
+    "silk",
+    9
+   ]
+  ]
+ },
+ {
+  "map": 28,
+  "chest": 4,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "s",
+    "coalbat",
+    0
+   ],
+   [
+    "i",
+    "bomb",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 28,
+  "chest": 5,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "magma",
+    6
+   ],
+   [
+    "i",
+    "powder",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 29,
+  "chest": 0,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "kiwi",
+    2
+   ],
+   [
+    "i",
+    "milk",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 29,
+  "chest": 1,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "e",
+    "cowboyshirt",
+    1
+   ],
+   [
+    "i",
+    "wool",
+    9
+   ],
+   [
+    "i",
+    "garlic",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 29,
+  "chest": 2,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "pumpkin",
+    1
+   ],
+   [
+    "i",
+    "muffin",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 30,
+  "chest": 0,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "kiwi",
+    2
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "feather",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 30,
+  "chest": 1,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "brick",
+    12
+   ],
+   [
+    "i",
+    "dirtball",
+    2
+   ],
+   [
+    "i",
+    "iron",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 30,
+  "chest": 2,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "e",
+    "firebadge",
+    1
+   ],
+   [
+    "i",
+    "beer",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 30,
+  "chest": 3,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "milk",
+    2
+   ],
+   [
+    "i",
+    "coffee",
+    1
+   ],
+   [
+    "i",
+    "muffin",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 30,
+  "chest": 4,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "mushroom",
+    1
+   ],
+   [
+    "i",
+    "feather",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 31,
+  "chest": 0,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "e",
+    "eagleeye",
+    1
+   ],
+   [
+    "i",
+    "iron",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 31,
+  "chest": 1,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "tentacle",
+    2
+   ],
+   [
+    "i",
+    "wood",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 32,
+  "chest": 0,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "s",
+    "bamboo",
+    0
+   ],
+   [
+    "i",
+    "seaweed",
+    2
+   ],
+   [
+    "i",
+    "turnip",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 32,
+  "chest": 1,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "bugwing",
+    3
+   ],
+   [
+    "i",
+    "cheese",
+    1
+   ],
+   [
+    "i",
+    "energydrink",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 32,
+  "chest": 2,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "s",
+    "berserk",
+    0
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "lemon",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 32,
+  "chest": 3,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "e",
+    "knighthelmet",
+    1
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "brick",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 33,
+  "chest": 0,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "e",
+    "destroyer",
+    1
+   ],
+   [
+    "i",
+    "cactus",
+    1
+   ],
+   [
+    "i",
+    "lemon",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 33,
+  "chest": 1,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "axe",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 33,
+  "chest": 2,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "wood",
+    3
+   ],
+   [
+    "i",
+    "root",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 33,
+  "chest": 3,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "e",
+    "gaiabow",
+    1
+   ],
+   [
+    "i",
+    "dirtball",
+    6
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 33,
+  "chest": 4,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "copperkey",
+    1
+   ],
+   [
+    "i",
+    "iron",
+    3
+   ],
+   [
+    "e",
+    "redjacket",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 33,
+  "chest": 5,
+  "area": "ASHWOOD",
+  "contents": [
+   [
+    "i",
+    "amber",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 34,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "ghoststicker",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 34,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ],
+   [
+    "i",
+    "cupcake",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 34,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "concrete",
+    2
+   ],
+   [
+    "i",
+    "iron",
+    3
+   ],
+   [
+    "i",
+    "powder",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 34,
+  "chest": 3,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "amber",
+    2
+   ],
+   [
+    "i",
+    "dirtball",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 35,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "amber",
+    1
+   ],
+   [
+    "i",
+    "powder",
+    2
+   ],
+   [
+    "i",
+    "fur",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 35,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "spring",
+    4
+   ],
+   [
+    "i",
+    "bomb",
+    3
+   ],
+   [
+    "i",
+    "cactus",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 35,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "cheese",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 35,
+  "chest": 3,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "gems",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 36,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "pumpkin",
+    2
+   ],
+   [
+    "i",
+    "pineapple",
+    1
+   ],
+   [
+    "i",
+    "orangejuice",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 36,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "glass",
+    2
+   ],
+   [
+    "i",
+    "talisman",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 36,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "gems",
+    1
+   ],
+   [
+    "i",
+    "fur",
+    2
+   ],
+   [
+    "i",
+    "chain",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 37,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "ninjahood",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ],
+   [
+    "i",
+    "shuriken",
+    7
+   ]
+  ]
+ },
+ {
+  "map": 37,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "ninjagear",
+    1
+   ],
+   [
+    "i",
+    "bomb",
+    3
+   ],
+   [
+    "i",
+    "snowball",
+    10
+   ]
+  ]
+ },
+ {
+  "map": 37,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "snowball",
+    12
+   ],
+   [
+    "i",
+    "icecream",
+    4
+   ],
+   [
+    "i",
+    "milk",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 38,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "s",
+    "icicles",
+    0
+   ],
+   [
+    "i",
+    "ice",
+    2
+   ],
+   [
+    "i",
+    "icecream",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 38,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "s",
+    "narwhal",
+    0
+   ],
+   [
+    "i",
+    "horn",
+    2
+   ],
+   [
+    "i",
+    "water",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 38,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "iceshards",
+    1
+   ],
+   [
+    "i",
+    "water",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 38,
+  "chest": 3,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "water",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 39,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "candle",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 39,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "glass",
+    3
+   ],
+   [
+    "i",
+    "concrete",
+    2
+   ],
+   [
+    "i",
+    "dirtball",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 40,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "s",
+    "icesprite",
+    0
+   ],
+   [
+    "i",
+    "ice",
+    2
+   ],
+   [
+    "i",
+    "water",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 40,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "copperkey",
+    1
+   ],
+   [
+    "i",
+    "steel",
+    2
+   ],
+   [
+    "i",
+    "glass",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 40,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "icebadge",
+    1
+   ],
+   [
+    "i",
+    "ice",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 40,
+  "chest": 3,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "snowball",
+    20
+   ],
+   [
+    "i",
+    "beer",
+    2
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 40,
+  "chest": 4,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "water",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 41,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "frozentears",
+    1
+   ],
+   [
+    "i",
+    "ice",
+    12
+   ],
+   [
+    "i",
+    "water",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 41,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "razorwind",
+    1
+   ],
+   [
+    "i",
+    "icecream",
+    2
+   ],
+   [
+    "i",
+    "milk",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 41,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 41,
+  "chest": 3,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "s",
+    "abzero",
+    0
+   ],
+   [
+    "i",
+    "ice",
+    2
+   ],
+   [
+    "i",
+    "water",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 41,
+  "chest": 4,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "copperkey",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ],
+   [
+    "i",
+    "crisps",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 42,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "s",
+    "dragon",
+    0
+   ],
+   [
+    "i",
+    "orangejuice",
+    1
+   ],
+   [
+    "i",
+    "burger",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 42,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "burger",
+    1
+   ],
+   [
+    "i",
+    "pizza",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 42,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "magmahammer",
+    1
+   ],
+   [
+    "i",
+    "magma",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 42,
+  "chest": 3,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "blackwidow",
+    1
+   ],
+   [
+    "i",
+    "bomb",
+    5
+   ],
+   [
+    "i",
+    "powder",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 42,
+  "chest": 4,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "steel",
+    5
+   ],
+   [
+    "i",
+    "iron",
+    10
+   ],
+   [
+    "i",
+    "chain",
+    7
+   ]
+  ]
+ },
+ {
+  "map": 42,
+  "chest": 5,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "sauce",
+    1
+   ],
+   [
+    "i",
+    "chips",
+    1
+   ],
+   [
+    "i",
+    "pineapple",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 42,
+  "chest": 6,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "coffee",
+    3
+   ],
+   [
+    "i",
+    "coconut",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 42,
+  "chest": 7,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "magma",
+    2
+   ],
+   [
+    "i",
+    "ice",
+    2
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 43,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "s",
+    "hellfire",
+    0
+   ],
+   [
+    "i",
+    "magma",
+    6
+   ],
+   [
+    "i",
+    "scales",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 43,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "scales",
+    3
+   ],
+   [
+    "i",
+    "spike",
+    1
+   ],
+   [
+    "i",
+    "horn",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 43,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "cupcake",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 43,
+  "chest": 3,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "s",
+    "beholder",
+    0
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 43,
+  "chest": 4,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "magma",
+    12
+   ],
+   [
+    "i",
+    "amber",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 44,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "orangejuice",
+    1
+   ],
+   [
+    "i",
+    "crisps",
+    3
+   ],
+   [
+    "i",
+    "chips",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 44,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "sapphiregiant",
+    1
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "water",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 44,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "iron",
+    6
+   ],
+   [
+    "i",
+    "concrete",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 45,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "deepblue",
+    1
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 45,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "pizza",
+    1
+   ],
+   [
+    "i",
+    "burger",
+    1
+   ],
+   [
+    "i",
+    "orangejuice",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 45,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "gems",
+    6
+   ],
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 45,
+  "chest": 3,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "amethyst",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 45,
+  "chest": 4,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "gems",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 46,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "candycane",
+    1
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 46,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "s",
+    "syphon",
+    0
+   ],
+   [
+    "i",
+    "talisman",
+    5
+   ],
+   [
+    "i",
+    "seashell",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 46,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "chips",
+    1
+   ],
+   [
+    "i",
+    "coffee",
+    3
+   ],
+   [
+    "i",
+    "steel",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 47,
+  "chest": 0,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "cowcostume",
+    1
+   ],
+   [
+    "i",
+    "fur",
+    4
+   ],
+   [
+    "i",
+    "beef",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 47,
+  "chest": 1,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "i",
+    "pumpkin",
+    5
+   ],
+   [
+    "i",
+    "chips",
+    1
+   ],
+   [
+    "i",
+    "chocolate",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 47,
+  "chest": 2,
+  "area": "CAVERNS",
+  "contents": [
+   [
+    "e",
+    "cowhorns",
+    1
+   ],
+   [
+    "i",
+    "horn",
+    2
+   ],
+   [
+    "i",
+    "milk",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 48,
+  "chest": 0,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ],
+   [
+    "i",
+    "cornet",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 49,
+  "chest": 0,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "panties",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 49,
+  "chest": 1,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "orangejuice",
+    1
+   ],
+   [
+    "i",
+    "snowball",
+    7
+   ]
+  ]
+ },
+ {
+  "map": 50,
+  "chest": 3,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "snowball",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 50,
+  "chest": 0,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "silk",
+    2
+   ],
+   [
+    "i",
+    "energydrink",
+    1
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 50,
+  "chest": 1,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "e",
+    "freeziebadge",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 50,
+  "chest": 2,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "e",
+    "iceneedle",
+    1
+   ],
+   [
+    "i",
+    "microcontroller",
+    20
+   ],
+   [
+    "i",
+    "steel",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 51,
+  "chest": 0,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "steel",
+    5
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 51,
+  "chest": 1,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "silver",
+    2
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "bubblestone",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 51,
+  "chest": 2,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "fur",
+    2
+   ],
+   [
+    "i",
+    "wood",
+    9
+   ]
+  ]
+ },
+ {
+  "map": 52,
+  "chest": 0,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "e",
+    "ultrazapper",
+    1
+   ],
+   [
+    "i",
+    "led",
+    8
+   ],
+   [
+    "i",
+    "display",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 52,
+  "chest": 1,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "display",
+    1
+   ],
+   [
+    "i",
+    "led",
+    2
+   ],
+   [
+    "i",
+    "snowball",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 53,
+  "chest": 0,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "snowball",
+    32
+   ],
+   [
+    "i",
+    "cd",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 54,
+  "chest": 0,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "gems",
+    4
+   ],
+   [
+    "i",
+    "amber",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 54,
+  "chest": 1,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "e",
+    "silvercross",
+    1
+   ],
+   [
+    "i",
+    "silver",
+    2
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 54,
+  "chest": 2,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "e",
+    "bluedress",
+    1
+   ],
+   [
+    "i",
+    "orangejuice",
+    1
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 54,
+  "chest": 3,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "talisman",
+    6
+   ],
+   [
+    "i",
+    "silk",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 55,
+  "chest": 0,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "e",
+    "thorshammer",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "plasma",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 56,
+  "chest": 0,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "snowball",
+    7
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 56,
+  "chest": 1,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "s",
+    "mammothstomp",
+    0
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 57,
+  "chest": 0,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "copperkey",
+    1
+   ],
+   [
+    "i",
+    "fur",
+    6
+   ],
+   [
+    "i",
+    "silk",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 57,
+  "chest": 1,
+  "area": "TOWN2",
+  "contents": [
+   [
+    "i",
+    "snowball",
+    11
+   ],
+   [
+    "i",
+    "steel",
+    2
+   ],
+   [
+    "i",
+    "spring",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 58,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "thundercore",
+    1
+   ],
+   [
+    "i",
+    "spring",
+    7
+   ],
+   [
+    "i",
+    "led",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 58,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "bomb",
+    10
+   ],
+   [
+    "i",
+    "powder",
+    10
+   ],
+   [
+    "i",
+    "display",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 58,
+  "chest": 2,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "microcontroller",
+    12
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "pineapple",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 59,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "glass",
+    5
+   ],
+   [
+    "i",
+    "plastic",
+    3
+   ],
+   [
+    "i",
+    "potion",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 59,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "ironcross",
+    1
+   ],
+   [
+    "i",
+    "iron",
+    7
+   ],
+   [
+    "i",
+    "microcontroller",
+    16
+   ]
+  ]
+ },
+ {
+  "map": 59,
+  "chest": 2,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "led",
+    12
+   ],
+   [
+    "i",
+    "glass",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 60,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "spacesuit",
+    1
+   ],
+   [
+    "i",
+    "plastic",
+    3
+   ],
+   [
+    "i",
+    "glass",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 60,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "diamondbadge",
+    1
+   ],
+   [
+    "i",
+    "virus",
+    2
+   ],
+   [
+    "i",
+    "plastic",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 60,
+  "chest": 2,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "steelkey",
+    1
+   ],
+   [
+    "i",
+    "steel",
+    4
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 60,
+  "chest": 3,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "virus",
+    2
+   ],
+   [
+    "i",
+    "seaweed",
+    7
+   ]
+  ]
+ },
+ {
+  "map": 61,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "beef",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 61,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "spacehelmet",
+    1
+   ],
+   [
+    "i",
+    "display",
+    3
+   ],
+   [
+    "i",
+    "plastic",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 61,
+  "chest": 2,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "s",
+    "flare",
+    0
+   ],
+   [
+    "i",
+    "glass",
+    5
+   ],
+   [
+    "i",
+    "silk",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 61,
+  "chest": 3,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "virus",
+    2
+   ],
+   [
+    "i",
+    "horn",
+    2
+   ],
+   [
+    "i",
+    "spike",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 62,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "silver",
+    1
+   ],
+   [
+    "i",
+    "steel",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 62,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "gasmask",
+    1
+   ],
+   [
+    "i",
+    "glass",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 62,
+  "chest": 2,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "steelkey",
+    1
+   ],
+   [
+    "i",
+    "coffee",
+    3
+   ],
+   [
+    "i",
+    "chips",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 62,
+  "chest": 3,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "tribolt",
+    1
+   ],
+   [
+    "i",
+    "magma",
+    4
+   ],
+   [
+    "i",
+    "concrete",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 62,
+  "chest": 4,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "powder",
+    1
+   ],
+   [
+    "s",
+    "gunslinger",
+    0
+   ],
+   [
+    "i",
+    "powder",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 63,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "alchemyset",
+    1
+   ],
+   [
+    "i",
+    "potion",
+    1
+   ],
+   [
+    "i",
+    "glass",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 63,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "wood",
+    6
+   ],
+   [
+    "i",
+    "root",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 64,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "chainsawblade",
+    1
+   ],
+   [
+    "i",
+    "tentacle",
+    12
+   ],
+   [
+    "i",
+    "seashell",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 64,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "s",
+    "debilitate",
+    0
+   ],
+   [
+    "i",
+    "virus",
+    3
+   ],
+   [
+    "i",
+    "seaweed",
+    9
+   ]
+  ]
+ },
+ {
+  "map": 65,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "seaweed",
+    12
+   ],
+   [
+    "i",
+    "seashell",
+    8
+   ],
+   [
+    "i",
+    "bubblestone",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 65,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "silver",
+    1
+   ],
+   [
+    "i",
+    "potion",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 65,
+  "chest": 2,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "thunderbadge",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "pineapple",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 65,
+  "chest": 3,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "chain",
+    8
+   ],
+   [
+    "i",
+    "spring",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 66,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "beer",
+    6
+   ],
+   [
+    "i",
+    "garlic",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 66,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "s",
+    "ion",
+    0
+   ],
+   [
+    "i",
+    "plasma",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 67,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "s",
+    "elemental",
+    0
+   ],
+   [
+    "i",
+    "plasma",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 67,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "camoskirt",
+    1
+   ],
+   [
+    "i",
+    "silk",
+    2
+   ],
+   [
+    "i",
+    "bubblestone",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 67,
+  "chest": 2,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "topaz",
+    1
+   ],
+   [
+    "i",
+    "gems",
+    5
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 67,
+  "chest": 3,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "plasma",
+    1
+   ],
+   [
+    "i",
+    "display",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 68,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "hammer",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "steel",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 68,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "steelkey",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ],
+   [
+    "i",
+    "plastic",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 68,
+  "chest": 2,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "gold",
+    1
+   ],
+   [
+    "i",
+    "silver",
+    2
+   ],
+   [
+    "i",
+    "gems",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 68,
+  "chest": 3,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "coffee",
+    7
+   ],
+   [
+    "i",
+    "ram",
+    1
+   ],
+   [
+    "i",
+    "silk",
+    7
+   ]
+  ]
+ },
+ {
+  "map": 68,
+  "chest": 4,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "pizza",
+    1
+   ],
+   [
+    "i",
+    "burger",
+    1
+   ],
+   [
+    "i",
+    "chips",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 68,
+  "chest": 5,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "mercury",
+    1
+   ],
+   [
+    "i",
+    "plasma",
+    1
+   ],
+   [
+    "i",
+    "topaz",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 68,
+  "chest": 6,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "orangejuice",
+    1
+   ],
+   [
+    "i",
+    "coffee",
+    6
+   ],
+   [
+    "i",
+    "cupcake",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 69,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "minibomber",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 69,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "bubblestone",
+    4
+   ],
+   [
+    "i",
+    "ice",
+    8
+   ],
+   [
+    "i",
+    "glass",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 69,
+  "chest": 2,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "ram",
+    1
+   ],
+   [
+    "i",
+    "bomb",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 70,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "ram",
+    2
+   ],
+   [
+    "i",
+    "plasma",
+    1
+   ],
+   [
+    "i",
+    "topaz",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 70,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "gold",
+    1
+   ],
+   [
+    "i",
+    "silver",
+    3
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 70,
+  "chest": 2,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "watermelon",
+    4
+   ],
+   [
+    "i",
+    "sundae",
+    2
+   ],
+   [
+    "i",
+    "sauce",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 71,
+  "chest": 0,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "steelkey",
+    1
+   ],
+   [
+    "i",
+    "ram",
+    1
+   ],
+   [
+    "i",
+    "microcontroller",
+    22
+   ]
+  ]
+ },
+ {
+  "map": 71,
+  "chest": 1,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "darkmatter",
+    1
+   ],
+   [
+    "i",
+    "rune",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 71,
+  "chest": 2,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "e",
+    "juggernaut",
+    1
+   ],
+   [
+    "i",
+    "titanium",
+    1
+   ],
+   [
+    "i",
+    "powder",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 71,
+  "chest": 3,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "ram",
+    4
+   ],
+   [
+    "i",
+    "plutonium",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 71,
+  "chest": 4,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 71,
+  "chest": 5,
+  "area": "FACTORY",
+  "contents": [
+   [
+    "i",
+    "ram",
+    1
+   ],
+   [
+    "s",
+    "glitch",
+    1
+   ],
+   [
+    "i",
+    "ram",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 72,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "flower",
+    4
+   ],
+   [
+    "i",
+    "potion",
+    2
+   ],
+   [
+    "i",
+    "opal",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 73,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "e",
+    "dragonhelm",
+    1
+   ],
+   [
+    "e",
+    "dragonarmor",
+    1
+   ],
+   [
+    "i",
+    "scales",
+    7
+   ]
+  ]
+ },
+ {
+  "map": 73,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 73,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "s",
+    "supernova",
+    0
+   ],
+   [
+    "i",
+    "diamond",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 73,
+  "chest": 3,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "ruby",
+    2
+   ],
+   [
+    "i",
+    "emerald",
+    2
+   ],
+   [
+    "i",
+    "topaz",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 74,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "opal",
+    1
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "orangejuice",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 74,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "rune",
+    1
+   ],
+   [
+    "i",
+    "darkness",
+    3
+   ],
+   [
+    "i",
+    "satin",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 75,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "orangejuice",
+    1
+   ],
+   [
+    "i",
+    "amethyst",
+    5
+   ],
+   [
+    "i",
+    "satin",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 75,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "emerald",
+    1
+   ],
+   [
+    "i",
+    "ruby",
+    1
+   ],
+   [
+    "i",
+    "topaz",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 75,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "e",
+    "nimbus",
+    1
+   ],
+   [
+    "i",
+    "gold",
+    2
+   ],
+   [
+    "i",
+    "silver",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 75,
+  "chest": 3,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "e",
+    "coralclip",
+    1
+   ],
+   [
+    "i",
+    "seashell",
+    16
+   ],
+   [
+    "i",
+    "bubblestone",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 75,
+  "chest": 4,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ],
+   [
+    "i",
+    "burger",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 75,
+  "chest": 5,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "opal",
+    1
+   ],
+   [
+    "i",
+    "geode",
+    4
+   ],
+   [
+    "i",
+    "rune",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 75,
+  "chest": 6,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "flower",
+    1
+   ],
+   [
+    "s",
+    "heasy",
+    0
+   ],
+   [
+    "i",
+    "flower",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 76,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "coffee",
+    5
+   ],
+   [
+    "i",
+    "sundae",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 76,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "wood",
+    12
+   ],
+   [
+    "i",
+    "root",
+    8
+   ],
+   [
+    "i",
+    "berry",
+    20
+   ]
+  ]
+ },
+ {
+  "map": 76,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "kiwi",
+    12
+   ],
+   [
+    "i",
+    "pumpkin",
+    4
+   ],
+   [
+    "i",
+    "watermelon",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 77,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "amber",
+    16
+   ],
+   [
+    "i",
+    "magma",
+    12
+   ],
+   [
+    "i",
+    "iron",
+    20
+   ]
+  ]
+ },
+ {
+  "map": 77,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "e",
+    "cursedcharm",
+    1
+   ],
+   [
+    "i",
+    "spike",
+    5
+   ],
+   [
+    "i",
+    "horn",
+    10
+   ]
+  ]
+ },
+ {
+  "map": 77,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "ruby",
+    1
+   ],
+   [
+    "i",
+    "rune",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 77,
+  "chest": 3,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "thermalboots",
+    1
+   ],
+   [
+    "i",
+    "magma",
+    10
+   ],
+   [
+    "i",
+    "scales",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 77,
+  "chest": 4,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "burger",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 78,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "chips",
+    2
+   ],
+   [
+    "i",
+    "coconut",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 78,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "e",
+    "aquamarine",
+    1
+   ],
+   [
+    "i",
+    "bubblestone",
+    4
+   ],
+   [
+    "i",
+    "water",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 79,
+  "chest": 0,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "dirtball",
+    32
+   ],
+   [
+    "i",
+    "mercury",
+    1
+   ],
+   [
+    "i",
+    "gems",
+    31
+   ]
+  ]
+ },
+ {
+  "map": 79,
+  "chest": 1,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "dirtball",
+    47
+   ],
+   [
+    "i",
+    "seaweed",
+    21
+   ],
+   [
+    "i",
+    "brick",
+    11
+   ]
+  ]
+ },
+ {
+  "map": 79,
+  "chest": 2,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "coffee",
+    4
+   ],
+   [
+    "i",
+    "garlic",
+    6
+   ],
+   [
+    "i",
+    "milk",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 80,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "cake",
+    1
+   ],
+   [
+    "i",
+    "potion",
+    4
+   ],
+   [
+    "i",
+    "tentacle",
+    14
+   ]
+  ]
+ },
+ {
+  "map": 80,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "seaweed",
+    12
+   ],
+   [
+    "i",
+    "bubblestone",
+    4
+   ],
+   [
+    "i",
+    "water",
+    10
+   ]
+  ]
+ },
+ {
+  "map": 80,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "cupcake",
+    4
+   ],
+   [
+    "i",
+    "coconut",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 80,
+  "chest": 3,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "seaweed",
+    33
+   ]
+  ]
+ },
+ {
+  "map": 81,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "virus",
+    5
+   ],
+   [
+    "i",
+    "geode",
+    4
+   ],
+   [
+    "i",
+    "scales",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 81,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "burger",
+    1
+   ],
+   [
+    "i",
+    "coconut",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 81,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "s",
+    "annihilate",
+    0
+   ],
+   [
+    "i",
+    "darkness",
+    3
+   ],
+   [
+    "i",
+    "silver",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 81,
+  "chest": 3,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "pumpkin",
+    1
+   ],
+   [
+    "s",
+    "jack",
+    0
+   ],
+   [
+    "i",
+    "pumpkin",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 82,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "e",
+    "piratedress",
+    1
+   ],
+   [
+    "e",
+    "piratehat",
+    1
+   ],
+   [
+    "i",
+    "powder",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 82,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "bugwing",
+    37
+   ],
+   [
+    "i",
+    "nut",
+    23
+   ]
+  ]
+ },
+ {
+  "map": 82,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "orangejuice",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 82,
+  "chest": 3,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "tentacle",
+    8
+   ],
+   [
+    "i",
+    "bubblestone",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 83,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "wool",
+    55
+   ],
+   [
+    "i",
+    "silk",
+    8
+   ],
+   [
+    "i",
+    "satin",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 83,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "brick",
+    36
+   ],
+   [
+    "i",
+    "concrete",
+    17
+   ],
+   [
+    "i",
+    "iron",
+    11
+   ]
+  ]
+ },
+ {
+  "map": 83,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "scales",
+    2
+   ],
+   [
+    "i",
+    "satin",
+    2
+   ],
+   [
+    "i",
+    "coconut",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 83,
+  "chest": 3,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "cactus",
+    16
+   ],
+   [
+    "i",
+    "flower",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 84,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "s",
+    "idols",
+    0
+   ],
+   [
+    "i",
+    "goldkey",
+    1
+   ],
+   [
+    "i",
+    "gold",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 84,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "emerald",
+    1
+   ],
+   [
+    "i",
+    "geode",
+    2
+   ],
+   [
+    "i",
+    "flower",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 84,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "flower",
+    2
+   ],
+   [
+    "i",
+    "mushroom",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 85,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "bubblestone",
+    3
+   ],
+   [
+    "i",
+    "glass",
+    9
+   ],
+   [
+    "i",
+    "flower",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 85,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "gold",
+    1
+   ],
+   [
+    "i",
+    "rune",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 85,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "e",
+    "waterbadge",
+    1
+   ],
+   [
+    "i",
+    "bubblestone",
+    3
+   ],
+   [
+    "i",
+    "water",
+    7
+   ]
+  ]
+ },
+ {
+  "map": 85,
+  "chest": 3,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "e",
+    "poisonbadge",
+    1
+   ],
+   [
+    "i",
+    "virus",
+    4
+   ],
+   [
+    "i",
+    "cactus",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 85,
+  "chest": 4,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "flower",
+    1
+   ],
+   [
+    "i",
+    "potion",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 86,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "cupcake",
+    3
+   ],
+   [
+    "i",
+    "silk",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 86,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "e",
+    "vortexcannon",
+    1
+   ],
+   [
+    "i",
+    "steel",
+    12
+   ],
+   [
+    "i",
+    "plastic",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 86,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "topaz",
+    1
+   ],
+   [
+    "i",
+    "amethyst",
+    2
+   ],
+   [
+    "i",
+    "gems",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 87,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "coralkey",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ],
+   [
+    "i",
+    "sundae",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 87,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "s",
+    "sanddune",
+    0
+   ],
+   [
+    "i",
+    "dirtball",
+    13
+   ],
+   [
+    "i",
+    "geode",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 87,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "brick",
+    11
+   ],
+   [
+    "i",
+    "wood",
+    14
+   ],
+   [
+    "i",
+    "orangejuice",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 87,
+  "chest": 3,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "wood",
+    22
+   ],
+   [
+    "i",
+    "root",
+    9
+   ]
+  ]
+ },
+ {
+  "map": 88,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 88,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "pineapple",
+    2
+   ],
+   [
+    "i",
+    "softdrink",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 88,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "e",
+    "subzero",
+    1
+   ],
+   [
+    "i",
+    "ice",
+    8
+   ],
+   [
+    "i",
+    "snowball",
+    15
+   ]
+  ]
+ },
+ {
+  "map": 88,
+  "chest": 3,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "leafyboots",
+    1
+   ],
+   [
+    "i",
+    "seaweed",
+    11
+   ],
+   [
+    "i",
+    "bubblestone",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 88,
+  "chest": 4,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "feather",
+    12
+   ],
+   [
+    "i",
+    "fur",
+    10
+   ],
+   [
+    "i",
+    "geode",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 88,
+  "chest": 5,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "flower",
+    1
+   ],
+   [
+    "i",
+    "feather",
+    4
+   ],
+   [
+    "i",
+    "turnip",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 89,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "e",
+    "nirvana",
+    1
+   ],
+   [
+    "i",
+    "cactus",
+    12
+   ],
+   [
+    "i",
+    "silk",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 89,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "s",
+    "squid",
+    0
+   ],
+   [
+    "i",
+    "tentacle",
+    18
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 90,
+  "chest": 0,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "candycane",
+    1
+   ],
+   [
+    "i",
+    "rune",
+    1
+   ],
+   [
+    "i",
+    "darkness",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 90,
+  "chest": 1,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "wood",
+    18
+   ],
+   [
+    "i",
+    "flower",
+    2
+   ],
+   [
+    "i",
+    "bubblestone",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 90,
+  "chest": 2,
+  "area": "JUNGLE",
+  "contents": [
+   [
+    "i",
+    "coconut",
+    6
+   ],
+   [
+    "i",
+    "watermelon",
+    2
+   ],
+   [
+    "i",
+    "lemon",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 91,
+  "chest": 0,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "opal",
+    1
+   ],
+   [
+    "i",
+    "topaz",
+    2
+   ],
+   [
+    "i",
+    "chips",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 91,
+  "chest": 1,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "s",
+    "tsunami",
+    0
+   ],
+   [
+    "i",
+    "bubblestone",
+    4
+   ],
+   [
+    "i",
+    "water",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 91,
+  "chest": 2,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "tentacle",
+    12
+   ],
+   [
+    "i",
+    "seaweed",
+    7
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 91,
+  "chest": 3,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "bubblestone",
+    3
+   ],
+   [
+    "i",
+    "ruby",
+    1
+   ],
+   [
+    "i",
+    "satin",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 91,
+  "chest": 4,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "bubblestone",
+    20
+   ]
+  ]
+ },
+ {
+  "map": 92,
+  "chest": 0,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "stepladder",
+    1
+   ],
+   [
+    "i",
+    "wood",
+    4
+   ],
+   [
+    "i",
+    "nut",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 92,
+  "chest": 1,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "sundae",
+    1
+   ],
+   [
+    "i",
+    "burger",
+    1
+   ],
+   [
+    "i",
+    "emerald",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 92,
+  "chest": 2,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "e",
+    "clownfishsticker",
+    1
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "energydrink",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 92,
+  "chest": 3,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "coralkey",
+    1
+   ],
+   [
+    "i",
+    "seashell",
+    18
+   ],
+   [
+    "i",
+    "bubblestone",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 93,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "mercury",
+    1
+   ],
+   [
+    "i",
+    "potion",
+    4
+   ],
+   [
+    "i",
+    "glass",
+    10
+   ]
+  ]
+ },
+ {
+  "map": 93,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "pineapple",
+    2
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 93,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "opal",
+    1
+   ],
+   [
+    "i",
+    "geode",
+    4
+   ],
+   [
+    "i",
+    "amethyst",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 93,
+  "chest": 3,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "rune",
+    2
+   ],
+   [
+    "i",
+    "darkmatter",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 94,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "watermelon",
+    4
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 94,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "titanium",
+    1
+   ],
+   [
+    "i",
+    "iron",
+    16
+   ],
+   [
+    "i",
+    "glass",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 94,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "amethyst",
+    4
+   ],
+   [
+    "i",
+    "silk",
+    4
+   ],
+   [
+    "i",
+    "gold",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 95,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "chips",
+    1
+   ],
+   [
+    "i",
+    "burger",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 95,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "pizza",
+    1
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 95,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "rune",
+    2
+   ],
+   [
+    "i",
+    "talisman",
+    18
+   ],
+   [
+    "i",
+    "amethyst",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 96,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "wingedboots",
+    1
+   ],
+   [
+    "i",
+    "wool",
+    88
+   ],
+   [
+    "i",
+    "satin",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 96,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "mythril",
+    1
+   ],
+   [
+    "i",
+    "silk",
+    8
+   ],
+   [
+    "i",
+    "silver",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 96,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "candycane",
+    1
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "sundae",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 98,
+  "chest": 0,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "diamond",
+    1
+   ],
+   [
+    "i",
+    "gems",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 98,
+  "chest": 1,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "coralkey",
+    1
+   ],
+   [
+    "i",
+    "bacon",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 98,
+  "chest": 2,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "pizza",
+    1
+   ],
+   [
+    "i",
+    "chips",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 99,
+  "chest": 0,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "e",
+    "cowboyhat",
+    1
+   ],
+   [
+    "i",
+    "silk",
+    6
+   ],
+   [
+    "i",
+    "satin",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 99,
+  "chest": 1,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "magma",
+    8
+   ],
+   [
+    "i",
+    "fur",
+    10
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 99,
+  "chest": 2,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "seashell",
+    9
+   ],
+   [
+    "i",
+    "tentacle",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 100,
+  "chest": 0,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "garlic",
+    6
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 100,
+  "chest": 1,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 100,
+  "chest": 2,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "gold",
+    2
+   ],
+   [
+    "i",
+    "emerald",
+    4
+   ],
+   [
+    "i",
+    "satin",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 100,
+  "chest": 3,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "scales",
+    6
+   ],
+   [
+    "i",
+    "spike",
+    6
+   ],
+   [
+    "i",
+    "horn",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 101,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "scales",
+    4
+   ],
+   [
+    "i",
+    "amber",
+    6
+   ],
+   [
+    "i",
+    "magma",
+    10
+   ]
+  ]
+ },
+ {
+  "map": 101,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "diamond",
+    1
+   ],
+   [
+    "i",
+    "scales",
+    2
+   ],
+   [
+    "i",
+    "watermelon",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 101,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "chips",
+    3
+   ],
+   [
+    "i",
+    "softdrink",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 102,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "e",
+    "triforce",
+    1
+   ],
+   [
+    "i",
+    "elixir",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 102,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "gold",
+    2
+   ],
+   [
+    "i",
+    "topaz",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 102,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "candycane",
+    1
+   ],
+   [
+    "i",
+    "plasma",
+    2
+   ],
+   [
+    "i",
+    "rune",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 102,
+  "chest": 3,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "amethyst",
+    4
+   ],
+   [
+    "i",
+    "gems",
+    12
+   ],
+   [
+    "i",
+    "bubblestone",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 102,
+  "chest": 4,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "satin",
+    3
+   ],
+   [
+    "i",
+    "silk",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 103,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "e",
+    "popedress",
+    1
+   ],
+   [
+    "i",
+    "satin",
+    4
+   ],
+   [
+    "i",
+    "silk",
+    11
+   ]
+  ]
+ },
+ {
+  "map": 103,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "mercury",
+    1
+   ],
+   [
+    "i",
+    "opal",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 103,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "elixir",
+    1
+   ],
+   [
+    "i",
+    "steel",
+    20
+   ],
+   [
+    "i",
+    "silver",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 103,
+  "chest": 3,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "watermelon",
+    4
+   ],
+   [
+    "i",
+    "sundae",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 104,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "plutonium",
+    1
+   ],
+   [
+    "i",
+    "spring",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 104,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "icecream",
+    6
+   ],
+   [
+    "i",
+    "sundae",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 104,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "e",
+    "seraphim",
+    1
+   ],
+   [
+    "i",
+    "feather",
+    6
+   ],
+   [
+    "i",
+    "talisman",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 104,
+  "chest": 3,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "icecream",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 105,
+  "chest": 0,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "panties",
+    1
+   ],
+   [
+    "i",
+    "silk",
+    6
+   ],
+   [
+    "i",
+    "satin",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 106,
+  "chest": 0,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "concrete",
+    8
+   ],
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "amethyst",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 106,
+  "chest": 1,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "brick",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 107,
+  "chest": 0,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "energydrink",
+    4
+   ],
+   [
+    "i",
+    "coffee",
+    3
+   ],
+   [
+    "i",
+    "beer",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 107,
+  "chest": 1,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "ram",
+    2
+   ],
+   [
+    "i",
+    "microcontroller",
+    18
+   ],
+   [
+    "i",
+    "led",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 108,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "goldkey",
+    1
+   ],
+   [
+    "i",
+    "gems",
+    10
+   ],
+   [
+    "i",
+    "ruby",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 108,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "e",
+    "popehat",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 108,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "s",
+    "guardian",
+    0
+   ],
+   [
+    "i",
+    "gold",
+    2
+   ],
+   [
+    "i",
+    "talisman",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 109,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "goldkey",
+    1
+   ],
+   [
+    "i",
+    "rune",
+    2
+   ],
+   [
+    "i",
+    "topaz",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 109,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "opal",
+    1
+   ],
+   [
+    "i",
+    "geode",
+    3
+   ],
+   [
+    "i",
+    "emerald",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 109,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "topaz",
+    1
+   ],
+   [
+    "i",
+    "gold",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 110,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "e",
+    "knightarmor",
+    0
+   ],
+   [
+    "i",
+    "plutonium",
+    1
+   ],
+   [
+    "i",
+    "silver",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 110,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "s",
+    "protector",
+    0
+   ],
+   [
+    "i",
+    "plasma",
+    2
+   ],
+   [
+    "i",
+    "darkmatter",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 110,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "s",
+    "bear",
+    1
+   ],
+   [
+    "i",
+    "coconut",
+    4
+   ],
+   [
+    "i",
+    "fur",
+    10
+   ]
+  ]
+ },
+ {
+  "map": 110,
+  "chest": 3,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "rune",
+    2
+   ],
+   [
+    "i",
+    "darkness",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 111,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "opal",
+    1
+   ],
+   [
+    "i",
+    "rune",
+    1
+   ],
+   [
+    "i",
+    "gold",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 111,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "amethyst",
+    2
+   ],
+   [
+    "i",
+    "geode",
+    2
+   ],
+   [
+    "i",
+    "flower",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 111,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "e",
+    "dragonclaw",
+    1
+   ],
+   [
+    "i",
+    "scales",
+    4
+   ],
+   [
+    "i",
+    "virus",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 111,
+  "chest": 3,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "coffee",
+    4
+   ],
+   [
+    "i",
+    "chips",
+    4
+   ],
+   [
+    "i",
+    "orangejuice",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 112,
+  "chest": 0,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "goldkey",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "holywater",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 112,
+  "chest": 1,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "darkness",
+    2
+   ],
+   [
+    "i",
+    "rune",
+    1
+   ],
+   [
+    "i",
+    "powder",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 112,
+  "chest": 2,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "chocolate",
+    4
+   ],
+   [
+    "i",
+    "icecream",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 112,
+  "chest": 3,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "horn",
+    6
+   ],
+   [
+    "i",
+    "spike",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 113,
+  "chest": 0,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "emerald",
+    1
+   ],
+   [
+    "i",
+    "ruby",
+    1
+   ],
+   [
+    "i",
+    "topaz",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 113,
+  "chest": 1,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "coralkey",
+    1
+   ],
+   [
+    "i",
+    "satin",
+    1
+   ],
+   [
+    "i",
+    "silver",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 113,
+  "chest": 2,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "s",
+    "ancientmonolith",
+    0
+   ],
+   [
+    "i",
+    "gold",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 113,
+  "chest": 3,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ],
+   [
+    "i",
+    "sundae",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 113,
+  "chest": 4,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "cactus",
+    6
+   ],
+   [
+    "i",
+    "potion",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 114,
+  "chest": 0,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "coralkey",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "turnip",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 114,
+  "chest": 1,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "e",
+    "chainsawgun",
+    1
+   ],
+   [
+    "i",
+    "chain",
+    12
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 114,
+  "chest": 2,
+  "area": "TOWN3",
+  "contents": [
+   [
+    "i",
+    "ruby",
+    1
+   ],
+   [
+    "i",
+    "fur",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 115,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "cactus",
+    8
+   ],
+   [
+    "i",
+    "flower",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 115,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "gold",
+    2
+   ],
+   [
+    "i",
+    "silver",
+    6
+   ],
+   [
+    "i",
+    "silk",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 116,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "mercury",
+    1
+   ],
+   [
+    "i",
+    "darkness",
+    2
+   ],
+   [
+    "i",
+    "potion",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 117,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "titanium",
+    1
+   ],
+   [
+    "i",
+    "steel",
+    12
+   ],
+   [
+    "i",
+    "shuriken",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 117,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "gold",
+    1
+   ],
+   [
+    "i",
+    "silver",
+    4
+   ],
+   [
+    "i",
+    "darkness",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 117,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "plasma",
+    2
+   ],
+   [
+    "i",
+    "topaz",
+    2
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 117,
+  "chest": 3,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "emerald",
+    1
+   ],
+   [
+    "i",
+    "geode",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 118,
+  "chest": 0,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "e",
+    "windbadge",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "coffee",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 118,
+  "chest": 1,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "goldkey",
+    1
+   ],
+   [
+    "i",
+    "pineapple",
+    4
+   ],
+   [
+    "i",
+    "ram",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 118,
+  "chest": 2,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "gold",
+    2
+   ],
+   [
+    "i",
+    "ruby",
+    2
+   ],
+   [
+    "i",
+    "steel",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 118,
+  "chest": 3,
+  "area": "TEMPLE",
+  "contents": [
+   [
+    "i",
+    "cake",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "diamond",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 120,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "darkarmor",
+    1
+   ],
+   [
+    "i",
+    "orangejuice",
+    3
+   ],
+   [
+    "i",
+    "darkness",
+    10
+   ]
+  ]
+ },
+ {
+  "map": 120,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "pizza",
+    3
+   ],
+   [
+    "i",
+    "coffee",
+    33
+   ]
+  ]
+ },
+ {
+  "map": 120,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "orangejuice",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 120,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "plasma",
+    1
+   ],
+   [
+    "e",
+    "stormsplitter",
+    1
+   ],
+   [
+    "i",
+    "plasma",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 121,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "drilllance",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "beef",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 121,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "deathscythe",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 121,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "wood",
+    55
+   ],
+   [
+    "i",
+    "coconut",
+    5
+   ],
+   [
+    "i",
+    "elixir",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 121,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "burger",
+    1
+   ],
+   [
+    "i",
+    "sauce",
+    1
+   ],
+   [
+    "i",
+    "orangejuice",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 121,
+  "chest": 4,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "angelwing",
+    1
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 121,
+  "chest": 5,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "kaladanda",
+    1
+   ],
+   [
+    "e",
+    "azuredragon",
+    1
+   ],
+   [
+    "i",
+    "diamond",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 122,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "goldstar",
+    1
+   ],
+   [
+    "i",
+    "lollipop",
+    2
+   ],
+   [
+    "i",
+    "candycane",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 122,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "shieldmedal",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    2
+   ],
+   [
+    "i",
+    "donut",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 122,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "platinumstar",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    2
+   ],
+   [
+    "i",
+    "beef",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 122,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "swordmedal",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    2
+   ],
+   [
+    "i",
+    "sushi",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 122,
+  "chest": 4,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "darkness",
+    1
+   ],
+   [
+    "e",
+    "equilibrium",
+    1
+   ],
+   [
+    "i",
+    "darkness",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 122,
+  "chest": 5,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "rapturer",
+    1
+   ],
+   [
+    "i",
+    "darkmatter",
+    1
+   ],
+   [
+    "i",
+    "titanium",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 122,
+  "chest": 6,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "jubileus",
+    1
+   ],
+   [
+    "i",
+    "mythril",
+    1
+   ],
+   [
+    "i",
+    "elixir",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 122,
+  "chest": 7,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "topaz",
+    1
+   ],
+   [
+    "e",
+    "hyperion",
+    1
+   ],
+   [
+    "i",
+    "topaz",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 123,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "diamond",
+    1
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 123,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "s",
+    "dragon2",
+    1
+   ],
+   [
+    "i",
+    "gold",
+    4
+   ],
+   [
+    "i",
+    "silver",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 123,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "wool",
+    40
+   ],
+   [
+    "i",
+    "silk",
+    20
+   ],
+   [
+    "i",
+    "talisman",
+    10
+   ]
+  ]
+ },
+ {
+  "map": 124,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "oldboots",
+    1
+   ],
+   [
+    "i",
+    "coffee",
+    20
+   ],
+   [
+    "i",
+    "muffin",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 124,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "spike",
+    10
+   ],
+   [
+    "i",
+    "darkness",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 125,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "mythril",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 125,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "fusionsword",
+    1
+   ],
+   [
+    "i",
+    "steel",
+    30
+   ],
+   [
+    "i",
+    "powder",
+    20
+   ]
+  ]
+ },
+ {
+  "map": 125,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "goldenarmor",
+    1
+   ],
+   [
+    "i",
+    "gold",
+    5
+   ],
+   [
+    "i",
+    "gems",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 125,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "silver",
+    12
+   ],
+   [
+    "i",
+    "gold",
+    2
+   ],
+   [
+    "i",
+    "gems",
+    7
+   ]
+  ]
+ },
+ {
+  "map": 126,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "slimehat",
+    1
+   ],
+   [
+    "i",
+    "emerald",
+    4
+   ],
+   [
+    "i",
+    "opal",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 126,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ],
+   [
+    "i",
+    "orangejuice",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 126,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "topaz",
+    2
+   ],
+   [
+    "i",
+    "ruby",
+    3
+   ],
+   [
+    "i",
+    "silk",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 126,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "flower",
+    4
+   ],
+   [
+    "i",
+    "potion",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 127,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "orangejuice",
+    1
+   ],
+   [
+    "i",
+    "burger",
+    1
+   ],
+   [
+    "i",
+    "sauce",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 127,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "thornbow",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 127,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "deathmask",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "beef",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 127,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "wood",
+    22
+   ],
+   [
+    "i",
+    "root",
+    17
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 128,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "ninjaskirt",
+    1
+   ],
+   [
+    "i",
+    "silk",
+    11
+   ],
+   [
+    "i",
+    "satin",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 128,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "orangejuice",
+    2
+   ],
+   [
+    "i",
+    "burger",
+    2
+   ],
+   [
+    "i",
+    "catfood",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 128,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "accelerator",
+    1
+   ],
+   [
+    "i",
+    "plasma",
+    4
+   ],
+   [
+    "i",
+    "led",
+    34
+   ]
+  ]
+ },
+ {
+  "map": 128,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "coffee",
+    10
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 128,
+  "chest": 4,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "bubblestone",
+    8
+   ],
+   [
+    "i",
+    "water",
+    5
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 128,
+  "chest": 5,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "monsterhunter",
+    1
+   ],
+   [
+    "e",
+    "adamantoise",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 128,
+  "chest": 6,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "s",
+    "rafflesia",
+    0
+   ],
+   [
+    "i",
+    "flower",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 128,
+  "chest": 7,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "root",
+    4
+   ],
+   [
+    "s",
+    "plantspikes3",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 129,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "darkness",
+    1
+   ],
+   [
+    "i",
+    "root",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 129,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "darkness",
+    1
+   ],
+   [
+    "i",
+    "wood",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 129,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "darkness",
+    1
+   ],
+   [
+    "i",
+    "nut",
+    7
+   ]
+  ]
+ },
+ {
+  "map": 129,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "leatherarmor",
+    1
+   ],
+   [
+    "s",
+    "evilworm",
+    1
+   ],
+   [
+    "i",
+    "tentacle",
+    8
+   ]
+  ]
+ },
+ {
+  "map": 129,
+  "chest": 4,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "orangejuice",
+    1
+   ],
+   [
+    "i",
+    "lollipop",
+    1
+   ],
+   [
+    "i",
+    "candycane",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 129,
+  "chest": 5,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "s",
+    "deathspike2",
+    1
+   ],
+   [
+    "i",
+    "root",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 130,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "phantom",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 130,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "s",
+    "acid",
+    1
+   ],
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 130,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "brick",
+    10
+   ],
+   [
+    "e",
+    "survivalbow",
+    1
+   ],
+   [
+    "i",
+    "brick",
+    10
+   ]
+  ]
+ },
+ {
+  "map": 130,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "s",
+    "glitchy",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 131,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "exterminator",
+    1
+   ],
+   [
+    "i",
+    "ham",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 131,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "s",
+    "plasmacage",
+    2
+   ],
+   [
+    "i",
+    "plasma",
+    3
+   ],
+   [
+    "i",
+    "topaz",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 131,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "maidoutfit",
+    1
+   ],
+   [
+    "i",
+    "silk",
+    12
+   ],
+   [
+    "i",
+    "satin",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 131,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "coffee",
+    7
+   ],
+   [
+    "i",
+    "beef",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 131,
+  "chest": 4,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "plutonium",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 131,
+  "chest": 5,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "hearteater",
+    1
+   ],
+   [
+    "e",
+    "fivegtower",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 132,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "furhat",
+    1
+   ],
+   [
+    "i",
+    "fur",
+    13
+   ],
+   [
+    "i",
+    "spike",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 132,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "schooluniform",
+    1
+   ],
+   [
+    "i",
+    "silk",
+    5
+   ],
+   [
+    "i",
+    "wool",
+    31
+   ]
+  ]
+ },
+ {
+  "map": 132,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "snowball",
+    99
+   ],
+   [
+    "i",
+    "coffee",
+    8
+   ],
+   [
+    "i",
+    "milk",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 133,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "s",
+    "rapture",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    2
+   ],
+   [
+    "i",
+    "sushi",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 133,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "positronrifle",
+    1
+   ],
+   [
+    "i",
+    "plasma",
+    3
+   ]
+  ]
+ },
+ {
+  "map": 134,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "s",
+    "blizzard",
+    1
+   ],
+   [
+    "i",
+    "sundae",
+    2
+   ],
+   [
+    "i",
+    "icecream",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 134,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "crystalbow",
+    1
+   ],
+   [
+    "i",
+    "donut",
+    1
+   ],
+   [
+    "i",
+    "cake",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 134,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "puppyhat",
+    1
+   ],
+   [
+    "i",
+    "sundae",
+    4
+   ],
+   [
+    "i",
+    "milk",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 134,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "s",
+    "diamondgolem",
+    0
+   ],
+   [
+    "e",
+    "blizzard",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 134,
+  "chest": 4,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "s",
+    "musicalblast",
+    1
+   ],
+   [
+    "i",
+    "coffee",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 135,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "s",
+    "bombslime",
+    1
+   ],
+   [
+    "i",
+    "powder",
+    6
+   ],
+   [
+    "i",
+    "bomb",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 135,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "honeycomb",
+    2
+   ],
+   [
+    "i",
+    "bugwing",
+    8
+   ],
+   [
+    "i",
+    "cupcake",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 135,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "idolstaff",
+    1
+   ],
+   [
+    "i",
+    "wood",
+    8
+   ],
+   [
+    "i",
+    "root",
+    6
+   ]
+  ]
+ },
+ {
+  "map": 135,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "sushi",
+    2
+   ],
+   [
+    "i",
+    "coffee",
+    12
+   ],
+   [
+    "i",
+    "orangejuice",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 135,
+  "chest": 4,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "softdrink",
+    9
+   ],
+   [
+    "i",
+    "chips",
+    5
+   ],
+   [
+    "i",
+    "chicken",
+    12
+   ]
+  ]
+ },
+ {
+  "map": 135,
+  "chest": 5,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "darktooth",
+    1
+   ],
+   [
+    "s",
+    "eyeguy",
+    0
+   ]
+  ]
+ },
+ {
+  "map": 135,
+  "chest": 6,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "avenger",
+    1
+   ],
+   [
+    "i",
+    "coffee",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 136,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "ruby",
+    1
+   ],
+   [
+    "i",
+    "honeycomb",
+    1
+   ],
+   [
+    "i",
+    "sushi",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 136,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "dirtball",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 136,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "catfood",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 136,
+  "chest": 3,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "emeraldcyclone",
+    1
+   ],
+   [
+    "i",
+    "dirtball",
+    5
+   ]
+  ]
+ },
+ {
+  "map": 136,
+  "chest": 4,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "s",
+    "firespin",
+    1
+   ],
+   [
+    "i",
+    "magma",
+    12
+   ],
+   [
+    "i",
+    "darkness",
+    2
+   ]
+  ]
+ },
+ {
+  "map": 136,
+  "chest": 5,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "dirtball",
+    45
+   ],
+   [
+    "i",
+    "brick",
+    14
+   ]
+  ]
+ },
+ {
+  "map": 136,
+  "chest": 6,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "magma",
+    8
+   ],
+   [
+    "i",
+    "ruby",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 137,
+  "chest": 0,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "darkmatter",
+    1
+   ]
+  ]
+ },
+ {
+  "map": 137,
+  "chest": 1,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "i",
+    "rune",
+    4
+   ],
+   [
+    "s",
+    "cosmicmonolith",
+    0
+   ],
+   [
+    "i",
+    "rune",
+    4
+   ]
+  ]
+ },
+ {
+  "map": 137,
+  "chest": 2,
+  "area": "EXTRA",
+  "contents": [
+   [
+    "e",
+    "inferno",
+    1
+   ],
+   [
+    "i",
+    "ruby",
+    2
+   ],
+   [
+    "e",
+    "shootingstar",
+    1
+   ]
+  ]
  }
 ]
