@@ -35,10 +35,11 @@ def main():
     shutil.copytree(REPO / "gamemod" / "scripts", STAGE / "gamemod" / "scripts")
 
     out = BUILD / f"ebf4-ap-{VERSION}"
-    if out.with_suffix(".zip").exists():
-        out.with_suffix(".zip").unlink()
+    out_zip = BUILD / f"ebf4-ap-{VERSION}.zip"
+    if out_zip.exists():
+        out_zip.unlink()
     shutil.make_archive(str(out), "zip", STAGE)
-    print(f"wrote {out.with_suffix('.zip')}")
+    print(f"wrote {out_zip}")
     print("contents:")
     for p in sorted(STAGE.rglob("*")):
         if p.is_file():
