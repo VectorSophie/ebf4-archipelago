@@ -1,0 +1,13 @@
+# Example Archipelago YAML for Epic Battle Fantasy 4.
+# Put this (renamed with your own name) in the host's Players/ folder before generating.
+name: Player1
+description: EBF4 chest hunt
+
+Epic Battle Fantasy 4:
+  # How many treasure bundles you must collect to win.
+  # 1..430. Lower it for a shorter game; 430 = open every chest.
+  chests_required: 50
+
+  # Link deaths with other DeathLink players (a party wipe sends a death; an
+  # incoming death defeats your party).
+  death_link: false
