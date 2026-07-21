@@ -24,7 +24,9 @@ example YAML — everything a player needs on top of an official Archipelago rel
 
 - `SETUP.md` — player-facing setup guide
 - `apworld/ebf4/` — the Archipelago world: locations/items (`data.py`), options
-  (`options.py`), and the client packaged as a Launcher component (`client.py`)
+  (`options.py`)
+- `ebf4_client.py` — standalone console client bridging the patched game to an AP
+  server (run with your own Python; only needs `pip install websockets`)
 - `docs/RESEARCH.md` — architecture research, hook points, risks
 - `gamemod/scripts/` — the modified ActionScript classes imported into the SWF
   (`Game.as` carries the AP layer as `AP_*` statics; `Chest.as`/`MapPlayer.as`/`Battle.as`
@@ -50,8 +52,8 @@ cp -r apworld/ebf4 reference/Archipelago/worlds/   # or install the .apworld in 
 cd reference/Archipelago
 python Generate.py                            # with a Players/*.yaml for "Epic Battle Fantasy 4"
 python MultiServer.py output/AP_*.zip
-# run the client from the AP Launcher (EBF4 Client), launch the patched game, open chests
-python ../../tools/patch.py --restore         # back to vanilla
+python ebf4_client.py localhost:38281 Player1  # then launch the patched game, open chests
+python tools/patch.py --restore               # back to vanilla
 ```
 
 Opening a managed chest suppresses its vanilla loot and sends the check; received

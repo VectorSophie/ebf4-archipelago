@@ -28,6 +28,7 @@ def main():
     STAGE.mkdir(parents=True)
 
     shutil.copy2(apworld, STAGE / "ebf4.apworld")
+    shutil.copy2(REPO / "ebf4_client.py", STAGE / "ebf4_client.py")
     shutil.copy2(REPO / "SETUP.md", STAGE / "SETUP.md")
     shutil.copy2(REPO / "ebf4_example.yaml", STAGE / "ebf4_example.yaml")
     (STAGE / "tools").mkdir()

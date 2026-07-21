@@ -7,9 +7,10 @@ This patches *your own* legally-owned copy of the game and is fully reversible.
 
 - **Epic Battle Fantasy 4 on Steam** (this targets Steam build `14083646`, v3.0.6).
 - **Java 8+** on your PATH — <https://adoptium.net> (for the patch step).
-- **Python 3.10+** — <https://python.org> (for the patch step).
+- **Python 3.10+** — <https://python.org> (for the patch step and the client).
 - **Archipelago 0.6.0+** — <https://github.com/ArchipelagoMW/Archipelago/releases>
   (the normal Windows installer/release).
+- One Python package for the client: `pip install websockets`.
 
 You do **not** need the Archipelago source or any dev tools. The mod files here are
 script-only — no game art, audio, or SWF is distributed.
@@ -17,8 +18,12 @@ script-only — no game art, audio, or SWF is distributed.
 ## 1. Install the world
 
 Copy `ebf4.apworld` into your Archipelago install's **`custom_worlds`** folder
-(create it next to `ArchipelagoLauncher.exe` if it isn't there). That's it — the
-Launcher will now know the game and show an **"EBF4 Client"** button.
+(create it next to `ArchipelagoLauncher.exe` if it isn't there). That's all the
+generator needs to know the game.
+
+> The client is the separate `ebf4_client.py` script in this folder (see step 4),
+> **not** a Launcher button. It runs as its own process so it can't collide with
+> the Archipelago Launcher's own window.
 
 ## 2. Patch your game
 
@@ -54,8 +59,15 @@ Options:
 
 ## 4. Play
 
-1. Launch Archipelago, click **EBF4 Client**, and connect with the server address
-   and your slot name.
+1. Start the client from this folder (once, `pip install websockets` first):
+
+   ```
+   python ebf4_client.py <server:port> <your slot name>
+   ```
+
+   e.g. `python ebf4_client.py localhost:38281 Player1`, or for a hosted room
+   `python ebf4_client.py archipelago.gg:12345 Player1 mypassword`. It prints
+   `session ...: N locations` once connected and then waits for the game.
 2. Start EBF4 normally through Steam and load (or start) a save.
 3. The client and game connect automatically over `127.0.0.1:26510`.
 4. Open chests to send checks; received items appear as the normal "Found treasure!"

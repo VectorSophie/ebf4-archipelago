@@ -6,23 +6,15 @@ item logic is required because the tools that gate areas are never shuffled, so
 all chests are always reachable by normal play."""
 from BaseClasses import Item, ItemClassification, Location, Region
 from worlds.AutoWorld import World, WebWorld
-from worlds.LauncherComponents import Component, Type, components
 
 from .data import (areas, item_id_to_grant, item_name_to_id,
                    location_name_to_id, locations)
 from .options import EBF4Options
 
-
-def _launch_client(*args):
-    # import lazily: the client pulls in CommonClient, which cannot be imported
-    # while the worlds package is still initializing.
-    from .client import launch
-    launch(*args)
-
-
-components.append(Component(
-    "EBF4 Client", func=_launch_client, component_type=Type.CLIENT,
-    description="Connects a patched Epic Battle Fantasy 4 to an Archipelago server."))
+# The client is a standalone console script (ebf4_client.py in the player bundle),
+# not a Launcher component: the frozen Archipelago release runs a component's
+# func inside the Launcher's own process, and Kivy allows only one GUI app per
+# process, so an apworld-shipped GUI client collides with the Launcher.
 
 
 class EBF4Item(Item):
