@@ -49,6 +49,7 @@ Locations keep today's key convention `type_map_idx` and the `BASE_ID`
 | `battle_*`| `battle_<m>_<b>`| `endBattle` win, `M<m>_B<b>`             |
 | `medal_*` | `medal_<name>`  | `Medals` unlock                          |
 | `foe_*`   | `foe_<id>`      | first defeat of a foe type (mod-tracked) |
+| `secret_*`| `secret_<m>_<i>`| hidden cats/secrets (`secretsFound`), when `randomize_secrets` |
 
 Items: each location's vanilla contents remains its item (grant list as today),
 plus shuffled **tools/keys**, **traps**, and **filler**. Every item is tagged
@@ -86,7 +87,13 @@ bundles default `filler`, gear/skills `useful`.
 | `randomize_bosses` | Toggle | on | battle checks |
 | `randomize_medals` | Toggle | on | medal checks |
 | `randomize_bestiary` | Toggle | on | first-defeat checks |
+| `randomize_secrets` | Toggle | on | hidden cats/secrets (`secretsFound`) as `secret_*` checks |
+| `starting_tools` | Range 0–11 | 0 | begin with this many random tools/keys (eases the opening) |
+| `chest_contents` | Choice | `vanilla` | `vanilla` (each chest's own bundle is its item) \| `shuffled` (contents flattened into one pool) |
+| `progressive_keys` | Toggle | off | one "Progressive Key" item vs. named copper/steel/gold/coral |
+| `encounter_rate` | Choice | `normal` | `normal` \| `reduced` \| `off` (random-battle frequency) |
 | `trap_percentage` | Range 0–40 | 10 | share of filler replaced by traps |
+| `trap_types` | OptionSet | all | which traps are enabled: `poison`/`goldloss`/`encounter`/`statdown` |
 | `difficulty` | Choice | `normal` | start run on easy/normal/hard/epic |
 | `in_game_messages` | Toggle | on | on-screen banner toasts for major events (see below) |
 | `death_link` | DeathLink | off | existing |
@@ -111,6 +118,25 @@ YAML always overrides the preset (preset fills only the unset ones).
 `custom` leaves every option at its own default and lets the YAML drive. Presets
 never change logic integrity — `chaos` is still solver-guaranteed completable; it
 only makes the ride rougher.
+
+## Control-option notes
+
+- `starting_tools` → picked tools go into AP `start_inventory`; logic accounts
+  for them, so seeds stay completable.
+- `chest_contents: shuffled` flattens all chest bundles into one item pool
+  (contents no longer tied to their original chest); `vanilla` keeps today's
+  bundle-per-chest mapping.
+- `progressive_keys` collapses the 4 named keys into one "Progressive Key"
+  (Nth received unlocks the Nth key tier in door order); logic requires
+  `Progressive Key` counts instead of named keys.
+- `encounter_rate` sets `Maps` encounter frequency at run start (EBF4 supports a
+  reduced/off encounter mode); `off` disables random battles (boss/battle checks
+  still fire from scripted fights).
+- `trap_types` filters which trap grant-kinds `AP_applyItem` may receive; empty →
+  behaves like `trap_percentage: 0`.
+- **AP-core options work for free** (documented in SETUP, no world code):
+  `exclude_locations`, `priority_locations`, `local_items`/`non_local_items`,
+  `item_links`, `start_inventory`, `start_hints`.
 
 ## Goal
 
