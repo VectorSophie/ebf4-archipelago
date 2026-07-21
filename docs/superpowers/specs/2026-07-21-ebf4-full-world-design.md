@@ -7,6 +7,15 @@ playable and testable.
 
 Status: approved 2026-07-21. Supersedes the flat-logic model of v1.1.0.
 
+## Experience principle: set it and just play
+
+The default path requires **zero configuration**. A player either picks a
+`preset` (`order` by default) or changes nothing at all, and gets a complete,
+curated, solver-guaranteed run. Every other option is **advanced tuning** —
+present for people who want it, invisible for people who don't. The example YAML
+ships as essentially `preset: order` with everything else commented out, and the
+client launches to a simple window, not a command line.
+
 ## Goals
 
 - A seed is provably completable by AP's fill solver (no soft-locks), with
@@ -77,11 +86,16 @@ bundles default `filler`, gear/skills `useful`.
 
 ## Options (`options.py`)
 
+**Casual players touch only the top two rows** (`preset`, and optionally goal
+length). Everything below the divider is advanced tuning with a sensible default
+— safe to ignore. The example YAML shows only the casual rows uncommented.
+
 | Option | Type | Default | Notes |
 |---|---|---|---|
-| `preset` | Choice | `order` | `order` \| `chaos` \| `custom` (see Presets) |
+| `preset` | Choice | `order` | **casual**: `order` \| `chaos` \| `custom` |
+| `goal` | Choice | `godcat` | **casual**: `godcat` \| `boss_hunt` \| `check_percent` |
+| — *advanced below* — | | | *sensible defaults; ignore unless you want to tune* |
 | `randomize_tools` | Toggle | on | off = vanilla tools, flat logic |
-| `goal` | Choice | `godcat` | `godcat` \| `boss_hunt` \| `check_percent` |
 | `boss_hunt_count` | Range | 10 | used when goal=`boss_hunt` |
 | `check_percentage` | Range 1–100 | 100 | used when goal=`check_percent` |
 | `randomize_bosses` | Toggle | on | battle checks |
@@ -160,6 +174,15 @@ difference; the game always just reports battle wins.
 
 ## Client changes (`ebf4_client.py`)
 
+- **Standalone GUI (tkinter, stdlib — no Kivy, no Launcher).** Run with **no
+  args** → a small window: Server, Slot, Password fields, a Connect/Disconnect
+  button, a live log/status pane, and a game-connection indicator. Run **with
+  args** → today's console mode (for devs/scripts). tkinter is chosen because it
+  ships with Python (only `websockets` needs `pip`), and a separate process
+  can't collide with the Archipelago Launcher's own window — which is exactly why
+  the Launcher-component GUI failed. Ship a double-clickable `ebf4_client.pyw` (or
+  a `.bat`/desktop shortcut) so non-devs never see a terminal. The `/tool`
+  failsafe becomes a small "Grant tool ▾" menu in GUI mode.
 - Handle new location families (same check plumbing; the server already knows
   the ids from slot_data `location_keys`).
 - Re-add `LocationScouts` on connect so the client knows what each chest holds.
