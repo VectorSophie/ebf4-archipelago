@@ -14,9 +14,10 @@ from BaseClasses import Item, ItemClassification, Location, Region
 from worlds.AutoWorld import World, WebWorld
 
 from . import presets
-from .data import (FILLER_ITEM, TRAP_NAMES, areas, bundle_item_names,
-                   item_id_to_grant, item_name_to_id, items, location_name_to_id,
-                   locations, tool_chest_item, tool_item_names)
+from .data import (FILLER_ITEM, GODCAT_KEY, GODCAT_LOCATION, TRAP_NAMES, areas,
+                   battle_locations, bundle_item_names, item_id_to_grant,
+                   item_name_to_id, items, location_name_to_id, locations,
+                   tool_chest_item, tool_item_names)
 from .options import EBF4Options
 
 _CLASSIFICATION = {
@@ -64,6 +65,13 @@ class EBF4World(World):
         if n and self.options.randomize_tools:
             self._starting_tools = self.random.sample(
                 tool_item_names, min(n, len(tool_item_names)))
+        # which boss battles are active as locations
+        if self.options.randomize_bosses:
+            self._active_battles = dict(battle_locations)
+        elif self.options.goal.current_key == "godcat" and GODCAT_LOCATION:
+            self._active_battles = {GODCAT_LOCATION: battle_locations[GODCAT_LOCATION]}
+        else:
+            self._active_battles = {}
 
     # ---- items ----
 
@@ -73,6 +81,9 @@ class EBF4World(World):
 
     def create_items(self):
         pool = list(bundle_item_names)
+        # one reward item per active boss battle (keeps item/location counts equal)
+        for d in self._active_battles.values():
+            pool.append(f"Battle Reward ({d['map']}-{d['idx']})")
         if self.options.randomize_tools:
             # tools go in the pool, shuffled with everything else
             pool += tool_item_names
@@ -106,7 +117,8 @@ class EBF4World(World):
     def create_regions(self):
         region = Region("Overworld", self.player, self.multiworld)
         randomize = bool(self.options.randomize_tools)
-        for loc_name, loc in locations.items():
+        all_locs = {**locations, **self._active_battles}
+        for loc_name, loc in all_locs.items():
             location = EBF4Location(self.player, loc_name, loc["id"], region)
             if randomize and loc["requires"]:
                 req = sorted(loc["requires"])
@@ -133,13 +145,16 @@ class EBF4World(World):
 
     def fill_slot_data(self):
         o = self.options
+        loc_keys = {d["key"]: d["id"] for d in locations.values()}
+        loc_keys.update({d["key"]: d["id"] for d in self._active_battles.values()})
         return {
-            "location_keys": {d["key"]: d["id"] for d in locations.values()},
+            "location_keys": loc_keys,
             "item_grants": {str(i): g for i, g in item_id_to_grant.items()},
             "goal": o.goal.current_key,
-            "goal_count": len(tool_item_names),  # placeholder until battle goal
+            "goal_location": GODCAT_KEY if o.goal.current_key == "godcat" else "",
             "boss_hunt_count": o.boss_hunt_count.value,
             "check_percentage": o.check_percentage.value,
+            "total_locations": len(loc_keys),
             "encounter_rate": o.encounter_rate.current_key,
             "difficulty": o.difficulty.current_key,
             "in_game_messages": bool(o.in_game_messages.value),

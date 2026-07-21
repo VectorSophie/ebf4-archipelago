@@ -48,8 +48,19 @@ def main():
     # authoritative area for chest maps
     map_to_area = {str(c["map"]): AREA_NAMES.get(c["area"], c["area"]) for c in CHESTS}
 
-    map_requires, edges = {}, []
+    map_requires, edges, battles = {}, [], {}
     for mid, body in map_blocks(text):
+        # battles on this map: `battles = [Battles.x, ...]` with `respawn = [...]`.
+        # Non-respawnable battles (bosses/scripted) become AP locations.
+        bm = re.search(r"battles = \[([^\]]*)\]", body)
+        if bm:
+            names = re.findall(r"Battles\.([A-Za-z0-9_]+)", bm.group(1))
+            rm = re.search(r"respawn = \[([^\]]*)\]", body)
+            resp = ([t.strip() == "true" for t in rm.group(1).split(",")]
+                    if rm else [])
+            battles[str(mid)] = [
+                {"idx": i, "name": n, "respawn": (resp[i] if i < len(resp) else True)}
+                for i, n in enumerate(names)]
         # area from setArea(<CONST>) if we don't already know it
         area_m = re.search(r"setArea\(([A-Z0-9_]+)", body)
         if area_m and str(mid) not in map_to_area:
@@ -77,11 +88,14 @@ def main():
         "edges": edges,
         "map_to_area": map_to_area,
         "map_requires": map_requires,
+        "battles": battles,
     }
     (REPO / "apworld" / "ebf4" / "data" / "regions.json").write_text(
         json.dumps(out, indent=1))
+    n_boss = sum(1 for v in battles.values() for b in v if not b["respawn"])
     print(f"regions={len(out['regions'])} maps={len(map_to_area)} "
-          f"gated_maps={len(map_requires)} edges={len(edges)}")
+          f"gated_maps={len(map_requires)} edges={len(edges)} "
+          f"battle_maps={len(battles)} boss_battles={n_boss}")
     print("gate items:", sorted({i for v in map_requires.values() for i in v}))
 
 

@@ -510,6 +510,29 @@ package
          });
       }
 
+      public static function AP_battleWon(param1:int, param2:int) : *
+      {
+         var _loc3_:String = "battle_" + param1 + "_" + param2;
+         if(AP_managed == null || AP_managed[_loc3_] != true)
+         {
+            return;
+         }
+         Main.log("[AP] battle won: " + _loc3_);
+         if(!(AP_state.data.checks is Array))
+         {
+            AP_state.data.checks = [];
+         }
+         if(AP_state.data.checks.indexOf(_loc3_) < 0)
+         {
+            AP_state.data.checks.push(_loc3_);
+            AP_state.flush();
+         }
+         AP_send({
+            "type":"check",
+            "location":_loc3_
+         });
+      }
+
       public static function AP_resendChecks() : *
       {
          var _loc1_:String = null;
@@ -629,6 +652,13 @@ package
             if(!respawnable)
             {
                Maps.foeData[MapData.mapNo][battleNo] = 2;
+               try
+               {
+                  AP_battleWon(MapData.mapNo,battleNo);
+               }
+               catch(e:Error)
+               {
+               }
             }
             else
             {

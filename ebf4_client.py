@@ -55,8 +55,12 @@ class Client:
         self.players = {}                 # slot number -> display name
         self.location_keys = {}           # "chest_x_y" -> AP location id
         self.item_grants = {}             # AP item id -> grant list
-        self.goal_count = 0
         self.death_link = False
+        self.goal = "godcat"
+        self.goal_location_key = ""
+        self.boss_hunt_count = 10
+        self.check_percentage = 100
+        self.total_locations = 0
         self.goal_sent = False
 
         self.checked = set()              # AP location ids we've sent
@@ -120,11 +124,16 @@ class Client:
             sd = args.get("slot_data") or {}
             self.location_keys = sd.get("location_keys", {})
             self.item_grants = {int(k): v for k, v in sd.get("item_grants", {}).items()}
-            self.goal_count = int(sd.get("goal_count", len(self.item_grants)))
             self.death_link = bool(sd.get("death_link"))
+            # goal config
+            self.goal = sd.get("goal", "godcat")
+            self.goal_location_key = sd.get("goal_location", "")
+            self.boss_hunt_count = int(sd.get("boss_hunt_count", 10))
+            self.check_percentage = int(sd.get("check_percentage", 100))
+            self.total_locations = int(sd.get("total_locations", len(self.location_keys)))
             self.session = f"{self.seed_name}:{self.slot_num}"
             self.log(f"session {self.session}: {len(self.location_keys)} locations, "
-                     f"goal {self.goal_count}, deathlink {self.death_link}")
+                     f"goal {self.goal}, deathlink {self.death_link}")
             await self.game_send_config()
         elif cmd == "ReceivedItems":
             base = args.get("index", 0)
@@ -133,7 +142,6 @@ class Client:
             for it in args.get("items", []):
                 self.items_received.append((it["item"], it["player"]))
             await self.game_sync_items()
-            await self.check_goal()
         elif cmd == "RoomUpdate":
             for p in args.get("players", []):
                 self.players[p["slot"]] = p.get("alias") or p.get("name")
@@ -148,10 +156,22 @@ class Client:
         elif cmd == "PrintJSON":
             pass  # not surfaced; the game shows its own popups
 
-    async def check_goal(self):
-        if self.goal_sent or not self.goal_count:
+    async def eval_goal(self):
+        """Check the win condition against locations checked so far."""
+        if self.goal_sent:
             return
-        if len({i for i, _ in self.items_received}) >= self.goal_count:
+        done = False
+        if self.goal == "godcat":
+            goal_id = self.location_keys.get(self.goal_location_key)
+            done = goal_id is not None and goal_id in self.checked
+        elif self.goal == "boss_hunt":
+            battle_ids = {v for k, v in self.location_keys.items()
+                          if k.startswith("battle_")}
+            done = len(self.checked & battle_ids) >= self.boss_hunt_count
+        elif self.goal == "check_percent":
+            need = self.total_locations * self.check_percentage / 100
+            done = len(self.checked) >= need
+        if done:
             self.goal_sent = True
             self.log("goal complete!")
             await self.send({"cmd": "StatusUpdate", "status": CLIENT_STATUS_GOAL})
@@ -214,13 +234,14 @@ class Client:
                 self.game_next_index = int(msg.get("itemIndex", 0))
                 self.log(f"game in session, next item index {self.game_next_index}")
                 await self.game_sync_items()
-                await self.check_goal()
+                await self.eval_goal()
         elif t == "check":
             loc_id = self.location_keys.get(msg.get("location"))
             if loc_id is not None and loc_id not in self.checked:
                 self.checked.add(loc_id)
                 await self.send({"cmd": "LocationChecks", "locations": [loc_id]})
                 self.log(f"check: {msg.get('location')} -> {loc_id}")
+                await self.eval_goal()
         elif t == "death":
             if self.death_link:
                 await self.send({"cmd": "Bounce", "tags": ["DeathLink"], "data": {

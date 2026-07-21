@@ -137,10 +137,40 @@ for c in _bundle_chests:
     name = f"{_label(c['contents'])} ({c['map']}-{c['chest']})"
     _add_item(name, c["contents"], _classify(c["contents"]))
 
+# ---- battle (boss) locations + reward items ----
+# non-respawnable battles become locations; each gets a filler reward item.
+_battles = regions._data.get("battles", {})
+GODCAT_KEY = "battle_97_0"          # final boss = the godcat goal location
+battle_locations = {}               # loc name -> dict(id, key, map, idx, area, requires)
+BATTLE_ID_BASE = BASE_ID + 1000
+_bi = 0
+for _mid, _blist in _battles.items():
+    _area = regions.map_area(_mid)
+    if _area is None:
+        continue
+    for _b in _blist:
+        if _b["respawn"]:
+            continue
+        key = f"battle_{_mid}_{_b['idx']}"
+        loc_name = f"{_area} Battle {_mid}-{_b['idx']}"
+        req = {TOOL_NAMES[t] for t in _ENTRY.get(_area, set()) if t in SHUFFLE_TOOLS}
+        battle_locations[loc_name] = {
+            "id": BATTLE_ID_BASE + _bi, "key": key, "map": int(_mid),
+            "idx": _b["idx"], "area": _area, "requires": req, "name": _b["name"]}
+        _bi += 1
+        _add_item(f"Battle Reward ({_mid}-{_b['idx']})", [["money", "", 800]], "filler")
+
+# name of the godcat goal location (may be absent if map 97 not parsed)
+GODCAT_LOCATION = next((n for n, d in battle_locations.items()
+                        if d["key"] == GODCAT_KEY), None)
+battle_reward_names = [f"Battle Reward ({d['map']}-{d['idx']})"
+                       for d in battle_locations.values()]
+
 # maps AP code needs
-location_name_to_id = {n: d["id"] for n, d in locations.items()}
+_all_locs = {**locations, **battle_locations}
+location_name_to_id = {n: d["id"] for n, d in _all_locs.items()}
 item_name_to_id = {n: d["id"] for n, d in items.items()}
-location_key_to_id = {d["key"]: d["id"] for d in locations.values()}
+location_key_to_id = {d["key"]: d["id"] for d in _all_locs.values()}
 item_id_to_grant = {d["id"]: d["grant"] for d in items.values()}
 
 # which item name each tool chest should hold when tools are locked to vanilla
