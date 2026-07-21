@@ -83,8 +83,8 @@ bundles default `filler`, gear/skills `useful`.
 | `boss_hunt_count` | Range | 10 | used when goal=`boss_hunt` |
 | `check_percentage` | Range 1–100 | 100 | used when goal=`check_percent` |
 | `randomize_bosses` | Toggle | on | battle checks |
-| `randomize_medals` | Toggle | off | medal checks |
-| `randomize_bestiary` | Toggle | off | first-defeat checks |
+| `randomize_medals` | Toggle | on | medal checks |
+| `randomize_bestiary` | Toggle | on | first-defeat checks |
 | `trap_percentage` | Range 0–40 | 10 | share of filler replaced by traps |
 | `difficulty` | Choice | `normal` | start run on easy/normal/hard/epic |
 | `in_game_messages` | Toggle | on | on-screen banner toasts for major events (see below) |
@@ -140,7 +140,11 @@ difference; the game always just reports battle wins.
   difficulty/party options.
 - **Phase 3 — nice-to-have:** PopTracker pack, extra links, plando.
 
-Each phase bumps `world_version`, rebuilds the dist bundle, updates SETUP/README.
+Phasing is **build order only, not opt-in**: every feature ships enabled by
+default, including the ones originally marked optional (medals, bestiary,
+summon/quest items, difficulty/party). Each phase bumps `world_version`,
+rebuilds the dist bundle, and updates SETUP/README. Toggles still exist so a
+player can turn a family *off*, but the default run has everything on.
 
 ## Testing
 
