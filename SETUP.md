@@ -73,6 +73,11 @@ Options:
 4. Open chests to send checks; received items appear as the normal "Found treasure!"
    popup, with a banner at the top of the screen telling you what arrived.
 
+> **Start the client _before_ you open chests.** Chests you open while no client is
+> connected are buffered under the game's current session; switching to a different
+> seed can drop that buffer. For a clean run, use a **fresh save file** for each seed
+> — and keep your real save on a different file so it's never touched.
+
 Chests that hold the game's own progression tools (keys, axe, candle, boots, hammer)
 are left vanilla so you can never soft-lock — every other chest is a check.
 
