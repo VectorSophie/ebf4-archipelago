@@ -1,20 +1,29 @@
 """Epic Battle Fantasy 4 — Archipelago world.
 
-Every treasure chest (except the few holding progression tools/keys, which stay
-vanilla) is a location; its vanilla contents become a shuffled item bundle. No
-item logic is required because the tools that gate areas are never shuffled, so
-all chests are always reachable by normal play."""
+Treasure chests are locations. The non-consumable tools (axe/candle/hammer/boots/
+ladder) are shuffled into the multiworld with region logic guaranteeing every
+seed is completable; consumable keys stay vanilla so key-gated content is always
+reachable in order. See data.py / regions.py.
+
+The client is a standalone console/tkinter script (ebf4_client.py), not a
+Launcher component — the frozen Archipelago Launcher runs a component's func
+in-process and Kivy allows one GUI app per process, so an apworld-shipped GUI
+client collides with the Launcher.
+"""
 from BaseClasses import Item, ItemClassification, Location, Region
 from worlds.AutoWorld import World, WebWorld
 
-from .data import (areas, item_id_to_grant, item_name_to_id,
-                   location_name_to_id, locations)
+from .data import (areas, bundle_item_names, item_id_to_grant, item_name_to_id,
+                   items, location_name_to_id, locations, tool_chest_item,
+                   tool_item_names)
 from .options import EBF4Options
 
-# The client is a standalone console script (ebf4_client.py in the player bundle),
-# not a Launcher component: the frozen Archipelago release runs a component's
-# func inside the Launcher's own process, and Kivy allows only one GUI app per
-# process, so an apworld-shipped GUI client collides with the Launcher.
+_CLASSIFICATION = {
+    "progression": ItemClassification.progression,
+    "useful": ItemClassification.useful,
+    "filler": ItemClassification.filler,
+    "trap": ItemClassification.trap,
+}
 
 
 class EBF4Item(Item):
@@ -41,39 +50,62 @@ class EBF4World(World):
     options_dataclass = EBF4Options
     item_name_to_id = item_name_to_id
     location_name_to_id = location_name_to_id
-    item_name_groups = areas  # area name -> location names doubles as loose grouping
+    item_name_groups = areas
     required_client_version = (0, 6, 0)
     origin_region_name = "Overworld"
 
+    # ---- items ----
+
     def create_item(self, name: str) -> EBF4Item:
-        return EBF4Item(name, ItemClassification.progression,
-                        item_name_to_id[name], self.player)
+        cls = _CLASSIFICATION[items[name]["classification"]]
+        return EBF4Item(name, cls, item_name_to_id[name], self.player)
+
+    def create_items(self):
+        pool = list(bundle_item_names)
+        if self.options.randomize_tools:
+            # tools go in the pool, shuffled with everything else
+            pool += tool_item_names
+        else:
+            # lock each tool to its vanilla chest; only bundles fill the pool
+            for loc_name, tool_name in tool_chest_item.items():
+                loc = self.multiworld.get_location(loc_name, self.player)
+                loc.place_locked_item(self.create_item(tool_name))
+        self.multiworld.itempool += [self.create_item(n) for n in pool]
+
+    # ---- regions & rules ----
 
     def create_regions(self):
         region = Region("Overworld", self.player, self.multiworld)
+        randomize = bool(self.options.randomize_tools)
         for loc_name, loc in locations.items():
-            region.locations.append(
-                EBF4Location(self.player, loc_name, loc["id"], region))
+            location = EBF4Location(self.player, loc_name, loc["id"], region)
+            if randomize and loc["requires"]:
+                req = sorted(loc["requires"])
+                location.access_rule = \
+                    lambda state, r=req: state.has_all(r, self.player)
+            region.locations.append(location)
+
+        # Phase-1 goal: collect every tool (progression items that gate the final
+        # area) = "you can reach Godcat". The real godcat/boss_hunt/check_percent
+        # goals arrive with battle checks. Filler/useful items can't gate a goal:
+        # AP's reachability sweep only collects progression items.
         goal = EBF4Location(self.player, "Goal", None, region)
-        required = self.options.chests_required.value
-        goal.access_rule = lambda state, n=required: \
-            state.has_from_list_unique(item_name_to_id.keys(), self.player, n)
+        goal.access_rule = lambda state: state.has_all(tool_item_names, self.player)
         goal.place_locked_item(
             EBF4Item("Victory", ItemClassification.progression, None, self.player))
         region.locations.append(goal)
         self.multiworld.regions.append(region)
 
-    def create_items(self):
-        self.multiworld.itempool += [self.create_item(n) for n in item_name_to_id]
-
     def set_rules(self):
         self.multiworld.completion_condition[self.player] = \
             lambda state: state.has("Victory", self.player)
+
+    # ---- slot data ----
 
     def fill_slot_data(self):
         return {
             "location_keys": {d["key"]: d["id"] for d in locations.values()},
             "item_grants": {str(i): g for i, g in item_id_to_grant.items()},
-            "goal_count": self.options.chests_required.value,
+            "goal_count": len(tool_item_names),  # placeholder until battle goal
             "death_link": bool(self.options.death_link.value),
         }

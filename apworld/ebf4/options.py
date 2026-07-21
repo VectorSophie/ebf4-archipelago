@@ -1,20 +1,17 @@
 from dataclasses import dataclass
 
-from Options import DeathLink, PerGameCommonOptions, Range
-
-from .data import chests
+from Options import DeathLink, DefaultOnToggle, PerGameCommonOptions
 
 
-class ChestsRequired(Range):
-    """How many treasure bundles you must collect to win. Lower it for a shorter
-    game. Defaults to every chest in the pool."""
-    display_name = "Chests Required to Win"
-    range_start = 1
-    range_end = len(chests)
-    default = len(chests)
+class RandomizeTools(DefaultOnToggle):
+    """Shuffle the game's non-consumable tools (axe, candle, hammer, and the
+    boots/ladder) into the multiworld, with region logic that guarantees every
+    seed is completable. Turn OFF to leave the tools in their vanilla chests
+    (no traversal logic — the safe, flat experience). Keys always stay vanilla."""
+    display_name = "Randomize Tools"
 
 
 @dataclass
 class EBF4Options(PerGameCommonOptions):
-    chests_required: ChestsRequired
+    randomize_tools: RandomizeTools
     death_link: DeathLink
