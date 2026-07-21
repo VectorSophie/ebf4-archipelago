@@ -87,6 +87,7 @@ bundles default `filler`, gear/skills `useful`.
 | `randomize_bestiary` | Toggle | off | first-defeat checks |
 | `trap_percentage` | Range 0–40 | 10 | share of filler replaced by traps |
 | `difficulty` | Choice | `normal` | start run on easy/normal/hard/epic |
+| `in_game_messages` | Toggle | on | on-screen toasts for sent/received items |
 | `death_link` | DeathLink | off | existing |
 
 ## Goal
@@ -113,7 +114,10 @@ difference; the game always just reports battle wins.
 
 - Handle new location families (same check plumbing; the server already knows
   the ids from slot_data `location_keys`).
-- Re-add `LocationScouts` on connect → "Sent X to Y" toast on foreign checks.
+- Re-add `LocationScouts` on connect → "Sent X to Y" on-screen toast (the black
+  banner overlay) when you open a chest holding another player's item, plus
+  "Received X from Y" on incoming items. Gated by the `in_game_messages` option
+  (default on), read from slot_data; uses the existing `{type:"msg"}` toast HUD.
 - `/tool <name>` command: hand-grant a tool as an `item` frame (stuck failsafe).
 - Goal detection unchanged (fires on the goal location / condition).
 
