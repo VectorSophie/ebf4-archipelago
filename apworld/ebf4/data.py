@@ -184,8 +184,26 @@ for _mi, (_mid, _mname) in enumerate(_medals.items()):
                                  "reward": reward}
     _add_item(reward, [["money", "", 300]], "filler")
 
+# ---- bestiary (first-defeat) locations + filler rewards ----
+# Defeating a foe type for the first time is a check. Filler-only (some foes may
+# be cut/unreachable), so no progression hides behind a kill. Foe id = the
+# runtime getQualifiedClassName(foe).split("::")[1].lower() (= Foes.as key).
+_foes = json.loads(pkgutil.get_data(__package__, "data/foes.json").decode("utf-8"))
+FOE_ID_BASE = BASE_ID + 3000
+foe_locations = {}                  # loc name -> dict(id, key, reward)
+_seen_foe_names = set()
+for _fi, (_fid, _fname) in enumerate(_foes.items()):
+    loc_name = f"Bestiary: {_fname}"
+    if loc_name in _seen_foe_names:
+        loc_name = f"Bestiary: {_fname} ({_fid})"
+    _seen_foe_names.add(loc_name)
+    reward = f"Bestiary Reward ({_fid})"
+    foe_locations[loc_name] = {"id": FOE_ID_BASE + _fi, "key": f"foe_{_fid}",
+                               "reward": reward}
+    _add_item(reward, [["money", "", 200]], "filler")
+
 # maps AP code needs
-_all_locs = {**locations, **battle_locations, **medal_locations}
+_all_locs = {**locations, **battle_locations, **medal_locations, **foe_locations}
 location_name_to_id = {n: d["id"] for n, d in _all_locs.items()}
 item_name_to_id = {n: d["id"] for n, d in items.items()}
 location_key_to_id = {d["key"]: d["id"] for d in _all_locs.values()}

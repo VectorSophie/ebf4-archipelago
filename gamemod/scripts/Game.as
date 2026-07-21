@@ -12,6 +12,7 @@ package
    import flash.text.TextField;
    import flash.text.TextFormat;
    import flash.utils.ByteArray;
+   import flash.utils.getQualifiedClassName;
    
    public class Game
    {
@@ -118,6 +119,8 @@ package
       public static var AP_deathShown:Boolean = false;
 
       public static var AP_activeTraps:Array = [];
+
+      public static var AP_battleFoes:Object = {};
 
       public static function AP_init() : *
       {
@@ -637,6 +640,61 @@ package
          });
       }
 
+      // Bestiary: a foe defeated for the first time is a check. Foes are recorded
+      // as each wave spawns (AP_foeSpawned from Battle.nextWave) so multi-wave
+      // battles count every wave, then flushed on a win (all waves cleared = all
+      // those foes defeated). Reset per battle in startBattle.
+      public static function AP_foeSpawned(param1:*) : *
+      {
+         var _loc2_:String = null;
+         var _loc3_:int = 0;
+         try
+         {
+            _loc2_ = getQualifiedClassName(param1);
+            _loc3_ = _loc2_.indexOf("::");
+            if(_loc3_ >= 0)
+            {
+               _loc2_ = _loc2_.substring(_loc3_ + 2);
+            }
+            AP_battleFoes[_loc2_.toLowerCase()] = true;
+         }
+         catch(e:Error)
+         {
+         }
+      }
+
+      public static function AP_flushFoes() : *
+      {
+         var _loc1_:String = null;
+         for(_loc1_ in AP_battleFoes)
+         {
+            AP_foeDefeated(_loc1_);
+         }
+         AP_battleFoes = {};
+      }
+
+      public static function AP_foeDefeated(param1:String) : *
+      {
+         var _loc2_:String = "foe_" + param1;
+         if(AP_managed == null || AP_managed[_loc2_] != true)
+         {
+            return;
+         }
+         if(!(AP_state.data.checks is Array))
+         {
+            AP_state.data.checks = [];
+         }
+         if(AP_state.data.checks.indexOf(_loc2_) < 0)
+         {
+            AP_state.data.checks.push(_loc2_);
+            AP_state.flush();
+         }
+         AP_send({
+            "type":"check",
+            "location":_loc2_
+         });
+      }
+
       public static function AP_resendChecks() : *
       {
          var _loc1_:String = null;
@@ -680,6 +738,7 @@ package
       
       public static function startBattle() : *
       {
+         AP_battleFoes = {};
          onDeathList = [];
          fleeable = true;
          onDeath = null;
@@ -774,6 +833,13 @@ package
             else
             {
                Maps.foeData[MapData.mapNo][battleNo] = 3;
+            }
+            try
+            {
+               AP_flushFoes();
+            }
+            catch(apFoeErr:Error)
+            {
             }
             for each(_loc2_ in Battle.players)
             {

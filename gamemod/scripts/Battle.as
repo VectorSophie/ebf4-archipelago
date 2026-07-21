@@ -306,6 +306,7 @@ package
                }
                _loc9_ = new _loc4_(_loc5_,_loc6_,_loc7_,_loc8_);
                foes.push(_loc9_);
+               Game.AP_foeSpawned(_loc9_);
                _loc3_++;
             }
             ++wave;
