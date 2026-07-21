@@ -183,6 +183,9 @@ difference; the game always just reports battle wins.
   the Launcher-component GUI failed. Ship a double-clickable `ebf4_client.pyw` (or
   a `.bat`/desktop shortcut) so non-devs never see a terminal. The `/tool`
   failsafe becomes a small "Grant tool ▾" menu in GUI mode.
+  *Decided:* tkinter standalone. A Launcher-button-that-spawns-the-client hybrid
+  and full Kivy-in-Launcher are **out of scope** — the latter is the in-process
+  collision this whole client rework exists to avoid.
 - Handle new location families (same check plumbing; the server already knows
   the ids from slot_data `location_keys`).
 - Re-add `LocationScouts` on connect so the client knows what each chest holds.
