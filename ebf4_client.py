@@ -18,6 +18,7 @@ import argparse
 import asyncio
 import json
 import struct
+import sys
 import time
 import uuid
 
@@ -41,11 +42,12 @@ def grant_label(grant):
 
 
 class Client:
-    def __init__(self, host, slot, password, game_port):
+    def __init__(self, host, slot, password, game_port, log_sink=None):
         self.host = host
         self.slot = slot
         self.password = password
         self.game_port = game_port
+        self._log_sink = log_sink
 
         self.ws = None
         self.seed_name = None
@@ -65,7 +67,10 @@ class Client:
         self.game_next_index = None       # next item index the game wants
 
     def log(self, msg):
-        print(f"[EBF4] {msg}", flush=True)
+        if self._log_sink:
+            self._log_sink(str(msg))
+        else:
+            print(f"[EBF4] {msg}", flush=True)
 
     # ---- Archipelago server ----
 
@@ -230,6 +235,15 @@ class Client:
 
 
 def main():
+    # no arguments -> friendly GUI window; arguments -> console mode.
+    if len(sys.argv) == 1:
+        try:
+            import ebf4_client_gui
+            ebf4_client_gui.run_gui(Client, DEFAULT_GAME_PORT)
+            return
+        except Exception as e:  # tkinter missing/headless -> fall back to console help
+            print(f"(GUI unavailable: {e}; pass args for console mode)")
+
     ap = argparse.ArgumentParser(description="EBF4 Archipelago console client")
     ap.add_argument("server", help="server host:port, e.g. localhost:38281")
     ap.add_argument("slot", help="your slot (player) name")
