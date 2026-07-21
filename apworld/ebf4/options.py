@@ -67,11 +67,6 @@ class RandomizeBestiary(DefaultOnToggle):
     display_name = "Randomize Bestiary"
 
 
-class RandomizeSecrets(DefaultOnToggle):
-    """Hidden cats/secrets are location checks."""
-    display_name = "Randomize Secrets"
-
-
 class StartingTools(Range):
     """Begin with this many random tools already in hand (eases the opening)."""
     display_name = "Starting Tools"
@@ -136,7 +131,6 @@ class EBF4Options(PerGameCommonOptions):
     randomize_bosses: RandomizeBosses
     randomize_medals: RandomizeMedals
     randomize_bestiary: RandomizeBestiary
-    randomize_secrets: RandomizeSecrets
     starting_tools: StartingTools
     chest_contents: ChestContents
     progressive_keys: ProgressiveKeys
