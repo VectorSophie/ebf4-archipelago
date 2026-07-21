@@ -56,12 +56,19 @@ class Client:
         self.location_keys = {}           # "chest_x_y" -> AP location id
         self.item_grants = {}             # AP item id -> grant list
         self.death_link = False
+        self.in_game_messages = True
         self.goal = "godcat"
         self.goal_location_key = ""
         self.boss_hunt_count = 10
         self.check_percentage = 100
         self.total_locations = 0
         self.goal_sent = False
+
+        self.locations_info = {}          # loc id -> (item id, finder/receiver slot)
+        self.item_names = {}              # game -> {item id -> name}
+        self.player_game = {}             # slot -> game name
+        self.tool_names = {"Axe", "Candle", "Hammer", "Leafy Boots",
+                           "Step Ladder", "Thermal Boots", "Winged Boots"}
 
         self.checked = set()              # AP location ids we've sent
         self.items_received = []          # list of (item_id, finder_slot)
@@ -125,16 +132,25 @@ class Client:
             self.location_keys = sd.get("location_keys", {})
             self.item_grants = {int(k): v for k, v in sd.get("item_grants", {}).items()}
             self.death_link = bool(sd.get("death_link"))
+            self.in_game_messages = bool(sd.get("in_game_messages", True))
             # goal config
             self.goal = sd.get("goal", "godcat")
             self.goal_location_key = sd.get("goal_location", "")
             self.boss_hunt_count = int(sd.get("boss_hunt_count", 10))
             self.check_percentage = int(sd.get("check_percentage", 100))
             self.total_locations = int(sd.get("total_locations", len(self.location_keys)))
+            for slot, info in (args.get("slot_info") or {}).items():
+                self.player_game[int(slot)] = info.get("game")
             self.session = f"{self.seed_name}:{self.slot_num}"
             self.log(f"session {self.session}: {len(self.location_keys)} locations, "
                      f"goal {self.goal}, deathlink {self.death_link}")
             await self.game_send_config()
+            # learn item names (for "Sent X to Y") and what each location holds
+            await self.send({"cmd": "GetDataPackage"})
+            if self.location_keys:
+                await self.send({"cmd": "LocationScouts",
+                                 "locations": list(self.location_keys.values()),
+                                 "create_as_hint": 0})
         elif cmd == "ReceivedItems":
             base = args.get("index", 0)
             if base == 0:
@@ -153,8 +169,23 @@ class Client:
                 src = d.get("source", "someone")
                 if src != self.slot:
                     await self.game_send({"type": "deathlink", "source": src})
+        elif cmd == "DataPackage":
+            for game, gd in (args.get("data") or {}).get("games", {}).items():
+                self.item_names[game] = {v: k for k, v in
+                                         (gd.get("item_name_to_id") or {}).items()}
+        elif cmd == "LocationInfo":
+            for it in args.get("locations", []):
+                self.locations_info[it["location"]] = (it["item"], it["player"])
         elif cmd == "PrintJSON":
             pass  # not surfaced; the game shows its own popups
+
+    def item_name(self, item_id, player):
+        game = self.player_game.get(player, "")
+        return self.item_names.get(game, {}).get(item_id, "an item")
+
+    async def banner(self, text):
+        if self.in_game_messages:
+            await self.game_send({"type": "msg", "text": text})
 
     async def eval_goal(self):
         """Check the win condition against locations checked so far."""
@@ -175,7 +206,7 @@ class Client:
             self.goal_sent = True
             self.log("goal complete!")
             await self.send({"cmd": "StatusUpdate", "status": CLIENT_STATUS_GOAL})
-            await self.game_send({"type": "msg", "text": "GOAL! You win!"})
+            await self.banner("GOAL! You win!")
 
     # ---- game socket ----
 
@@ -203,8 +234,14 @@ class Client:
             item_id, finder = self.items_received[idx]
             grant = self.item_grants.get(item_id, [])
             name = grant_label(grant)
+            local_name = self.item_name(item_id, self.slot_num)
             sender = self.players.get(finder, "the server")
-            text = f"Received {name} from {sender}" if finder != self.slot_num else None
+            text = None
+            if self.in_game_messages:
+                if local_name in self.tool_names:
+                    text = f"Got {local_name}!"          # progression highlight
+                elif finder != self.slot_num:
+                    text = f"Received {name} from {sender}"
             await self.game_send({"type": "item", "index": idx, "name": name,
                                   "text": text, "grant": grant})
             self.log(f"sent item {idx}: {name}")
@@ -241,6 +278,10 @@ class Client:
                 self.checked.add(loc_id)
                 await self.send({"cmd": "LocationChecks", "locations": [loc_id]})
                 self.log(f"check: {msg.get('location')} -> {loc_id}")
+                info = self.locations_info.get(loc_id)
+                if info and info[1] != self.slot_num:
+                    who = self.players.get(info[1], "someone")
+                    await self.banner(f"Sent {self.item_name(*info)} to {who}")
                 await self.eval_goal()
         elif t == "death":
             if self.death_link:
