@@ -78,6 +78,7 @@ bundles default `filler`, gear/skills `useful`.
 
 | Option | Type | Default | Notes |
 |---|---|---|---|
+| `preset` | Choice | `order` | `order` \| `chaos` \| `custom` (see Presets) |
 | `randomize_tools` | Toggle | on | off = vanilla tools, flat logic |
 | `goal` | Choice | `godcat` | `godcat` \| `boss_hunt` \| `check_percent` |
 | `boss_hunt_count` | Range | 10 | used when goal=`boss_hunt` |
@@ -89,6 +90,27 @@ bundles default `filler`, gear/skills `useful`.
 | `difficulty` | Choice | `normal` | start run on easy/normal/hard/epic |
 | `in_game_messages` | Toggle | on | on-screen banner toasts for major events (see below) |
 | `death_link` | DeathLink | off | existing |
+
+## Presets
+
+A `preset` Choice option (default `order`) sets a bundle of the options above so a
+player picks a vibe instead of tuning each knob. An explicitly-set option in the
+YAML always overrides the preset (preset fills only the unset ones).
+
+| Option | `order` (default) | `chaos` |
+|---|---|---|
+| feel | structured completionist | trap gauntlet |
+| `goal` | `godcat` | `check_percent` |
+| `check_percentage` | 100 | 40 |
+| `trap_percentage` | 10 | 40 |
+| trap weighting | even | toward `encounter` / `statdown` |
+| `death_link` | off | on |
+| `difficulty` | `normal` | `hard` |
+| everything-on checks | yes | yes |
+
+`custom` leaves every option at its own default and lets the YAML drive. Presets
+never change logic integrity — `chaos` is still solver-guaranteed completable; it
+only makes the ride rougher.
 
 ## Goal
 
