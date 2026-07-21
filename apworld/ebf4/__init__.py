@@ -13,9 +13,10 @@ client collides with the Launcher.
 from BaseClasses import Item, ItemClassification, Location, Region
 from worlds.AutoWorld import World, WebWorld
 
-from .data import (areas, bundle_item_names, item_id_to_grant, item_name_to_id,
-                   items, location_name_to_id, locations, tool_chest_item,
-                   tool_item_names)
+from . import presets
+from .data import (FILLER_ITEM, TRAP_NAMES, areas, bundle_item_names,
+                   item_id_to_grant, item_name_to_id, items, location_name_to_id,
+                   locations, tool_chest_item, tool_item_names)
 from .options import EBF4Options
 
 _CLASSIFICATION = {
@@ -54,6 +55,16 @@ class EBF4World(World):
     required_client_version = (0, 6, 0)
     origin_region_name = "Overworld"
 
+    # ---- setup ----
+
+    def generate_early(self):
+        presets.apply(self.options)
+        self._starting_tools = []
+        n = self.options.starting_tools.value
+        if n and self.options.randomize_tools:
+            self._starting_tools = self.random.sample(
+                tool_item_names, min(n, len(tool_item_names)))
+
     # ---- items ----
 
     def create_item(self, name: str) -> EBF4Item:
@@ -65,11 +76,29 @@ class EBF4World(World):
         if self.options.randomize_tools:
             # tools go in the pool, shuffled with everything else
             pool += tool_item_names
+            # precollect any starting tools; top up the pool with filler so the
+            # item/location counts stay balanced
+            for tool in self._starting_tools:
+                pool.remove(tool)
+                self.multiworld.push_precollected(self.create_item(tool))
+                pool.append(FILLER_ITEM)
         else:
             # lock each tool to its vanilla chest; only bundles fill the pool
             for loc_name, tool_name in tool_chest_item.items():
                 loc = self.multiworld.get_location(loc_name, self.player)
                 loc.place_locked_item(self.create_item(tool_name))
+
+        # replace a share of filler items with traps
+        enabled = [TRAP_NAMES[k] for k in self.options.trap_types.value
+                   if k in TRAP_NAMES]
+        pct = self.options.trap_percentage.value
+        if enabled and pct:
+            filler_pos = [i for i, n in enumerate(pool)
+                          if items[n]["classification"] == "filler"]
+            count = len(filler_pos) * pct // 100
+            for i in self.random.sample(filler_pos, min(count, len(filler_pos))):
+                pool[i] = self.random.choice(enabled)
+
         self.multiworld.itempool += [self.create_item(n) for n in pool]
 
     # ---- regions & rules ----
@@ -103,9 +132,16 @@ class EBF4World(World):
     # ---- slot data ----
 
     def fill_slot_data(self):
+        o = self.options
         return {
             "location_keys": {d["key"]: d["id"] for d in locations.values()},
             "item_grants": {str(i): g for i, g in item_id_to_grant.items()},
+            "goal": o.goal.current_key,
             "goal_count": len(tool_item_names),  # placeholder until battle goal
-            "death_link": bool(self.options.death_link.value),
+            "boss_hunt_count": o.boss_hunt_count.value,
+            "check_percentage": o.check_percentage.value,
+            "encounter_rate": o.encounter_rate.current_key,
+            "difficulty": o.difficulty.current_key,
+            "in_game_messages": bool(o.in_game_messages.value),
+            "death_link": bool(o.death_link.value),
         }

@@ -1,6 +1,47 @@
 from dataclasses import dataclass
 
-from Options import DeathLink, DefaultOnToggle, PerGameCommonOptions
+from Options import (Choice, DeathLink, DefaultOnToggle, OptionSet,
+                     PerGameCommonOptions, Range, Toggle)
+
+from .data import tool_item_names
+
+
+class Preset(Choice):
+    """Pick a vibe instead of tuning every knob. `order` = the curated,
+    structured completionist run (the default). `chaos` = a trap gauntlet
+    (short percentage goal, lots of traps, DeathLink, harder). `custom` = leave
+    every option at its own value. Any option you set explicitly always wins."""
+    display_name = "Preset"
+    option_order = 0
+    option_chaos = 1
+    option_custom = 2
+    default = 0
+
+
+class Goal(Choice):
+    """How you win. `godcat` = reach and beat the final boss. `boss_hunt` = defeat
+    a number of bosses. `check_percent` = check a percentage of all locations."""
+    display_name = "Goal"
+    option_godcat = 0
+    option_boss_hunt = 1
+    option_check_percent = 2
+    default = 0
+
+
+class BossHuntCount(Range):
+    """Bosses to defeat when goal is boss_hunt."""
+    display_name = "Boss Hunt Count"
+    range_start = 1
+    range_end = 30
+    default = 10
+
+
+class CheckPercentage(Range):
+    """Percent of locations to check when goal is check_percent."""
+    display_name = "Check Percentage"
+    range_start = 1
+    range_end = 100
+    default = 100
 
 
 class RandomizeTools(DefaultOnToggle):
@@ -11,7 +52,106 @@ class RandomizeTools(DefaultOnToggle):
     display_name = "Randomize Tools"
 
 
+class RandomizeBosses(DefaultOnToggle):
+    """Defeating a scripted battle/boss is a location check."""
+    display_name = "Randomize Bosses"
+
+
+class RandomizeMedals(DefaultOnToggle):
+    """Earning an in-game medal (achievement) is a location check."""
+    display_name = "Randomize Medals"
+
+
+class RandomizeBestiary(DefaultOnToggle):
+    """The first time you defeat each foe type is a location check."""
+    display_name = "Randomize Bestiary"
+
+
+class RandomizeSecrets(DefaultOnToggle):
+    """Hidden cats/secrets are location checks."""
+    display_name = "Randomize Secrets"
+
+
+class StartingTools(Range):
+    """Begin with this many random tools already in hand (eases the opening)."""
+    display_name = "Starting Tools"
+    range_start = 0
+    range_end = len(tool_item_names)
+    default = 0
+
+
+class ChestContents(Choice):
+    """`vanilla` = each chest's item is its own vanilla bundle. `shuffled` = all
+    chest contents are flattened into one pool and redistributed."""
+    display_name = "Chest Contents"
+    option_vanilla = 0
+    option_shuffled = 1
+    default = 0
+
+
+class ProgressiveKeys(Toggle):
+    """(Reserved) collapse named keys into one Progressive Key. Keys are vanilla
+    for now; this is a placeholder for future counted-key logic."""
+    display_name = "Progressive Keys"
+
+
+class EncounterRate(Choice):
+    """Random-battle frequency at run start."""
+    display_name = "Encounter Rate"
+    option_normal = 0
+    option_reduced = 1
+    option_off = 2
+    default = 0
+
+
+class TrapPercentage(Range):
+    """Percent of filler items replaced by traps."""
+    display_name = "Trap Percentage"
+    range_start = 0
+    range_end = 40
+    default = 10
+
+
+class TrapTypes(OptionSet):
+    """Which traps may appear."""
+    display_name = "Trap Types"
+    valid_keys = {"poison", "goldloss", "encounter", "statdown"}
+    default = frozenset({"poison", "goldloss", "encounter", "statdown"})
+
+
+class Difficulty(Choice):
+    """Difficulty the run starts on."""
+    display_name = "Difficulty"
+    option_easy = 0
+    option_normal = 1
+    option_hard = 2
+    option_epic = 3
+    default = 1
+
+
+class InGameMessages(DefaultOnToggle):
+    """Show the on-screen banner overlay for major events (items sent/received,
+    tools, DeathLink, traps, bosses, goal, link status)."""
+    display_name = "In-Game Messages"
+
+
 @dataclass
 class EBF4Options(PerGameCommonOptions):
+    preset: Preset
+    goal: Goal
+    boss_hunt_count: BossHuntCount
+    check_percentage: CheckPercentage
     randomize_tools: RandomizeTools
+    randomize_bosses: RandomizeBosses
+    randomize_medals: RandomizeMedals
+    randomize_bestiary: RandomizeBestiary
+    randomize_secrets: RandomizeSecrets
+    starting_tools: StartingTools
+    chest_contents: ChestContents
+    progressive_keys: ProgressiveKeys
+    encounter_rate: EncounterRate
+    trap_percentage: TrapPercentage
+    trap_types: TrapTypes
+    difficulty: Difficulty
+    in_game_messages: InGameMessages
     death_link: DeathLink

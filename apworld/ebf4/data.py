@@ -119,6 +119,19 @@ def _add_item(name, grant, classification):
 for raw, disp in TOOL_NAMES.items():
     _add_item(disp, [["i", raw, 1]], "progression")
 
+# a generic filler used to top up the pool when items are precollected
+# (starting_tools) or replaced by traps.
+FILLER_ITEM = "Gold Pouch"
+_add_item(FILLER_ITEM, [["money", "", 500]], "filler")
+
+# trap items: grant kind "trap" with a subkind the mod applies as a bad effect.
+TRAP_NAMES = {
+    "poison": "Poison Trap", "goldloss": "Gold Loss Trap",
+    "encounter": "Encounter Trap", "statdown": "Stat Down Trap",
+}
+for _kind, _name in TRAP_NAMES.items():
+    _add_item(_name, [["trap", _kind, 0]], "trap")
+
 # bundle items (one per non-tool chest); name carries (map-chest) so it's unique.
 for c in _bundle_chests:
     name = f"{_label(c['contents'])} ({c['map']}-{c['chest']})"
