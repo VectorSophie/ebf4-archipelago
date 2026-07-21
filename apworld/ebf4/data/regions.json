@@ -1,0 +1,250 @@
+{
+ "regions": [
+  "Ashwood Forest",
+  "Battle Mountain",
+  "Crystal Caverns",
+  "Graveyard",
+  "Greenwood",
+  "Lankyroot Jungle",
+  "Redpine Town",
+  "Temple of Godcat",
+  "The Kitten Kaboodle",
+  "Whitefall Town"
+ ],
+ "edges": [
+  {
+   "from": "52",
+   "to": "2",
+   "requires": [
+    "steelkey"
+   ]
+  },
+  {
+   "from": "57",
+   "to": "2",
+   "requires": []
+  },
+  {
+   "from": "70",
+   "to": "2",
+   "requires": []
+  }
+ ],
+ "map_to_area": {
+  "9": "Greenwood",
+  "10": "Greenwood",
+  "12": "Greenwood",
+  "13": "Greenwood",
+  "14": "Greenwood",
+  "15": "Greenwood",
+  "16": "Greenwood",
+  "17": "Greenwood",
+  "18": "Graveyard",
+  "20": "Graveyard",
+  "21": "Graveyard",
+  "22": "Graveyard",
+  "23": "Graveyard",
+  "24": "Ashwood Forest",
+  "25": "Ashwood Forest",
+  "26": "Ashwood Forest",
+  "27": "Ashwood Forest",
+  "28": "Ashwood Forest",
+  "29": "Ashwood Forest",
+  "30": "Ashwood Forest",
+  "31": "Ashwood Forest",
+  "32": "Ashwood Forest",
+  "33": "Ashwood Forest",
+  "34": "Crystal Caverns",
+  "35": "Crystal Caverns",
+  "36": "Crystal Caverns",
+  "37": "Crystal Caverns",
+  "38": "Crystal Caverns",
+  "39": "Crystal Caverns",
+  "40": "Crystal Caverns",
+  "41": "Crystal Caverns",
+  "42": "Crystal Caverns",
+  "43": "Crystal Caverns",
+  "44": "Crystal Caverns",
+  "45": "Crystal Caverns",
+  "46": "Crystal Caverns",
+  "47": "Crystal Caverns",
+  "48": "Whitefall Town",
+  "49": "Whitefall Town",
+  "50": "Whitefall Town",
+  "51": "Whitefall Town",
+  "52": "Whitefall Town",
+  "53": "Whitefall Town",
+  "54": "Whitefall Town",
+  "55": "Whitefall Town",
+  "56": "Whitefall Town",
+  "57": "Whitefall Town",
+  "58": "The Kitten Kaboodle",
+  "59": "The Kitten Kaboodle",
+  "60": "The Kitten Kaboodle",
+  "61": "The Kitten Kaboodle",
+  "62": "The Kitten Kaboodle",
+  "63": "The Kitten Kaboodle",
+  "64": "The Kitten Kaboodle",
+  "65": "The Kitten Kaboodle",
+  "66": "The Kitten Kaboodle",
+  "67": "The Kitten Kaboodle",
+  "68": "The Kitten Kaboodle",
+  "69": "The Kitten Kaboodle",
+  "70": "The Kitten Kaboodle",
+  "71": "The Kitten Kaboodle",
+  "72": "Lankyroot Jungle",
+  "73": "Lankyroot Jungle",
+  "74": "Lankyroot Jungle",
+  "75": "Lankyroot Jungle",
+  "76": "Lankyroot Jungle",
+  "77": "Lankyroot Jungle",
+  "78": "Lankyroot Jungle",
+  "79": "Redpine Town",
+  "80": "Lankyroot Jungle",
+  "81": "Lankyroot Jungle",
+  "82": "Lankyroot Jungle",
+  "83": "Lankyroot Jungle",
+  "84": "Lankyroot Jungle",
+  "85": "Lankyroot Jungle",
+  "86": "Lankyroot Jungle",
+  "87": "Lankyroot Jungle",
+  "88": "Lankyroot Jungle",
+  "89": "Lankyroot Jungle",
+  "90": "Lankyroot Jungle",
+  "91": "Redpine Town",
+  "92": "Redpine Town",
+  "93": "Temple of Godcat",
+  "94": "Temple of Godcat",
+  "95": "Temple of Godcat",
+  "96": "Temple of Godcat",
+  "98": "Redpine Town",
+  "99": "Redpine Town",
+  "100": "Redpine Town",
+  "101": "Temple of Godcat",
+  "102": "Temple of Godcat",
+  "103": "Temple of Godcat",
+  "104": "Temple of Godcat",
+  "105": "Redpine Town",
+  "106": "Redpine Town",
+  "107": "Redpine Town",
+  "108": "Temple of Godcat",
+  "109": "Temple of Godcat",
+  "110": "Temple of Godcat",
+  "111": "Temple of Godcat",
+  "112": "Redpine Town",
+  "113": "Redpine Town",
+  "114": "Redpine Town",
+  "115": "Temple of Godcat",
+  "116": "Temple of Godcat",
+  "117": "Temple of Godcat",
+  "118": "Temple of Godcat",
+  "120": "Battle Mountain",
+  "121": "Battle Mountain",
+  "122": "Battle Mountain",
+  "123": "Battle Mountain",
+  "124": "Battle Mountain",
+  "125": "Battle Mountain",
+  "126": "Battle Mountain",
+  "127": "Battle Mountain",
+  "128": "Battle Mountain",
+  "129": "Battle Mountain",
+  "130": "Battle Mountain",
+  "131": "Battle Mountain",
+  "132": "Battle Mountain",
+  "133": "Battle Mountain",
+  "134": "Battle Mountain",
+  "135": "Battle Mountain",
+  "136": "Battle Mountain",
+  "137": "Battle Mountain",
+  "11": "Greenwood",
+  "19": "Graveyard",
+  "97": "Temple of Godcat"
+ },
+ "map_requires": {
+  "9": [
+   "axe"
+  ],
+  "16": [
+   "leafyboots"
+  ],
+  "21": [
+   "steelkey"
+  ],
+  "23": [
+   "copperkey"
+  ],
+  "30": [
+   "candle"
+  ],
+  "32": [
+   "copperkey"
+  ],
+  "35": [
+   "hammer"
+  ],
+  "36": [
+   "candle",
+   "copperkey"
+  ],
+  "42": [
+   "axe",
+   "goldkey",
+   "thermalboots"
+  ],
+  "45": [
+   "copperkey"
+  ],
+  "46": [
+   "stepladder"
+  ],
+  "52": [
+   "steelkey"
+  ],
+  "54": [
+   "goldkey"
+  ],
+  "61": [
+   "steelkey"
+  ],
+  "66": [
+   "steelkey"
+  ],
+  "71": [
+   "copperkey",
+   "steelkey"
+  ],
+  "75": [
+   "goldkey"
+  ],
+  "87": [
+   "stepladder"
+  ],
+  "91": [
+   "wingedboots"
+  ],
+  "99": [
+   "coralkey"
+  ],
+  "100": [
+   "coralkey"
+  ],
+  "103": [
+   "goldkey"
+  ],
+  "112": [
+   "coralkey"
+  ],
+  "113": [
+   "coralkey"
+  ],
+  "115": [
+   "stepladder"
+  ],
+  "117": [
+   "coralkey"
+  ],
+  "118": [
+   "goldkey"
+  ]
+ }
+}
