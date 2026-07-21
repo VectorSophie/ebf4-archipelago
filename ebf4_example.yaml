@@ -2,6 +2,7 @@
 # Put this (renamed with your own name) in the host's Players/ folder before generating.
 name: Player1
 description: EBF4 chest hunt
+game: Epic Battle Fantasy 4
 
 Epic Battle Fantasy 4:
   # How many treasure bundles you must collect to win.
