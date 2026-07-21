@@ -14,6 +14,8 @@ import tkinter as tk
 from tkinter import scrolledtext, ttk
 
 DEFAULT_SERVER = "localhost:38281"
+TOOLS = ["Axe", "Candle", "Hammer", "Leafy Boots",
+         "Step Ladder", "Thermal Boots", "Winged Boots"]
 
 
 def run_gui(client_factory, default_game_port):
@@ -98,6 +100,20 @@ def run_gui(client_factory, default_game_port):
 
     connect_btn = ttk.Button(frm, text="Connect", command=toggle)
     connect_btn.grid(row=3, column=0, sticky="w", pady=(6, 0))
+
+    def grant(name):
+        c, loop = state["client"], state["loop"]
+        if c and loop:
+            asyncio.run_coroutine_threadsafe(c.grant_tool(name), loop)
+        else:
+            append("connect first")
+
+    tool_btn = ttk.Menubutton(frm, text="Grant tool ▾")
+    tool_menu = tk.Menu(tool_btn, tearoff=0)
+    for _t in TOOLS:
+        tool_menu.add_command(label=_t, command=lambda n=_t: grant(n))
+    tool_btn["menu"] = tool_menu
+    tool_btn.grid(row=3, column=1, sticky="w", pady=(6, 0))
 
     def pump():
         while True:

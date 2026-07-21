@@ -262,6 +262,12 @@ package
          {
             AP_queue.push(_loc2_);
          }
+         else if(_loc2_.type == "grant")
+         {
+            // out-of-band /tool failsafe: apply once, bypassing item-index dedup
+            _loc2_.force = true;
+            AP_queue.push(_loc2_);
+         }
          else if(_loc2_.type == "session")
          {
             AP_managed = {};
@@ -425,7 +431,12 @@ package
             return;
          }
          _loc1_ = AP_queue.shift();
-         if(_loc1_.index >= AP_state.data.itemIndex)
+         if(_loc1_.force == true)
+         {
+            // manual /tool grant: apply once, no index bookkeeping/dedup
+            AP_applyItem(_loc1_);
+         }
+         else if(_loc1_.index >= AP_state.data.itemIndex)
          {
             AP_applyItem(_loc1_);
             AP_state.data.itemIndex = _loc1_.index + 1;

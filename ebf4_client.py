@@ -223,6 +223,25 @@ class Client:
         except Exception as e:
             self.log(f"send to game failed: {e}")
 
+    def tool_grant(self, name):
+        """Grant list for one of our own tool items, by display name (case-insensitive)."""
+        for iid, iname in self.item_names.get(GAME, {}).items():
+            if iname.lower() == name.lower():
+                return self.item_grants.get(iid)
+        return None
+
+    async def grant_tool(self, name):
+        """/tool failsafe: hand the game a tool directly, bypassing item-index dedup."""
+        grant = self.tool_grant(name)
+        if not grant:
+            self.log(f"unknown tool '{name}'. Tools: {', '.join(sorted(self.tool_names))}")
+            return
+        if not self.game_writer:
+            self.log("game isn't connected yet; grant will not apply")
+            return
+        await self.game_send({"type": "grant", "grant": grant, "text": f"Granted {name}"})
+        self.log(f"granted {name} to the game")
+
     async def game_send_config(self):
         if self.session:
             await self.game_send({"type": "session", "session": self.session,
@@ -292,9 +311,37 @@ class Client:
                     "time": time.time(), "source": self.slot,
                     "cause": f"{self.slot} was defeated"}})
 
-    async def run(self):
+    async def handle_command(self, line):
+        line = line.strip()
+        if not line:
+            return
+        if line in ("/help", "help", "?"):
+            self.log("commands: /tool <name> — grant a tool (failsafe); /tools — list tools")
+        elif line == "/tools":
+            self.log("tools: " + ", ".join(sorted(self.tool_names)))
+        elif line.startswith("/tool"):
+            name = line[len("/tool"):].strip()
+            if name:
+                await self.grant_tool(name)
+            else:
+                self.log("usage: /tool <" + " | ".join(sorted(self.tool_names)) + ">")
+        else:
+            self.log(f"unknown command '{line}' (try /help)")
+
+    async def console_input_loop(self):
+        loop = asyncio.get_event_loop()
+        while True:
+            line = await loop.run_in_executor(None, sys.stdin.readline)
+            if not line:                      # EOF (stdin closed)
+                return
+            await self.handle_command(line)
+
+    async def run(self, with_console=False):
         server = await asyncio.start_server(self.handle_game, "127.0.0.1", self.game_port)
         self.log(f"waiting for the game on 127.0.0.1:{self.game_port}")
+        if with_console:
+            self.log("type /help for commands")
+            asyncio.create_task(self.console_input_loop())
         async with server:
             await self.server_loop()
 
@@ -318,7 +365,7 @@ def main():
 
     client = Client(args.server, args.slot, args.password, args.game_port)
     try:
-        asyncio.run(client.run())
+        asyncio.run(client.run(with_console=True))
     except KeyboardInterrupt:
         pass
 
