@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from Options import (Choice, DeathLink, DefaultOnToggle, OptionSet,
-                     PerGameCommonOptions, Range, Toggle)
+                     PerGameCommonOptions, Range)
 
 from .data import tool_item_names
 
@@ -75,21 +75,6 @@ class StartingTools(Range):
     default = 0
 
 
-class ChestContents(Choice):
-    """`vanilla` = each chest's item is its own vanilla bundle. `shuffled` = all
-    chest contents are flattened into one pool and redistributed."""
-    display_name = "Chest Contents"
-    option_vanilla = 0
-    option_shuffled = 1
-    default = 0
-
-
-class ProgressiveKeys(Toggle):
-    """(Reserved) collapse named keys into one Progressive Key. Keys are vanilla
-    for now; this is a placeholder for future counted-key logic."""
-    display_name = "Progressive Keys"
-
-
 class TrapPercentage(Range):
     """Percent of filler items replaced by traps."""
     display_name = "Trap Percentage"
@@ -132,8 +117,6 @@ class EBF4Options(PerGameCommonOptions):
     randomize_medals: RandomizeMedals
     randomize_bestiary: RandomizeBestiary
     starting_tools: StartingTools
-    chest_contents: ChestContents
-    progressive_keys: ProgressiveKeys
     trap_percentage: TrapPercentage
     trap_types: TrapTypes
     difficulty: Difficulty
