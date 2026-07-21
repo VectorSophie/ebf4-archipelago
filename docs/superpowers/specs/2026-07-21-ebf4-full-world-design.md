@@ -87,7 +87,7 @@ bundles default `filler`, gear/skills `useful`.
 | `randomize_bestiary` | Toggle | off | first-defeat checks |
 | `trap_percentage` | Range 0–40 | 10 | share of filler replaced by traps |
 | `difficulty` | Choice | `normal` | start run on easy/normal/hard/epic |
-| `in_game_messages` | Toggle | on | on-screen toasts for sent/received items |
+| `in_game_messages` | Toggle | on | on-screen banner toasts for major events (see below) |
 | `death_link` | DeathLink | off | existing |
 
 ## Goal
@@ -114,10 +114,20 @@ difference; the game always just reports battle wins.
 
 - Handle new location families (same check plumbing; the server already knows
   the ids from slot_data `location_keys`).
-- Re-add `LocationScouts` on connect → "Sent X to Y" on-screen toast (the black
-  banner overlay) when you open a chest holding another player's item, plus
-  "Received X from Y" on incoming items. Gated by the `in_game_messages` option
-  (default on), read from slot_data; uses the existing `{type:"msg"}` toast HUD.
+- Re-add `LocationScouts` on connect so the client knows what each chest holds.
+- **Banner overlay for major events.** The existing black banner HUD (`{type:"msg"}`
+  toast, added to `root.stage`) becomes the channel for every notable event, all
+  gated by the `in_game_messages` option (default on, read from slot_data):
+  - `Sent <item> to <player>` — opened a chest holding another player's item
+  - `Received <item> from <player>` — incoming multiworld item
+  - `Got <tool/key>!` — a progression tool/key arrived (highlighted style)
+  - `<player> was defeated` — DeathLink in/out
+  - `Trap: <name>` — a trap resolved
+  - `Boss defeated: <name>` / goal-progress ticks (e.g. `12/50 chests`)
+  - `Connected` / `Reconnecting…` — link status changes
+  - `GOAL! You win!` — completion
+  The client sends these as `msg` frames; when `in_game_messages` is off it
+  suppresses them (item delivery and the vanilla treasure popup still happen).
 - `/tool <name>` command: hand-grant a tool as an `item` frame (stuck failsafe).
 - Goal detection unchanged (fires on the goal location / condition).
 
