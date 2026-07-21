@@ -166,8 +166,26 @@ GODCAT_LOCATION = next((n for n, d in battle_locations.items()
 battle_reward_names = [f"Battle Reward ({d['map']}-{d['idx']})"
                        for d in battle_locations.values()]
 
+# ---- medal (achievement) locations + filler rewards ----
+# Earning an in-game medal is a check. Medals are always filler-only (see the
+# item_rule in __init__): some medals aren't reliably earnable (epic aces,
+# online/social, "collect every summon"), so no progression may hide behind one.
+_medals = json.loads(pkgutil.get_data(__package__, "data/medals.json").decode("utf-8"))
+MEDAL_ID_BASE = BASE_ID + 2000
+medal_locations = {}                # loc name -> dict(id, key, reward)
+_seen_medal_names = set()
+for _mi, (_mid, _mname) in enumerate(_medals.items()):
+    loc_name = f"Medal: {_mname}"
+    if loc_name in _seen_medal_names:
+        loc_name = f"Medal: {_mname} ({_mid})"
+    _seen_medal_names.add(loc_name)
+    reward = f"Medal Reward ({_mid})"
+    medal_locations[loc_name] = {"id": MEDAL_ID_BASE + _mi, "key": f"medal_{_mid}",
+                                 "reward": reward}
+    _add_item(reward, [["money", "", 300]], "filler")
+
 # maps AP code needs
-_all_locs = {**locations, **battle_locations}
+_all_locs = {**locations, **battle_locations, **medal_locations}
 location_name_to_id = {n: d["id"] for n, d in _all_locs.items()}
 item_name_to_id = {n: d["id"] for n, d in items.items()}
 location_key_to_id = {d["key"]: d["id"] for d in _all_locs.values()}

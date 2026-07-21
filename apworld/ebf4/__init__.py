@@ -17,7 +17,7 @@ from . import presets
 from .data import (FILLER_ITEM, GODCAT_KEY, GODCAT_LOCATION, TRAP_NAMES, areas,
                    battle_locations, bundle_item_names, item_id_to_grant,
                    item_name_to_id, items, location_name_to_id, locations,
-                   tool_chest_item, tool_item_names)
+                   medal_locations, tool_chest_item, tool_item_names)
 from .options import EBF4Options
 
 _CLASSIFICATION = {
@@ -72,6 +72,9 @@ class EBF4World(World):
             self._active_battles = {GODCAT_LOCATION: battle_locations[GODCAT_LOCATION]}
         else:
             self._active_battles = {}
+        # medals are always filler-only checks (see create_regions)
+        self._active_medals = (dict(medal_locations)
+                               if self.options.randomize_medals else {})
 
     # ---- items ----
 
@@ -84,6 +87,9 @@ class EBF4World(World):
         # one reward item per active boss battle (keeps item/location counts equal)
         for d in self._active_battles.values():
             pool.append(f"Battle Reward ({d['map']}-{d['idx']})")
+        # one filler reward per active medal
+        for d in self._active_medals.values():
+            pool.append(d["reward"])
         if self.options.randomize_tools:
             # tools go in the pool, shuffled with everything else
             pool += tool_item_names
@@ -120,10 +126,17 @@ class EBF4World(World):
         all_locs = {**locations, **self._active_battles}
         for loc_name, loc in all_locs.items():
             location = EBF4Location(self.player, loc_name, loc["id"], region)
-            if randomize and loc["requires"]:
+            if randomize and loc.get("requires"):
                 req = sorted(loc["requires"])
                 location.access_rule = \
                     lambda state, r=req: state.has_all(r, self.player)
+            region.locations.append(location)
+
+        # medal locations: always reachable, but filler-only so no progression
+        # can hide behind an achievement that may not be reliably earnable.
+        for loc_name, loc in self._active_medals.items():
+            location = EBF4Location(self.player, loc_name, loc["id"], region)
+            location.item_rule = lambda item: not item.advancement
             region.locations.append(location)
 
         # Phase-1 goal: collect every tool (progression items that gate the final
@@ -147,6 +160,7 @@ class EBF4World(World):
         o = self.options
         loc_keys = {d["key"]: d["id"] for d in locations.values()}
         loc_keys.update({d["key"]: d["id"] for d in self._active_battles.values()})
+        loc_keys.update({d["key"]: d["id"] for d in self._active_medals.values()})
         return {
             "location_keys": loc_keys,
             "item_grants": {str(i): g for i, g in item_id_to_grant.items()},

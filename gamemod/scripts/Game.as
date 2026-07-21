@@ -615,6 +615,28 @@ package
          });
       }
 
+      public static function AP_medalUnlocked(param1:String) : *
+      {
+         var _loc2_:String = "medal_" + param1;
+         if(AP_managed == null || AP_managed[_loc2_] != true)
+         {
+            return;
+         }
+         if(!(AP_state.data.checks is Array))
+         {
+            AP_state.data.checks = [];
+         }
+         if(AP_state.data.checks.indexOf(_loc2_) < 0)
+         {
+            AP_state.data.checks.push(_loc2_);
+            AP_state.flush();
+         }
+         AP_send({
+            "type":"check",
+            "location":_loc2_
+         });
+      }
+
       public static function AP_resendChecks() : *
       {
          var _loc1_:String = null;
