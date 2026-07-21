@@ -62,6 +62,7 @@ class Client:
         self.boss_hunt_count = 10
         self.check_percentage = 100
         self.total_locations = 0
+        self.difficulty = ""
         self.goal_sent = False
 
         self.locations_info = {}          # loc id -> (item id, finder/receiver slot)
@@ -139,6 +140,7 @@ class Client:
             self.boss_hunt_count = int(sd.get("boss_hunt_count", 10))
             self.check_percentage = int(sd.get("check_percentage", 100))
             self.total_locations = int(sd.get("total_locations", len(self.location_keys)))
+            self.difficulty = sd.get("difficulty", "")
             for slot, info in (args.get("slot_info") or {}).items():
                 self.player_game[int(slot)] = info.get("game")
             self.session = f"{self.seed_name}:{self.slot_num}"
@@ -224,7 +226,8 @@ class Client:
     async def game_send_config(self):
         if self.session:
             await self.game_send({"type": "session", "session": self.session,
-                                  "locations": list(self.location_keys)})
+                                  "locations": list(self.location_keys),
+                                  "difficulty": self.difficulty})
 
     async def game_sync_items(self):
         if self.game_next_index is None:

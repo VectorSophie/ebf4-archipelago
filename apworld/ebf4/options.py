@@ -95,15 +95,6 @@ class ProgressiveKeys(Toggle):
     display_name = "Progressive Keys"
 
 
-class EncounterRate(Choice):
-    """Random-battle frequency at run start."""
-    display_name = "Encounter Rate"
-    option_normal = 0
-    option_reduced = 1
-    option_off = 2
-    default = 0
-
-
 class TrapPercentage(Range):
     """Percent of filler items replaced by traps."""
     display_name = "Trap Percentage"
@@ -149,7 +140,6 @@ class EBF4Options(PerGameCommonOptions):
     starting_tools: StartingTools
     chest_contents: ChestContents
     progressive_keys: ProgressiveKeys
-    encounter_rate: EncounterRate
     trap_percentage: TrapPercentage
     trap_types: TrapTypes
     difficulty: Difficulty

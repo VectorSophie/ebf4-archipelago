@@ -155,7 +155,6 @@ class EBF4World(World):
             "boss_hunt_count": o.boss_hunt_count.value,
             "check_percentage": o.check_percentage.value,
             "total_locations": len(loc_keys),
-            "encounter_rate": o.encounter_rate.current_key,
             "difficulty": o.difficulty.current_key,
             "in_game_messages": bool(o.in_game_messages.value),
             "death_link": bool(o.death_link.value),

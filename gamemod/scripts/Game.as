@@ -117,6 +117,8 @@ package
 
       public static var AP_deathShown:Boolean = false;
 
+      public static var AP_activeTraps:Array = [];
+
       public static function AP_init() : *
       {
          if(AP_socket != null)
@@ -275,6 +277,10 @@ package
                AP_state.data.checks = [];
                AP_state.flush();
                AP_sendHello();
+            }
+            if(_loc2_.difficulty is String && _loc2_.difficulty.length > 0)
+            {
+               Options.difficulty = _loc2_.difficulty;
             }
             Main.log("[AP] session " + _loc2_.session + ", managing " + _loc2_.locations.length + " locations");
             AP_resendChecks();
@@ -459,6 +465,11 @@ package
                }
                continue;
             }
+            if(_loc3_[0] == "trap")
+            {
+               AP_applyTrap(String(_loc3_[1]));
+               continue;
+            }
             _loc4_ = null;
             if(_loc3_[0] == "i")
             {
@@ -489,6 +500,66 @@ package
          {
             (maps.parent as MapMenu).showTreasure(_loc2_);
          }
+      }
+
+      // Traps map onto EBF4's own foe-difficulty toggles so they are safe and
+      // self-limiting: a flag is set here, then cleared after the next battle
+      // (AP_clearTraps in endBattle). goldloss is a one-shot money hit.
+      public static function AP_applyTrap(param1:String) : *
+      {
+         if(param1 == "goldloss")
+         {
+            SaveData.money = Math.max(0,SaveData.money - 500);
+            AP_toast("Gold Loss Trap! -500 gold");
+            return;
+         }
+         if(param1 == "poison")
+         {
+            Options.offensiveFoes = true;
+            AP_pushTrap("offensiveFoes");
+            AP_toast("Poison Trap! Foes hit harder next battle");
+         }
+         else if(param1 == "statdown")
+         {
+            Options.bulkyFoes = true;
+            AP_pushTrap("bulkyFoes");
+            AP_toast("Stat Down Trap! Foes are tankier next battle");
+         }
+         else if(param1 == "encounter")
+         {
+            Options.surpriseAttack = true;
+            AP_pushTrap("surpriseAttack");
+            AP_toast("Encounter Trap! Ambushed next battle");
+         }
+      }
+
+      public static function AP_pushTrap(param1:String) : *
+      {
+         if(AP_activeTraps.indexOf(param1) < 0)
+         {
+            AP_activeTraps.push(param1);
+         }
+      }
+
+      public static function AP_clearTraps() : *
+      {
+         var _loc1_:String = null;
+         for each(_loc1_ in AP_activeTraps)
+         {
+            if(_loc1_ == "offensiveFoes")
+            {
+               Options.offensiveFoes = false;
+            }
+            else if(_loc1_ == "bulkyFoes")
+            {
+               Options.bulkyFoes = false;
+            }
+            else if(_loc1_ == "surpriseAttack")
+            {
+               Options.surpriseAttack = false;
+            }
+         }
+         AP_activeTraps = [];
       }
 
       public static function AP_chestOpened(param1:int, param2:int) : *
@@ -634,6 +705,13 @@ package
          BGM.randomize = true;
          Global.slime = false;
          Global.endlessBattle = false;
+         try
+         {
+            AP_clearTraps();
+         }
+         catch(apErr:Error)
+         {
+         }
          if(onDeath != null && win)
          {
             onDeath();
