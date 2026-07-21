@@ -1,10 +1,13 @@
 # EBF4 Archipelago
 
 [Archipelago](https://archipelago.gg) multiworld support for the Steam version of Epic
-Battle Fantasy 4. Every treasure chest is a location check; opening one sends a check and
-you receive other players' items in return. 430 chests across the whole game; the ~25
-chests that hold progression tools (keys, axe, candle, boots, hammer) stay vanilla so the
-world can never soft-lock.
+Battle Fantasy 4. Location checks span **treasure chests, boss battles, medals, and the
+bestiary** (first defeat of each foe); doing any of them sends a check and you receive
+other players' items in return. The traversal **tools** (axe, candle, hammer, boots,
+ladder) are shuffled into the multiworld with region logic that keeps every seed beatable;
+the consumable **keys** stay vanilla so key-gated content is always reachable in order.
+Configurable goal (beat Godcat / hunt N bosses / check a %), order/chaos presets, traps,
+difficulty, DeathLink, and an on-screen banner for every major event.
 
 **No game assets are distributed.** The patcher modifies your own legally installed copy
 and keeps a backup.
@@ -23,17 +26,20 @@ example YAML — everything a player needs on top of an official Archipelago rel
 ## Layout
 
 - `SETUP.md` — player-facing setup guide
-- `apworld/ebf4/` — the Archipelago world: locations/items (`data.py`), options
-  (`options.py`)
-- `ebf4_client.py` — standalone console client bridging the patched game to an AP
-  server (run with your own Python; only needs `pip install websockets`)
+- `apworld/ebf4/` — the Archipelago world: locations/items (`data.py`), region logic
+  (`regions.py`), options (`options.py`), presets (`presets.py`), generated data
+  (`data/{chests,regions,medals,foes}.json`)
+- `ebf4_client.py` — standalone client bridging the patched game to an AP server (run
+  with your own Python; only needs `pip install websockets`). No args → tkinter GUI
+  (`ebf4_client_gui.py`); args → console. `/tool <name>` grants a tool as a failsafe.
 - `docs/RESEARCH.md` — architecture research, hook points, risks
 - `gamemod/scripts/` — the modified ActionScript classes imported into the SWF
-  (`Game.as` carries the AP layer as `AP_*` statics; `Chest.as`/`MapPlayer.as`/`Battle.as`
-  add the check, loot-suppression, and DeathLink hooks)
+  (`Game.as` carries the AP layer as `AP_*` statics; `Chest.as`/`MapPlayer.as`/`Battle.as`/
+  `Medals.as` add the chest, battle, foe-spawn, medal, loot-suppression, and DeathLink hooks)
 - `gamemod/vanilla/` — unmodified exports of the same classes, for diffing
 - `tools/patch.py` — patch / `--restore` the installed game (auto-downloads FFDec)
-- `tools/extract_chests.py` — regenerate `data/chests.json` from a decompiled `MapData.as`
+- `tools/extract_{chests,map,medals,foes}.py` — regenerate the `data/*.json` tables from
+  the decompiled game source
 - `tools/make_dist.py` — assemble the player bundle
 - `bridge/bridge.py` — minimal standalone test bridge (dev only)
 - `reference/`, `tools-dl/`, `build/` — gitignored: cloned reference repos, FFDec, scratch
@@ -69,7 +75,8 @@ scoped per seed+slot (`EBF4AP.sol` stores `session`, `itemIndex`, and buffered `
 - **DeathLink** (`--death-link`) — a party wipe (`Battle.gameover`) broadcasts a death; an
   incoming death shows a toast and defeats your party via the game's own game-over path.
   A suppress flag prevents a received death from echoing back out.
-- **Goal** — collecting every bundle sends `StatusUpdate: CLIENT_GOAL`.
+- **Goal** — configurable (beat Godcat / hunt N bosses / check a %); the client
+  evaluates it from checked locations and sends `StatusUpdate: CLIENT_GOAL`.
 
 ## Wire protocol (v2)
 
@@ -78,14 +85,19 @@ scoped per seed+slot (`EBF4AP.sol` stores `session`, `itemIndex`, and buffered `
 | direction | message |
 |---|---|
 | game → client | `{"type":"hello","game":"EBF4","protocol":2,"itemIndex":N,"session":S}` |
-| game → client | `{"type":"check","location":"chest_<map>_<idx>"}` |
+| game → client | `{"type":"check","location":"<key>"}` — key is `chest_<map>_<idx>`, `battle_<map>_<idx>`, `medal_<id>`, or `foe_<id>` |
 | game → client | `{"type":"death"}` (party wiped) |
 | game → client | `{"type":"pong"}` |
-| client → game | `{"type":"session","session":"<seed>:<slot>","locations":["chest_9_0",...]}` |
-| client → game | `{"type":"item","index":N,"name":"...","text":"...","grant":[["i","turnip",3],["e","cloverpin",1],["s","rain",0],["money","",100]]}` |
+| client → game | `{"type":"session","session":"<seed>:<slot>","locations":[...],"difficulty":"hard"}` |
+| client → game | `{"type":"item","index":N,"name":"...","text":"...","grant":[["i","turnip",3],["e","cloverpin",1],["s","rain",0],["money","",100],["trap","goldloss",0]]}` |
+| client → game | `{"type":"grant","grant":[...]}` — out-of-band `/tool` failsafe, applied once bypassing item-index dedup |
 | client → game | `{"type":"msg","text":"..."}` (toast) |
 | client → game | `{"type":"deathlink","source":"..."}` |
 | client → game | `{"type":"ping"}` |
+
+Grant kinds: `i`/`e`/`s` = Items/Equips/Spells (`.quantity`/`.owned`), `money`, and
+`trap` (`goldloss` deducts gold; `poison`/`statdown`/`encounter` set a self-clearing
+foe-difficulty flag for the next battle). `difficulty` in `session` sets `Options.difficulty`.
 
 Handshake: game says hello → client sends session config → game resets its item index if
 the session changed and re-hellos → client replays items from the game's index. The game

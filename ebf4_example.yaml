@@ -1,14 +1,44 @@
-# Example Archipelago YAML for Epic Battle Fantasy 4.
-# Put this (renamed with your own name) in the host's Players/ folder before generating.
+# Epic Battle Fantasy 4 — Archipelago settings.
+# Rename the file to your own name and drop it in the host's Players/ folder
+# before generating. Casual? Just set `name`, pick a `preset`, and you're done —
+# every other option has a sensible default (shown commented below).
+
 name: Player1
-description: EBF4 chest hunt
+description: EBF4
 game: Epic Battle Fantasy 4
 
 Epic Battle Fantasy 4:
-  # How many treasure bundles you must collect to win.
-  # 1..430. Lower it for a shorter game; 430 = open every chest.
-  chests_required: 50
+  # ---- the only two knobs most people touch ----
 
-  # Link deaths with other DeathLink players (a party wipe sends a death; an
-  # incoming death defeats your party).
-  death_link: false
+  # order = the curated, structured completionist run (recommended).
+  # chaos = a trap gauntlet: short % goal, lots of traps, DeathLink, harder.
+  # custom = leave every option below at its own value.
+  preset: order
+
+  # How you win. godcat = beat the final boss. boss_hunt = beat N bosses.
+  # check_percent = check a % of all locations.
+  goal: godcat
+
+  # ---- everything below is optional; defaults shown ----
+
+  # boss_hunt_count: 10        # bosses to beat when goal = boss_hunt
+  # check_percentage: 100      # % of locations when goal = check_percent
+
+  # randomize_tools: true      # shuffle axe/candle/hammer/boots/ladder into the
+  #                            # multiworld (region logic keeps every seed
+  #                            # beatable). Off = tools stay in vanilla chests.
+  # randomize_bosses: true     # beating a scripted battle/boss is a check
+  # randomize_medals: true     # earning an in-game medal is a check
+  # randomize_bestiary: true   # first defeat of each foe type is a check
+
+  # starting_tools: 0          # begin with this many random tools (0..7)
+
+  # difficulty: normal         # easy | normal | hard | epic
+
+  # trap_percentage: 10        # % of filler items replaced by traps (0..40)
+  # trap_types: [poison, goldloss, encounter, statdown]
+
+  # in_game_messages: true     # on-screen banner for sends/receives/tools/goal
+
+  # death_link: false          # a party wipe sends a death; incoming deaths
+  #                            # wipe your party
