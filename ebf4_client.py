@@ -265,12 +265,22 @@ class Client:
             name = grant_label(grant)
             local_name = self.item_name(item_id, self.slot_num)
             sender = self.players.get(finder, "the server")
+            # progression = tools or party members (highlight); a grant shows the
+            # game's own "Found treasure!" box only if it hands over an actual
+            # item/equip/spell — money/party/trap/reward grants are otherwise
+            # silent, so those always need a banner or the pickup feels empty.
+            is_progression = (local_name in self.tool_names
+                              or any(g and g[0] == "party" for g in grant))
+            has_popup = any(g and g[0] in ("i", "e", "s") for g in grant)
+            self_announced = any(g and g[0] == "trap" for g in grant)  # mod toasts traps itself
             text = None
             if self.in_game_messages:
-                if local_name in self.tool_names:
+                if is_progression:
                     text = f"Got {local_name}!"          # progression highlight
                 elif finder != self.slot_num:
                     text = f"Received {name} from {sender}"
+                elif not has_popup and not self_announced:
+                    text = f"Received {name}"             # silent grant → give feedback
             await self.game_send({"type": "item", "index": idx, "name": name,
                                   "text": text, "grant": grant})
             self.log(f"sent item {idx}: {name}")

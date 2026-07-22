@@ -74,10 +74,42 @@ def test_grant_labels():
     assert C.grant_label([["i", "turnip", 3]]) == "turnip x3"
 
 
+def _sync_texts(items_received, item_grants, item_names, tool_names=None):
+    """Run game_sync_items over the given received items; return the banner text
+    of each emitted frame (None = silent, treasure box only)."""
+    c = make_client()
+    c.item_grants = item_grants
+    c.item_names[C.GAME] = item_names
+    if tool_names is not None:
+        c.tool_names = tool_names
+    c.slot_num = 1
+    c.players = {1: "Player1", 2: "Ally"}
+    c.player_game = {1: C.GAME, 2: C.GAME}
+    c.items_received = items_received
+    c.game_writer = FakeWriter()
+    c.game_next_index = 0
+    asyncio.run(c.game_sync_items())
+    return [f.get("text") for f in c.game_writer.frames]
+
+
+def test_feedback_party_and_silent_grants():
+    grants = {10: [["party", "lance", 0]], 11: [["money", "", 800]],
+              12: [["i", "turnip", 3]]}
+    names = {10: "Lance", 11: "Battle Reward (26-0)", 12: "3x turnip (9-0)"}
+    # all found by self (solo) -> party highlights, money gets a banner, bundle
+    # is silent (the game's own treasure box shows it)
+    texts = _sync_texts([(10, 1), (11, 1), (12, 1)], grants, names,
+                        tool_names={"Axe"})
+    assert texts[0] == "Got Lance!"          # party member highlighted
+    assert texts[1] == "Received 800 gold"   # silent grant now has feedback
+    assert texts[2] is None                  # bundle -> treasure box only
+
+
 if __name__ == "__main__":
     test_tool_grant_resolves_and_sends()
     test_tool_case_insensitive()
     test_unknown_tool_sends_nothing()
     test_grant_without_game_sends_nothing()
     test_grant_labels()
+    test_feedback_party_and_silent_grants()
     print("client ok")
