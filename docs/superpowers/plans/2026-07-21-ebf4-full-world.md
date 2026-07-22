@@ -325,7 +325,137 @@ Medals + bestiary + secret checks, summon/quest items, difficulty/party options.
 
 ---
 
+# PHASE 4 — Parity & depth (post-2.0.0)
+
+Bring EBF4 up to what mature AP worlds ship (tracker/hints/links) and turn dormant
+game content (25 summons, 210 equips, 237 spells, 139 foods, 4 party members,
+`questNo`) into real progression. Ordered by value/effort; ship in small tagged
+point releases (2.1, 2.2, …), not one mega-drop. Tiers A–E from the research map to
+task clusters below. **Release discipline unchanged: commit locally, push/tag only on
+user OK.** Everything defaults to preserving 2.0.0 behavior — new depth is opt-in.
+
+## Cluster A — Tracker & hints (biggest perceived-completeness gap)
+
+### Task 17: Universal Tracker verification (≈0 code)
+- UT re-simulates our logic from `.apworld` + yaml; our accumulation-along-`AREA_ORDER`
+  logic is deterministic (no entrance rando / yaml weights) so it should "just work".
+- Verify: install UT `.apworld` in `custom_worlds`, load the 2.0.0 seed, confirm
+  in-logic locations match. Document in SETUP ("Trackers" section). No world code.
+- Risk: if UT mis-predicts, capture the diff — likely means a location rule is
+  non-deterministic (it shouldn't be). Commit doc only.
+
+### Task 18: `get_filler_item_name()` + EBF4 food filler
+- Replace the flat "Gold Pouch" top-up with a weighted draw from the 139 `Items.as`
+  consumables (grant `[["i",<food>,1]]`, classification `filler`). Add
+  `EBF4World.get_filler_item_name()` so AP-core fills (e.g. excess) use EBF4 flavor.
+- Test: `tools/test_logic.py` — filler pool contains foods; gen still balances.
+  Live: receive a food, confirm it lands in inventory. Commit.
+
+### Task 19: In-game check counter HUD
+- `Game.as`: a persistent `stage`-level label `checks: X/Y` (reuse the toast layer
+  pattern; `X` = `AP_state.data.checks.length`, `Y` from a `total` field added to the
+  `session` msg). Update on each check + on session. Gate on `in_game_messages`.
+- Client: add `total` to the `session` frame. Live-verify counter increments. Commit.
+
+### Task 20: PopTracker pack (was T14)
+- Generate `tracker/` pack from `regions.json` + locations; `make_dist` zips it. Manual
+  load test in PopTracker. Data-only, no game/client code. Commit.
+
+### Task 21: Hints QoL
+- AP-core `start_hints` option (start with hints for own progression items).
+- Client `/hint <item>` passthrough (send `Say` `!hint …`); surface **incoming** hints
+  (PrintJSON `Hint` type) as `msg` banners (we already render them). Gate on
+  `in_game_messages`. Extend `tools/test_client.py`. Commit.
+
+## Cluster B — Content depth (new item/check families, medal/bestiary pattern)
+
+### Task 22: Summons as items or first-use checks
+- Decide (spike): unlock-summon-as-item (progression-lite) vs. first-summon-use check.
+  Isolated in `Summons`/`*Summon.as`; low risk. `data.py` family `summon_*`; `Game.as`
+  hook the summon-unlock or summon-cast path. Test + live. Commit.
+
+### Task 23: Party members as progression items (most transformative, higher risk)
+- Gate Natalie/Lance/Anna behind received items; Matt always free (never soft-lock
+  without a healer — add logic so at least one healer is reachable, or make party
+  purely `useful`/cosmetic-availability, not required for goal).
+- `data.py` items `party_natalie/lance/anna`; `Game.as` `AP_applyItem` grant kind
+  `party` sets the join/availability flag; battle menu respects it. Careful save-state
+  interaction (persist in `EBF4AP.sol`, apply on load). Test + live smoke. Commit.
+
+### Task 24: Equipment/skill shuffle option (big item-count boost)
+- Option `shuffle_gear` (off by default). When on, pull the 210 equips / 237 spells
+  into their own item categories (`useful`; the few goal-relevant as `progression`),
+  and their vanilla chest bundles become filler. Keeps the pool balanced.
+- Test: gen with/without; counts balance; both solve. Commit.
+
+### Task 25: Quest + level-milestone checks
+- `quest_<n>` checks off `SaveData.questNo` increments; optional `level_<n>` checks
+  ("reach level N"). Cheap pacing checks for `check_percent` goals. `Game.as` hook the
+  questNo bump + a level-up path. Filler-only. Test + live. Commit.
+
+## Cluster C — Links & multiworld integration
+
+### Task 26: EnergyLink on gold (standout parity feature)
+- Gold (`SaveData.money`) ↔ shared EnergyLink pool: deposit surplus / withdraw when
+  low, via client `EnergyLink` tag + `Set`/`SetReply` on the `EnergyLink{team}` key.
+  `Game.as` needs a small deposit/withdraw UI or auto-threshold. Option `energy_link`
+  (off default). Test wire in `tools/test_client.py`; live two-slot check. Commit.
+
+### Task 27: GiftBox (send foods to others) + link/plando docs
+- Optional GiftBox tag: send a consumable to another slot; receive into inventory.
+  Confirm AP-core `item_links` + plando work; document in README. Guarded, off default.
+  Commit.
+
+## Cluster D — Client & in-game UI/UX polish
+
+### Task 28: Standalone-client command parity
+- Add `/received`, `/missing`, `/checked`, `/players` (reimplement what kvui
+  CommonClient gives free, since we're standalone). Extend `tools/test_client.py`.
+  Commit.
+
+### Task 29: GUI polish
+- Colored connection state (red/yellow/green vs `○/●`), a received-items list pane
+  separate from the log, a check counter, a DeathLink toggle, and a command entry box
+  (so GUI users get `/tool`, `/hint`, `/received`). Reuse existing thread/marshal
+  scaffold. Manual verify. Commit.
+
+### Task 30: In-game feedback
+- Received-item sound cue; a small persistent "recent events" panel (not just transient
+  banners). `Game.as` only. Live verify. Commit.
+
+## Cluster E — Logic & options maturity (expert mode; save for last)
+
+### Task 31: Web setup/game page
+- Proper `WebWorld` tutorial + setup docs so EBF4 appears on the archipelago.gg games
+  list. Docs/registration only, high visibility. Commit.
+
+### Task 32: Accessibility + progression_balancing verification
+- Confirm `accessibility: items/full/minimal` and `progression_balancing` behave
+  (mostly AP-core; verify our locations/rules respect them). Document. Commit.
+
+### Task 33: Progressive keys with counted logic
+- The removed `progressive_keys` done right: keys as `Progressive Key ×N` with a
+  reachability model that counts key consumption per locked door. Replaces the current
+  "keys stay vanilla" deferral. Heavy logic; thorough solver test in `tools/test_logic.py`.
+  Commit.
+
+### Task 34: Entrance/door randomization (riskiest; UT support may be needed)
+- Shuffle doors using `regions.json` `edges` + `plando_connections`; option
+  `door_shuffle` (off default). Adds randomness → likely needs explicit UT support.
+  Solver test must prove completability under shuffle. Commit last.
+
+## Phase 4 self-review
+- **Value/effort order:** A (tracker/hints, mostly free) → B23/26 (party + EnergyLink,
+  the transformative crowd-pleasers) → rest. Ship as 2.1+ point releases.
+- **Risk isolation:** T23 (party) and T33/T34 (keys/doors) are the soft-lock-capable
+  ones — each gated behind an off-by-default option with a mandatory solver test; all
+  others are additive filler-only or client/UI, matching the 2.0.0 safety posture.
+- **Key families extend cleanly:** existing `chest_/battle_/medal_/foe_` gain
+  `summon_/quest_/level_`; grant kinds gain `party` alongside `i/e/s/money/trap`.
+
+---
+
 ## Self-review notes
-- **Spec coverage:** region logic (T1–3), tool safety net `/tool`+`randomize_tools:false` (T3,T9), goal variants (T6), presets (T4), traps+classification (T5), banner events (T8), battle/medal/bestiary/secret checks (T6,T10–12), all control options (T4), summon/quest/difficulty (T13), tkinter client (T7), casual-first docs (T9), tests (T1–8), PopTracker/links/plando (T14–15). All spec sections mapped.
+- **Spec coverage:** region logic (T1–3), tool safety net `/tool`+`randomize_tools:false` (T3,T9), goal variants (T6), presets (T4), traps+classification (T5), banner events (T8), battle/medal/bestiary/secret checks (T6,T10–12), all control options (T4), summon/quest/difficulty (T13), tkinter client (T7), casual-first docs (T9), tests (T1–8), PopTracker/links/plando (T14–15). All spec sections mapped through 2.0.0. Phase 4 (T17–34) is post-2.0.0 parity/depth beyond the original spec — tracker/UT, hints, EnergyLink, party/summon/gear/quest content, client-command parity, entrance/key logic.
 - **Risk:** T1 adjacency parsing may be sparse → the conservative `AREA_ORDER` accumulation in T2/T3 is the real logic backbone (map-level edges are a refinement, not required for correctness). T11 bestiary is the riskiest hook; it is optional and isolated.
 - **Type consistency:** `AP_sendCheck(location)`, `area_requirements()->{area:set}`, grant kinds `poison/goldloss/encounter/statdown/trap`, location key families `chest_/battle_/medal_/foe_/secret_` used consistently.
