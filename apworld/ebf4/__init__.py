@@ -17,7 +17,8 @@ from . import presets
 from .data import (FILLER_ITEM, GODCAT_KEY, GODCAT_LOCATION, TRAP_NAMES, areas,
                    battle_locations, bundle_item_names, item_id_to_grant,
                    foe_locations, item_name_to_id, items, location_name_to_id,
-                   locations, medal_locations, tool_chest_item, tool_item_names)
+                   locations, medal_locations, party_item_names, tool_chest_item,
+                   tool_item_names)
 from .options import EBF4Options
 
 _CLASSIFICATION = {
@@ -107,6 +108,16 @@ class EBF4World(World):
                 loc = self.multiworld.get_location(loc_name, self.player)
                 loc.place_locked_item(self.create_item(tool_name))
 
+        # party members displace filler (progression, but count stays balanced)
+        if self.options.party_shuffle:
+            filler_pos = [i for i, n in enumerate(pool)
+                          if items[n]["classification"] == "filler"]
+            for name, i in zip(party_item_names,
+                               self.random.sample(filler_pos,
+                                                   min(len(party_item_names),
+                                                       len(filler_pos)))):
+                pool[i] = name
+
         # replace a share of filler items with traps
         enabled = [TRAP_NAMES[k] for k in self.options.trap_types.value
                    if k in TRAP_NAMES]
@@ -147,7 +158,10 @@ class EBF4World(World):
         # goals arrive with battle checks. Filler/useful items can't gate a goal:
         # AP's reachability sweep only collects progression items.
         goal = EBF4Location(self.player, "Goal", None, region)
-        goal.access_rule = lambda state: state.has_all(tool_item_names, self.player)
+        goal_items = list(tool_item_names)
+        if self.options.party_shuffle:
+            goal_items += party_item_names   # your full party before Godcat
+        goal.access_rule = lambda state: state.has_all(goal_items, self.player)
         goal.place_locked_item(
             EBF4Item("Victory", ItemClassification.progression, None, self.player))
         region.locations.append(goal)
@@ -174,6 +188,7 @@ class EBF4World(World):
             "check_percentage": o.check_percentage.value,
             "total_locations": len(loc_keys),
             "difficulty": o.difficulty.current_key,
+            "party_shuffle": bool(o.party_shuffle.value),
             "in_game_messages": bool(o.in_game_messages.value),
             "death_link": bool(o.death_link.value),
         }

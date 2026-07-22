@@ -329,10 +329,16 @@ Medals + bestiary + secret checks, summon/quest items, difficulty/party options.
 
 Bring EBF4 up to what mature AP worlds ship (tracker/hints/links) and turn dormant
 game content (25 summons, 210 equips, 237 spells, 139 foods, 4 party members,
-`questNo`) into real progression. Ordered by value/effort; ship in small tagged
+`questNo`) into real progression. Ship in small tagged
 point releases (2.1, 2.2, …), not one mega-drop. Tiers A–E from the research map to
 task clusters below. **Release discipline unchanged: commit locally, push/tag only on
 user OK.** Everything defaults to preserving 2.0.0 behavior — new depth is opt-in.
+
+**Chosen build order (transformative-first, user-selected 2026-07-22):**
+23 party → 26 EnergyLink → 24 gear → 22 summons → 18 filler → 19 check-counter →
+21 hints → 17 UT-verify → 20 PopTracker → 25 quest/level → 27 GiftBox/links →
+28 client-cmds → 29 GUI → 30 in-game-feedback → 31 web-page → 32 accessibility →
+33 progressive-keys → 34 door-shuffle. (Task *numbers* are stable IDs, not sequence.)
 
 ## Cluster A — Tracker & hints (biggest perceived-completeness gap)
 

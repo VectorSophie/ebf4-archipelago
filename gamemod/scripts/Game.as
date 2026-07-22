@@ -284,6 +284,7 @@ package
                AP_state.data.session = _loc2_.session;
                AP_state.data.itemIndex = 0;
                AP_state.data.checks = [];
+               AP_state.data.party = {};   // new seed: re-earn allies (grants replay from index 0)
                AP_state.flush();
                AP_sendHello();
             }
@@ -291,6 +292,8 @@ package
             {
                Options.difficulty = _loc2_.difficulty;
             }
+            AP_state.data.partyShuffle = _loc2_.partyShuffle == true;
+            AP_state.flush();
             Main.log("[AP] session " + _loc2_.session + ", managing " + _loc2_.locations.length + " locations");
             AP_resendChecks();
          }
@@ -479,6 +482,11 @@ package
                }
                continue;
             }
+            if(_loc3_[0] == "party")
+            {
+               AP_grantParty(String(_loc3_[1]));
+               continue;
+            }
             if(_loc3_[0] == "trap")
             {
                AP_applyTrap(String(_loc3_[1]));
@@ -513,6 +521,54 @@ package
          if(_loc2_.length > 0)
          {
             (maps.parent as MapMenu).showTreasure(_loc2_);
+         }
+      }
+
+      // Party shuffle: when active (from slot_data via the "session" msg), the
+      // three recruitable allies (Matt/Natalie/Lance) no longer auto-join at
+      // their story maps — Players.getX early-returns via AP_partyAllowed until
+      // the AP item arrives. Anna is the free starting character. The unlocked
+      // set persists in EBF4AP.sol so gating survives reloads.
+      public static function AP_partyAllowed(param1:String) : Boolean
+      {
+         if(AP_state == null || AP_state.data.partyShuffle != true)
+         {
+            return true;
+         }
+         return AP_state.data.party != null && AP_state.data.party[param1] == true;
+      }
+
+      public static function AP_grantParty(param1:String) : *
+      {
+         if(!(AP_state.data.party is Object) || AP_state.data.party == null)
+         {
+            AP_state.data.party = {};
+         }
+         AP_state.data.party[param1] = true;
+         AP_state.flush();
+         AP_joinParty(param1);
+      }
+
+      public static function AP_joinParty(param1:String) : *
+      {
+         try
+         {
+            if(param1 == "matt")
+            {
+               Players.getMatt();
+            }
+            else if(param1 == "natalie")
+            {
+               Players.getNatalie();
+            }
+            else if(param1 == "lance")
+            {
+               Players.getLance();
+            }
+         }
+         catch(e:Error)
+         {
+            Main.log("[AP] party join failed for " + param1 + ": " + e);
          }
       }
 

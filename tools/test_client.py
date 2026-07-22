@@ -67,9 +67,17 @@ def test_grant_without_game_sends_nothing():
     asyncio.run(c.grant_tool("Axe"))  # must not raise
 
 
+def test_grant_labels():
+    assert C.grant_label([["party", "natalie", 0]]) == "Natalie"
+    assert C.grant_label([["trap", "goldloss", 0]]) == "goldloss trap"
+    assert C.grant_label([["money", "", 100]]) == "100 gold"
+    assert C.grant_label([["i", "turnip", 3]]) == "turnip x3"
+
+
 if __name__ == "__main__":
     test_tool_grant_resolves_and_sends()
     test_tool_case_insensitive()
     test_unknown_tool_sends_nothing()
     test_grant_without_game_sends_nothing()
+    test_grant_labels()
     print("client ok")

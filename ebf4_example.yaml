@@ -33,6 +33,11 @@ Epic Battle Fantasy 4:
 
   # starting_tools: 0          # begin with this many random tools (0..7)
 
+  # party_shuffle: false       # shuffle your party into the multiworld: start
+  #                            # solo as Anna and receive Matt/Natalie/Lance as
+  #                            # items. They're guaranteed before the final boss,
+  #                            # but you fight understaffed until they arrive.
+
   # difficulty: normal         # easy | normal | hard | epic
 
   # trap_percentage: 10        # % of filler items replaced by traps (0..40)

@@ -35,6 +35,10 @@ def grant_label(grant):
             continue
         if g[0] == "money":
             parts.append(f"{g[2]} gold")
+        elif g[0] == "party":
+            parts.append(str(g[1]).capitalize())
+        elif g[0] == "trap":
+            parts.append(f"{g[1]} trap")
         else:
             name, qty = g[1], (g[2] if len(g) > 2 else 0)
             parts.append(f"{name} x{qty}" if qty and qty > 1 else str(name))
@@ -63,6 +67,7 @@ class Client:
         self.check_percentage = 100
         self.total_locations = 0
         self.difficulty = ""
+        self.party_shuffle = False
         self.goal_sent = False
 
         self.locations_info = {}          # loc id -> (item id, finder/receiver slot)
@@ -141,6 +146,7 @@ class Client:
             self.check_percentage = int(sd.get("check_percentage", 100))
             self.total_locations = int(sd.get("total_locations", len(self.location_keys)))
             self.difficulty = sd.get("difficulty", "")
+            self.party_shuffle = bool(sd.get("party_shuffle"))
             for slot, info in (args.get("slot_info") or {}).items():
                 self.player_game[int(slot)] = info.get("game")
             self.session = f"{self.seed_name}:{self.slot_num}"
@@ -246,7 +252,8 @@ class Client:
         if self.session:
             await self.game_send({"type": "session", "session": self.session,
                                   "locations": list(self.location_keys),
-                                  "difficulty": self.difficulty})
+                                  "difficulty": self.difficulty,
+                                  "partyShuffle": self.party_shuffle})
 
     async def game_sync_items(self):
         if self.game_next_index is None:

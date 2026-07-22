@@ -119,6 +119,14 @@ def _add_item(name, grant, classification):
 for raw, disp in TOOL_NAMES.items():
     _add_item(disp, [["i", raw, 1]], "progression")
 
+# party members (party_shuffle). Anna is the free starting character; Matt,
+# Natalie, and Lance are gated behind these progression items. grant kind
+# "party" -> the mod calls Players.get<Name>(). name = the runtime getX suffix.
+PARTY_NAMES = {"matt": "Matt", "natalie": "Natalie", "lance": "Lance"}
+for _raw, _disp in PARTY_NAMES.items():
+    _add_item(_disp, [["party", _raw, 0]], "progression")
+party_item_names = list(PARTY_NAMES.values())
+
 # a generic filler used to top up the pool when items are precollected
 # (starting_tools) or replaced by traps.
 FILLER_ITEM = "Gold Pouch"

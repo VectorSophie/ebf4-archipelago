@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from Options import (Choice, DeathLink, DefaultOnToggle, OptionSet,
-                     PerGameCommonOptions, Range)
+                     PerGameCommonOptions, Range, Toggle)
 
 from .data import tool_item_names
 
@@ -75,6 +75,16 @@ class StartingTools(Range):
     default = 0
 
 
+class PartyShuffle(Toggle):
+    """Shuffle your party into the multiworld. You start solo as Anna; Matt,
+    Natalie, and Lance become items you receive from other players (they no
+    longer auto-join at their story moments). Off = vanilla: the party joins as
+    the story dictates. When on, the three are progression and guaranteed before
+    the final boss. Note: until an ally's item arrives you fight understaffed
+    (an intended difficulty spike, not a soft-lock)."""
+    display_name = "Party Shuffle"
+
+
 class TrapPercentage(Range):
     """Percent of filler items replaced by traps."""
     display_name = "Trap Percentage"
@@ -117,6 +127,7 @@ class EBF4Options(PerGameCommonOptions):
     randomize_medals: RandomizeMedals
     randomize_bestiary: RandomizeBestiary
     starting_tools: StartingTools
+    party_shuffle: PartyShuffle
     trap_percentage: TrapPercentage
     trap_types: TrapTypes
     difficulty: Difficulty
