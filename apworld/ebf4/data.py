@@ -145,6 +145,39 @@ for c in _bundle_chests:
     name = f"{_label(c['contents'])} ({c['map']}-{c['chest']})"
     _add_item(name, c["contents"], _classify(c["contents"]))
 
+# ---- gear shuffle (shuffle_gear): equips/spells as standalone items ----
+# Each 'e'/'s' entry across the chest bundles becomes its own `useful` item; the
+# chest's leftover loot becomes a gear-less "remainder" bundle. The world picks
+# either the full bundles (off) or (gear items + remainders) (on) — see
+# create_items — dropping filler to keep the fixed chest-slot count balanced.
+_GEAR_KINDS = ("e", "s")
+gear_item_names = []            # ~179 standalone gear items
+gear_chest_full = set()        # full-bundle names that contain gear
+gear_remainder_names = []      # remainder item per gear chest (gold pouch if gear-only)
+
+
+def _gear_name(kind, raw):
+    return ("Equip: " if kind == "e" else "Spell: ") + raw
+
+
+for c in _bundle_chests:
+    _gear = [(k, n, q) for k, n, q in c["contents"] if k in _GEAR_KINDS]
+    if not _gear:
+        continue
+    _full = f"{_label(c['contents'])} ({c['map']}-{c['chest']})"
+    gear_chest_full.add(_full)
+    for k, n, q in _gear:
+        gname = _gear_name(k, n)
+        _add_item(gname, [[k, n, 1]], "useful")
+        gear_item_names.append(gname)
+    _rem = [(k, n, q) for k, n, q in c["contents"] if k not in _GEAR_KINDS]
+    if _rem:
+        rname = f"{_label(_rem)} ({c['map']}-{c['chest']})"
+        _add_item(rname, _rem, _classify(_rem))
+    else:
+        rname = FILLER_ITEM     # gear-only chest -> its remainder is a gold pouch
+    gear_remainder_names.append(rname)
+
 # ---- battle (boss) locations + reward items ----
 # non-respawnable battles become locations; each gets a filler reward item.
 _battles = regions._data.get("battles", {})
@@ -227,6 +260,8 @@ for c in _tool_chests:
 
 # the bundle items that make up the fillable pool (everything except tool items)
 bundle_item_names = [f"{_label(c['contents'])} ({c['map']}-{c['chest']})" for c in _bundle_chests]
+# full bundles that hold no gear (used as-is in shuffle_gear mode)
+nongear_bundle_names = [n for n in bundle_item_names if n not in gear_chest_full]
 tool_item_names = list(TOOL_NAMES.values())
 
 # group locations by area (item-name groups / loose grouping)

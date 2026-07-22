@@ -75,6 +75,15 @@ class StartingTools(Range):
     default = 0
 
 
+class ShuffleGear(Toggle):
+    """Break equipment and spells out of their chest bundles into individual
+    multiworld items (~179 of them), so each sword/spell is separately found,
+    hinted, and traded. Off = gear stays bundled with the rest of a chest's
+    loot. When on, an equal amount of low-value filler is dropped to keep the
+    chest pool balanced."""
+    display_name = "Shuffle Gear"
+
+
 class PartyShuffle(Toggle):
     """Shuffle your party into the multiworld. You start solo as Anna; Matt,
     Natalie, and Lance become items you receive from other players (they no
@@ -134,6 +143,7 @@ class EBF4Options(PerGameCommonOptions):
     randomize_medals: RandomizeMedals
     randomize_bestiary: RandomizeBestiary
     starting_tools: StartingTools
+    shuffle_gear: ShuffleGear
     party_shuffle: PartyShuffle
     trap_percentage: TrapPercentage
     trap_types: TrapTypes

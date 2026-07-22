@@ -16,9 +16,10 @@ from worlds.AutoWorld import World, WebWorld
 from . import presets
 from .data import (FILLER_ITEM, GODCAT_KEY, GODCAT_LOCATION, TRAP_NAMES, areas,
                    battle_locations, bundle_item_names, item_id_to_grant,
-                   foe_locations, item_name_to_id, items, location_name_to_id,
-                   locations, medal_locations, party_item_names, tool_chest_item,
-                   tool_item_names)
+                   foe_locations, gear_item_names, gear_remainder_names,
+                   item_name_to_id, items, location_name_to_id, locations,
+                   medal_locations, nongear_bundle_names, party_item_names,
+                   tool_chest_item, tool_item_names)
 from .options import EBF4Options
 
 _CLASSIFICATION = {
@@ -86,7 +87,16 @@ class EBF4World(World):
         return EBF4Item(name, cls, item_name_to_id[name], self.player)
 
     def create_items(self):
-        pool = list(bundle_item_names)
+        if self.options.shuffle_gear:
+            # gear becomes standalone items; to keep the fixed chest-slot count,
+            # fill the rest from non-gear bundles + gear-chest remainders, dropping
+            # the surplus (low-value filler) so len stays == len(bundle_item_names).
+            core = list(gear_item_names)
+            candidates = nongear_bundle_names + gear_remainder_names
+            keep = len(bundle_item_names) - len(core)
+            pool = core + self.random.sample(candidates, keep)
+        else:
+            pool = list(bundle_item_names)
         # one reward item per active boss battle (keeps item/location counts equal)
         for d in self._active_battles.values():
             pool.append(f"Battle Reward ({d['map']}-{d['idx']})")
