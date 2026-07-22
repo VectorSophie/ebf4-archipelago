@@ -150,6 +150,19 @@ def test_withdraw_requests_then_grants_actual():
     assert grant["type"] == "grant" and grant["grant"] == [["money", "", 250]]
 
 
+def test_energy_balance_retrieved():
+    # /energy -> Get -> Retrieved (keys dict, no top-level "key") must log a balance
+    c = make_energy_client()
+    logs = []
+    c._log_sink = logs.append
+    asyncio.run(c.on_energy("Retrieved", {"keys": {"EnergyLink0": 750}}))
+    assert any("750" in l for l in logs), logs
+    # a Retrieved for some other key must not log our balance
+    logs.clear()
+    asyncio.run(c.on_energy("Retrieved", {"keys": {"EnergyLink9": 5}}))
+    assert not logs
+
+
 def test_energy_off_ignores_commands():
     c = make_client()
     c.ws = FakeWS()
@@ -168,5 +181,6 @@ if __name__ == "__main__":
     test_feedback_party_and_silent_grants()
     test_deposit_asks_game_then_pools_reply()
     test_withdraw_requests_then_grants_actual()
+    test_energy_balance_retrieved()
     test_energy_off_ignores_commands()
     print("client ok")

@@ -155,7 +155,6 @@ class Client:
             if self.energy_link:
                 self.energy_key = f"EnergyLink{self.team}"
                 await self.send({"cmd": "ConnectUpdate", "tags": ["AP", "EnergyLink"]})
-                await self.send({"cmd": "SetNotify", "keys": [self.energy_key]})
             for slot, info in (args.get("slot_info") or {}).items():
                 self.player_game[int(slot)] = info.get("game")
             self.session = f"{self.seed_name}:{self.slot_num}"
@@ -292,22 +291,25 @@ class Client:
                              {"operation": "max", "value": 0}]})
 
     async def on_energy(self, cmd, args):
+        if cmd == "Retrieved":                     # /energy: keys dict, no top-level key
+            keys = args.get("keys") or {}
+            if self.energy_key in keys:
+                self.log(f"energy pool: {int(keys[self.energy_key] or 0)} gold")
+            return
+        # SetReply — only our own withdraw (want_reply); no SetNotify subscription,
+        # so a SetReply for our key is always a withdraw result.
         if args.get("key") != self.energy_key:
             return
-        if cmd == "Retrieved":
-            bal = (args.get("keys") or {}).get(self.energy_key, 0) or 0
-            self.log(f"energy pool: {int(bal)} gold")
-        elif cmd == "SetReply":
-            new = int(args.get("value", 0) or 0)
-            old = int(args.get("original_value", new) or 0)
-            granted = old - new                    # what this withdraw actually took
-            if granted > 0:
-                await self.game_send({"type": "grant",
-                                      "grant": [["money", "", granted]],
-                                      "text": f"Withdrew {granted} gold"})
-                self.log(f"withdrew {granted} gold (pool now {new})")
-            else:
-                self.log(f"pool empty (0 gold)")
+        new = int(args.get("value", 0) or 0)
+        old = int(args.get("original_value", new) or 0)
+        granted = old - new                        # what this withdraw actually took
+        if granted > 0:
+            await self.game_send({"type": "grant",
+                                  "grant": [["money", "", granted]],
+                                  "text": f"Withdrew {granted} gold"})
+            self.log(f"withdrew {granted} gold (pool now {new})")
+        else:
+            self.log("pool empty (0 gold)")
 
     async def game_send_config(self):
         if self.session:
