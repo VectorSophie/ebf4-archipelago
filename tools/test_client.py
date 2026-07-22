@@ -29,6 +29,14 @@ class FakeWriter:
         pass
 
 
+class FakeWS:
+    def __init__(self):
+        self.sent = []            # list of command dicts
+
+    async def send(self, raw):
+        self.sent.extend(json.loads(raw))
+
+
 def make_client():
     c = C.Client("h:1", "slot", "", C.DEFAULT_GAME_PORT, log_sink=lambda _m: None)
     # what DataPackage + slot_data would give us for our own game
@@ -105,6 +113,52 @@ def test_feedback_party_and_silent_grants():
     assert texts[2] is None                  # bundle -> treasure box only
 
 
+def make_energy_client():
+    c = make_client()
+    c.slot_num = 1
+    c.team = 0
+    c.energy_link = True
+    c.energy_key = "EnergyLink0"
+    c.ws = FakeWS()
+    c.game_writer = FakeWriter()
+    return c
+
+
+def test_deposit_asks_game_then_pools_reply():
+    c = make_energy_client()
+    asyncio.run(c.energy_deposit(500))
+    # client asks the game how much it can spare
+    assert c.game_writer.frames[-1] == {"type": "spendGold", "amount": 500}
+    # game replies it spent 300 -> client adds 300 to the pool
+    asyncio.run(c.handle_game_msg({"type": "goldSpent", "amount": 300}))
+    setcmd = [s for s in c.ws.sent if s.get("cmd") == "Set"][-1]
+    assert setcmd["key"] == "EnergyLink0"
+    assert setcmd["operations"] == [{"operation": "add", "value": 300}]
+
+
+def test_withdraw_requests_then_grants_actual():
+    c = make_energy_client()
+    asyncio.run(c.energy_withdraw(400))
+    setcmd = [s for s in c.ws.sent if s.get("cmd") == "Set"][-1]
+    assert setcmd["want_reply"] is True
+    assert setcmd["operations"] == [{"operation": "add", "value": -400},
+                                    {"operation": "max", "value": 0}]
+    # pool had only 250 -> after add/-max it's 0; client grants the 250 taken
+    asyncio.run(c.on_energy("SetReply", {"key": "EnergyLink0",
+                                         "original_value": 250, "value": 0}))
+    grant = c.game_writer.frames[-1]
+    assert grant["type"] == "grant" and grant["grant"] == [["money", "", 250]]
+
+
+def test_energy_off_ignores_commands():
+    c = make_client()
+    c.ws = FakeWS()
+    c.game_writer = FakeWriter()  # energy_key stays None
+    asyncio.run(c.energy_deposit(100))
+    asyncio.run(c.energy_withdraw(100))
+    assert not c.ws.sent and not c.game_writer.frames
+
+
 if __name__ == "__main__":
     test_tool_grant_resolves_and_sends()
     test_tool_case_insensitive()
@@ -112,4 +166,7 @@ if __name__ == "__main__":
     test_grant_without_game_sends_nothing()
     test_grant_labels()
     test_feedback_party_and_silent_grants()
+    test_deposit_asks_game_then_pools_reply()
+    test_withdraw_requests_then_grants_actual()
+    test_energy_off_ignores_commands()
     print("client ok")

@@ -68,6 +68,9 @@ class Client:
         self.total_locations = 0
         self.difficulty = ""
         self.party_shuffle = False
+        self.energy_link = False
+        self.team = 0
+        self.energy_key = None            # "EnergyLink{team}" when enabled
         self.goal_sent = False
 
         self.locations_info = {}          # loc id -> (item id, finder/receiver slot)
@@ -130,6 +133,7 @@ class Client:
                              + "\nCheck the slot name and that the seed is for EBF4.")
         elif cmd == "Connected":
             self.slot_num = args.get("slot")
+            self.team = args.get("team", 0)
             for p in args.get("players", []):
                 self.players[p["slot"]] = p.get("alias") or p.get("name")
             for loc in args.get("checked_locations", []):
@@ -147,6 +151,11 @@ class Client:
             self.total_locations = int(sd.get("total_locations", len(self.location_keys)))
             self.difficulty = sd.get("difficulty", "")
             self.party_shuffle = bool(sd.get("party_shuffle"))
+            self.energy_link = bool(sd.get("energy_link"))
+            if self.energy_link:
+                self.energy_key = f"EnergyLink{self.team}"
+                await self.send({"cmd": "ConnectUpdate", "tags": ["AP", "EnergyLink"]})
+                await self.send({"cmd": "SetNotify", "keys": [self.energy_key]})
             for slot, info in (args.get("slot_info") or {}).items():
                 self.player_game[int(slot)] = info.get("game")
             self.session = f"{self.seed_name}:{self.slot_num}"
@@ -181,6 +190,8 @@ class Client:
             for game, gd in (args.get("data") or {}).get("games", {}).items():
                 self.item_names[game] = {v: k for k, v in
                                          (gd.get("item_name_to_id") or {}).items()}
+        elif cmd in ("SetReply", "Retrieved"):
+            await self.on_energy(cmd, args)
         elif cmd == "LocationInfo":
             for it in args.get("locations", []):
                 self.locations_info[it["location"]] = (it["item"], it["player"])
@@ -247,6 +258,56 @@ class Client:
             return
         await self.game_send({"type": "grant", "grant": grant, "text": f"Granted {name}"})
         self.log(f"granted {name} to the game")
+
+    # ---- EnergyLink (shared gold pool) ----
+
+    async def energy_balance(self):
+        if not self.energy_key:
+            return
+        await self.send({"cmd": "Get", "keys": [self.energy_key]})
+
+    async def energy_deposit(self, amount):
+        """Ask the game how much gold it can spare (up to amount); the reply
+        (goldSpent) adds that to the pool."""
+        if not self.energy_key:
+            self.log("energy link is off for this seed")
+            return
+        if amount <= 0 or not self.game_writer:
+            self.log("usage: /deposit <positive amount>, with the game connected")
+            return
+        await self.game_send({"type": "spendGold", "amount": int(amount)})
+
+    async def energy_withdraw(self, amount):
+        """Atomically take up to `amount` from the pool; SetReply tells us how
+        much we actually got, which we then grant to the game as gold."""
+        if not self.energy_key:
+            self.log("energy link is off for this seed")
+            return
+        if amount <= 0:
+            self.log("usage: /withdraw <positive amount>")
+            return
+        await self.send({"cmd": "Set", "key": self.energy_key, "default": 0,
+                         "want_reply": True, "operations": [
+                             {"operation": "add", "value": -int(amount)},
+                             {"operation": "max", "value": 0}]})
+
+    async def on_energy(self, cmd, args):
+        if args.get("key") != self.energy_key:
+            return
+        if cmd == "Retrieved":
+            bal = (args.get("keys") or {}).get(self.energy_key, 0) or 0
+            self.log(f"energy pool: {int(bal)} gold")
+        elif cmd == "SetReply":
+            new = int(args.get("value", 0) or 0)
+            old = int(args.get("original_value", new) or 0)
+            granted = old - new                    # what this withdraw actually took
+            if granted > 0:
+                await self.game_send({"type": "grant",
+                                      "grant": [["money", "", granted]],
+                                      "text": f"Withdrew {granted} gold"})
+                self.log(f"withdrew {granted} gold (pool now {new})")
+            else:
+                self.log(f"pool empty (0 gold)")
 
     async def game_send_config(self):
         if self.session:
@@ -322,6 +383,15 @@ class Client:
                     who = self.players.get(info[1], "someone")
                     await self.banner(f"Sent {self.item_name(*info)} to {who}")
                 await self.eval_goal()
+        elif t == "goldSpent":
+            amount = int(msg.get("amount", 0) or 0)
+            if amount > 0 and self.energy_key:
+                await self.send({"cmd": "Set", "key": self.energy_key, "default": 0,
+                                 "want_reply": False,
+                                 "operations": [{"operation": "add", "value": amount}]})
+                self.log(f"deposited {amount} gold to the pool")
+            elif amount <= 0:
+                self.log("not enough gold to deposit")
         elif t == "death":
             if self.death_link:
                 await self.send({"cmd": "Bounce", "tags": ["DeathLink"], "data": {
@@ -333,7 +403,9 @@ class Client:
         if not line:
             return
         if line in ("/help", "help", "?"):
-            self.log("commands: /tool <name> — grant a tool (failsafe); /tools — list tools")
+            self.log("commands: /tool <name> — grant a tool (failsafe); /tools — list tools"
+                     + ("; /deposit <n>, /withdraw <n>, /energy — shared gold pool"
+                        if self.energy_key else ""))
         elif line == "/tools":
             self.log("tools: " + ", ".join(sorted(self.tool_names)))
         elif line.startswith("/tool"):
@@ -342,6 +414,19 @@ class Client:
                 await self.grant_tool(name)
             else:
                 self.log("usage: /tool <" + " | ".join(sorted(self.tool_names)) + ">")
+        elif line == "/energy":
+            await self.energy_balance()
+        elif line.startswith("/deposit") or line.startswith("/withdraw"):
+            verb, _, arg = line.partition(" ")
+            try:
+                amount = int(arg.strip())
+            except ValueError:
+                self.log(f"usage: {verb} <amount>")
+                return
+            if verb == "/deposit":
+                await self.energy_deposit(amount)
+            else:
+                await self.energy_withdraw(amount)
         else:
             self.log(f"unknown command '{line}' (try /help)")
 

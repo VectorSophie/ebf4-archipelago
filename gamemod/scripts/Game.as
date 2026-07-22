@@ -297,6 +297,10 @@ package
             Main.log("[AP] session " + _loc2_.session + ", managing " + _loc2_.locations.length + " locations");
             AP_resendChecks();
          }
+         else if(_loc2_.type == "spendGold")
+         {
+            AP_spendGold(int(_loc2_.amount));
+         }
          else if(_loc2_.type == "msg")
          {
             AP_toast(_loc2_.text);
@@ -529,6 +533,30 @@ package
       // their story maps — Players.getX early-returns via AP_partyAllowed until
       // the AP item arrives. Anna is the free starting character. The unlocked
       // set persists in EBF4AP.sol so gating survives reloads.
+      // EnergyLink deposit: remove up to `amount` gold and tell the client how
+      // much we actually had, so it deposits exactly that to the shared pool.
+      public static function AP_spendGold(param1:int) : *
+      {
+         var _loc2_:int = param1;
+         if(_loc2_ < 0)
+         {
+            _loc2_ = 0;
+         }
+         if(_loc2_ > SaveData.money)
+         {
+            _loc2_ = SaveData.money;
+         }
+         SaveData.money -= _loc2_;
+         if(_loc2_ > 0)
+         {
+            AP_toast("Deposited " + _loc2_ + " gold");
+         }
+         AP_send({
+            "type":"goldSpent",
+            "amount":_loc2_
+         });
+      }
+
       public static function AP_partyAllowed(param1:String) : Boolean
       {
          if(AP_state == null || AP_state.data.partyShuffle != true)

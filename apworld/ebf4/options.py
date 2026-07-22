@@ -110,6 +110,13 @@ class Difficulty(Choice):
     default = 1
 
 
+class EnergyLink(Toggle):
+    """Share gold with other EnergyLink players through a common pool. Use the
+    client's /deposit and /withdraw commands to move gold in and out (1 gold =
+    1 energy). Off by default."""
+    display_name = "Energy Link"
+
+
 class InGameMessages(DefaultOnToggle):
     """Show the on-screen banner overlay for major events (items sent/received,
     tools, DeathLink, traps, bosses, goal, link status)."""
@@ -131,5 +138,6 @@ class EBF4Options(PerGameCommonOptions):
     trap_percentage: TrapPercentage
     trap_types: TrapTypes
     difficulty: Difficulty
+    energy_link: EnergyLink
     in_game_messages: InGameMessages
     death_link: DeathLink

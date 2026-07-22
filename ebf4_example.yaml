@@ -43,6 +43,9 @@ Epic Battle Fantasy 4:
   # trap_percentage: 10        # % of filler items replaced by traps (0..40)
   # trap_types: [poison, goldloss, encounter, statdown]
 
+  # energy_link: false         # share gold with other EnergyLink players via a
+  #                            # common pool (client: /deposit, /withdraw, /energy)
+
   # in_game_messages: true     # on-screen banner for sends/receives/tools/goal
 
   # death_link: false          # a party wipe sends a death; incoming deaths

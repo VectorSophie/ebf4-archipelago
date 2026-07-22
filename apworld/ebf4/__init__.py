@@ -189,6 +189,7 @@ class EBF4World(World):
             "total_locations": len(loc_keys),
             "difficulty": o.difficulty.current_key,
             "party_shuffle": bool(o.party_shuffle.value),
+            "energy_link": bool(o.energy_link.value),
             "in_game_messages": bool(o.in_game_messages.value),
             "death_link": bool(o.death_link.value),
         }
