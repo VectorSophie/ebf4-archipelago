@@ -112,6 +112,12 @@ package
 
       public static var AP_toastTimer:int = 0;
 
+      public static var AP_counterField:TextField = null;
+
+      public static var AP_total:int = 0;
+
+      public static var AP_showCounter:Boolean = false;
+
       public static var AP_deathQueued:String = null;
 
       public static var AP_deathSuppress:Boolean = false;
@@ -294,6 +300,8 @@ package
             }
             AP_state.data.partyShuffle = _loc2_.partyShuffle == true;
             AP_state.flush();
+            AP_total = int(_loc2_.total);
+            AP_showCounter = _loc2_.messages == true;
             Main.log("[AP] session " + _loc2_.session + ", managing " + _loc2_.locations.length + " locations");
             AP_resendChecks();
          }
@@ -362,6 +370,42 @@ package
          AP_toastField.visible = true;
          root.stage.addChild(AP_toastField);
          AP_toastTimer = 130;
+      }
+
+      // Persistent corner HUD "AP <checked>/<total>". Gated on in_game_messages
+      // (via the session msg) so players who don't want AP chrome don't see it.
+      public static function AP_counterTick() : *
+      {
+         var _loc1_:TextFormat = null;
+         var _loc2_:int = 0;
+         if(!AP_showCounter || AP_total <= 0 || root == null || root.stage == null)
+         {
+            if(AP_counterField != null)
+            {
+               AP_counterField.visible = false;
+            }
+            return;
+         }
+         if(AP_counterField == null)
+         {
+            AP_counterField = new TextField();
+            _loc1_ = new TextFormat("Verdana",12,0xFFFFFF,true);
+            AP_counterField.defaultTextFormat = _loc1_;
+            AP_counterField.background = true;
+            AP_counterField.backgroundColor = 0x1B1B4B;
+            AP_counterField.border = true;
+            AP_counterField.borderColor = 0x88AAFF;
+            AP_counterField.selectable = false;
+            AP_counterField.mouseEnabled = false;
+            AP_counterField.autoSize = "left";
+            AP_counterField.x = 6;
+            AP_counterField.y = 6;
+         }
+         _loc2_ = AP_state != null && AP_state.data.checks is Array ? AP_state.data.checks.length : 0;
+         AP_counterField.text = " AP " + _loc2_ + "/" + AP_total + " ";
+         AP_counterField.alpha = 0.75;
+         AP_counterField.visible = true;
+         root.stage.addChild(AP_counterField);
       }
 
       public static function AP_partyWiped() : *
@@ -1001,6 +1045,7 @@ package
          {
             AP_tick();
             AP_toastTick();
+            AP_counterTick();
             AP_deathTick();
          }
          catch(e:Error)

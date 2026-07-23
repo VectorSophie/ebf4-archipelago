@@ -316,7 +316,9 @@ class Client:
             await self.game_send({"type": "session", "session": self.session,
                                   "locations": list(self.location_keys),
                                   "difficulty": self.difficulty,
-                                  "partyShuffle": self.party_shuffle})
+                                  "partyShuffle": self.party_shuffle,
+                                  "total": len(self.location_keys),
+                                  "messages": self.in_game_messages})
 
     async def game_sync_items(self):
         if self.game_next_index is None:
