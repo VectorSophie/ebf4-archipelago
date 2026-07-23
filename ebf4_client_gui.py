@@ -43,11 +43,16 @@ def run_gui(client_factory, default_game_port):
     ttk.Entry(frm, textvariable=pass_var, show="*").grid(row=2, column=1, sticky="ew", columnspan=2)
 
     status_var = tk.StringVar(value="game: ○")  # ○ open / ● connected
-    ttk.Label(frm, textvariable=status_var).grid(row=3, column=2, sticky="e")
+    status_lbl = ttk.Label(frm, textvariable=status_var)
+    status_lbl.grid(row=3, column=2, sticky="e")
 
     log = scrolledtext.ScrolledText(frm, height=14, state="disabled", wrap="word")
     log.grid(row=4, column=0, columnspan=3, sticky="nsew", pady=(6, 0))
     frm.rowconfigure(4, weight=1)
+
+    cmd_var = tk.StringVar()
+    cmd_entry = ttk.Entry(frm, textvariable=cmd_var)
+    cmd_entry.grid(row=5, column=0, columnspan=3, sticky="ew", pady=(4, 0))
 
     def append(line):
         log.configure(state="normal")
@@ -108,6 +113,20 @@ def run_gui(client_factory, default_game_port):
         else:
             append("connect first")
 
+    def run_command(_event=None):
+        line = cmd_var.get().strip()
+        if not line:
+            return
+        cmd_var.set("")
+        c, loop = state["client"], state["loop"]
+        if c and loop:
+            append(f"> {line}")
+            asyncio.run_coroutine_threadsafe(c.handle_command(line), loop)
+        else:
+            append("connect first")
+
+    cmd_entry.bind("<Return>", run_command)
+
     tool_btn = ttk.Menubutton(frm, text="Grant tool ▾")
     tool_menu = tk.Menu(tool_btn, tearoff=0)
     for _t in TOOLS:
@@ -122,9 +141,19 @@ def run_gui(client_factory, default_game_port):
             except queue.Empty:
                 break
         c = state["client"]
-        connected = bool(c and getattr(c, "game_writer", None))
-        status_var.set("game: ●" if connected else "game: ○")
-        alive = state["thread"] and state["thread"].is_alive()
+        alive = bool(state["thread"] and state["thread"].is_alive())
+        game = bool(c and getattr(c, "game_writer", None))
+        server = bool(c and getattr(c, "ws", None))
+        if game:
+            status_var.set("game: ●"); color = "#2e7d32"      # green: game linked
+        elif server or alive:
+            status_var.set("server: ●"); color = "#f9a825"    # amber: server only
+        else:
+            status_var.set("game: ○"); color = "#c62828"      # red: offline
+        try:
+            status_lbl.configure(foreground=color)
+        except tk.TclError:
+            pass
         connect_btn.configure(text="Disconnect" if alive else "Connect")
         root.after(200, pump)
 
