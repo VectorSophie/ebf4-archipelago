@@ -14,8 +14,9 @@ from BaseClasses import Item, ItemClassification, Location, Region
 from worlds.AutoWorld import World, WebWorld
 
 from . import presets
-from .data import (FILLER_ITEM, GODCAT_KEY, GODCAT_LOCATION, TRAP_NAMES, areas,
-                   battle_locations, bundle_item_names, item_id_to_grant,
+from .data import (GODCAT_KEY, GODCAT_LOCATION, TRAP_NAMES, areas,
+                   battle_locations, bundle_item_names, food_filler_names,
+                   item_id_to_grant,
                    foe_locations, gear_item_names, gear_remainder_names,
                    item_name_to_id, items, location_name_to_id, locations,
                    medal_locations, nongear_bundle_names, party_item_names,
@@ -88,6 +89,10 @@ class EBF4World(World):
         cls = _CLASSIFICATION[items[name]["classification"]]
         return EBF4Item(name, cls, item_name_to_id[name], self.player)
 
+    def get_filler_item_name(self) -> str:
+        # EBF4-flavored filler for any AP-core fill that needs one
+        return self.random.choice(food_filler_names)
+
     def create_items(self):
         if self.options.shuffle_gear:
             # gear becomes standalone items; to keep the fixed chest-slot count,
@@ -114,7 +119,7 @@ class EBF4World(World):
             for tool in self._starting_tools:
                 pool.remove(tool)
                 self.multiworld.push_precollected(self.create_item(tool))
-                pool.append(FILLER_ITEM)
+                pool.append(self.get_filler_item_name())   # EBF4 food, not just gold
         else:
             # lock each tool to its vanilla chest; only bundles fill the pool
             for loc_name, tool_name in tool_chest_item.items():

@@ -132,6 +132,17 @@ party_item_names = list(PARTY_NAMES.values())
 FILLER_ITEM = "Gold Pouch"
 _add_item(FILLER_ITEM, [["money", "", 500]], "filler")
 
+# flavorful filler: real EBF4 consumables that get_filler_item_name() draws from,
+# so AP-invented filler (and the top-up) feels like the game, not just gold.
+FOOD_FILLER = {
+    "Sushi": "sushi", "Donut": "donut", "Ham": "ham", "Cake": "cake",
+    "Lollipop": "lollipop", "Coffee": "coffee", "Honeycomb": "honeycomb",
+    "Candy Cane": "candycane", "Orange Juice": "orangejuice", "Beef": "beef",
+}
+for _food, _raw in FOOD_FILLER.items():
+    _add_item(_food, [["i", _raw, 3]], "filler")
+food_filler_names = list(FOOD_FILLER)
+
 # trap items: grant kind "trap" with a subkind the mod applies as a bad effect.
 TRAP_NAMES = {
     "poison": "Poison Trap", "goldloss": "Gold Loss Trap",
