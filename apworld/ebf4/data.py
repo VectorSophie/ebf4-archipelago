@@ -243,8 +243,28 @@ for _fi, (_fid, _fname) in enumerate(_foes.items()):
                                "reward": reward}
     _add_item(reward, [["money", "", 200]], "filler")
 
+# ---- summon (first-cast) locations + filler rewards ----
+# Casting a summon for the first time is a check. Filler-only (you must own and
+# use a summon to trigger it, so no progression may hide behind one). Keyed by
+# index into Spells.summons (a stable literal in Spells.as); the mod sends
+# summon_<i> via Spells.summons.indexOf(spell). Order MUST match that literal.
+SUMMON_ORDER = [
+    "scanbot", "frienddog", "catsword", "bombslime", "coalbat", "narwhal",
+    "cactus", "icesprite", "ancientmonolith", "slimebunny", "squid", "elemental",
+    "mammothstomp", "beholder", "bear", "kittenkart", "evilworm", "wraith",
+    "dragon", "idols", "dragon2", "praetorian", "protector", "cosmicmonolith",
+]
+SUMMON_ID_BASE = BASE_ID + 4000
+summon_locations = {}               # loc name -> dict(id, key, reward)
+for _si, _sname in enumerate(SUMMON_ORDER):
+    reward = f"Summon Reward ({_sname})"
+    summon_locations[f"Summon: {_sname}"] = {
+        "id": SUMMON_ID_BASE + _si, "key": f"summon_{_si}", "reward": reward}
+    _add_item(reward, [["money", "", 250]], "filler")
+
 # maps AP code needs
-_all_locs = {**locations, **battle_locations, **medal_locations, **foe_locations}
+_all_locs = {**locations, **battle_locations, **medal_locations, **foe_locations,
+             **summon_locations}
 location_name_to_id = {n: d["id"] for n, d in _all_locs.items()}
 item_name_to_id = {n: d["id"] for n, d in items.items()}
 location_key_to_id = {d["key"]: d["id"] for d in _all_locs.values()}

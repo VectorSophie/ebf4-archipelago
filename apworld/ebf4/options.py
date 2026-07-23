@@ -67,6 +67,12 @@ class RandomizeBestiary(DefaultOnToggle):
     display_name = "Randomize Bestiary"
 
 
+class RandomizeSummons(Toggle):
+    """The first time you cast each of the 24 summons in battle is a location
+    check. Off by default (you must own and use a summon to trigger it)."""
+    display_name = "Randomize Summons"
+
+
 class StartingTools(Range):
     """Begin with this many random tools already in hand (eases the opening)."""
     display_name = "Starting Tools"
@@ -142,6 +148,7 @@ class EBF4Options(PerGameCommonOptions):
     randomize_bosses: RandomizeBosses
     randomize_medals: RandomizeMedals
     randomize_bestiary: RandomizeBestiary
+    randomize_summons: RandomizeSummons
     starting_tools: StartingTools
     shuffle_gear: ShuffleGear
     party_shuffle: PartyShuffle

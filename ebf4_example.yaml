@@ -30,6 +30,8 @@ Epic Battle Fantasy 4:
   # randomize_bosses: true     # beating a scripted battle/boss is a check
   # randomize_medals: true     # earning an in-game medal is a check
   # randomize_bestiary: true   # first defeat of each foe type is a check
+  # randomize_summons: false   # first cast of each of the 24 summons is a check
+  #                            # (off — you must own and use a summon to trigger it)
 
   # starting_tools: 0          # begin with this many random tools (0..7)
 

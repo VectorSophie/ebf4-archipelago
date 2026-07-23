@@ -779,6 +779,46 @@ package
          });
       }
 
+      // Summons: casting a summon for the first time is a check. Keyed by index
+      // into Spells.summons (BattleMenu passes the Spell object on cast).
+      public static function AP_summonUsed(param1:*) : *
+      {
+         var _loc2_:int = 0;
+         try
+         {
+            _loc2_ = Spells.summons.indexOf(param1);
+            if(_loc2_ >= 0)
+            {
+               AP_summonCast(_loc2_);
+            }
+         }
+         catch(e:Error)
+         {
+         }
+      }
+
+      public static function AP_summonCast(param1:int) : *
+      {
+         var _loc2_:String = "summon_" + param1;
+         if(AP_managed == null || AP_managed[_loc2_] != true)
+         {
+            return;
+         }
+         if(!(AP_state.data.checks is Array))
+         {
+            AP_state.data.checks = [];
+         }
+         if(AP_state.data.checks.indexOf(_loc2_) < 0)
+         {
+            AP_state.data.checks.push(_loc2_);
+            AP_state.flush();
+         }
+         AP_send({
+            "type":"check",
+            "location":_loc2_
+         });
+      }
+
       public static function AP_resendChecks() : *
       {
          var _loc1_:String = null;
