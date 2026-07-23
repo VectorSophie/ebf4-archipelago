@@ -195,7 +195,25 @@ class Client:
             for it in args.get("locations", []):
                 self.locations_info[it["location"]] = (it["item"], it["player"])
         elif cmd == "PrintJSON":
-            pass  # not surfaced; the game shows its own popups
+            if args.get("type") == "Hint":
+                await self.on_hint(args)
+
+    async def on_hint(self, args):
+        """Banner a hint that concerns us (an item we'll receive, or one that
+        lives in our world for someone else). Only when in_game_messages."""
+        item = args.get("item") or {}
+        recv = args.get("receiving")
+        finder = item.get("player")            # whose world the item is in
+        found = args.get("found")
+        if found:
+            return                             # already found; no need to nag
+        if recv == self.slot_num:
+            nm = self.item_name(item.get("item"), self.slot_num)
+            await self.banner(f"Hint: your {nm} is still out there")
+        elif finder == self.slot_num:
+            who = self.players.get(recv, "someone")
+            nm = self.item_name(item.get("item"), recv)
+            await self.banner(f"Hint: {who}'s {nm} is in your world")
 
     def item_name(self, item_id, player):
         game = self.player_game.get(player, "")
@@ -407,7 +425,8 @@ class Client:
         if not line:
             return
         if line in ("/help", "help", "?"):
-            self.log("commands: /tool <name> — grant a tool (failsafe); /tools — list tools"
+            self.log("commands: /tool <name> — grant a tool (failsafe); /tools — list tools; "
+                     "/hint <item> — ask the server to hint an item"
                      + ("; /deposit <n>, /withdraw <n>, /energy — shared gold pool"
                         if self.energy_key else ""))
         elif line == "/tools":
@@ -418,6 +437,13 @@ class Client:
                 await self.grant_tool(name)
             else:
                 self.log("usage: /tool <" + " | ".join(sorted(self.tool_names)) + ">")
+        elif line.startswith("/hint"):
+            item = line[len("/hint"):].strip()
+            if item:
+                await self.send({"cmd": "Say", "text": f"!hint {item}"})
+                self.log(f"requested hint for {item}")
+            else:
+                self.log("usage: /hint <item name>")
         elif line == "/energy":
             await self.energy_balance()
         elif line.startswith("/deposit") or line.startswith("/withdraw"):

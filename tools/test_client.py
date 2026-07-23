@@ -163,6 +163,25 @@ def test_energy_balance_retrieved():
     assert not logs
 
 
+def test_hint_command_and_incoming_banner():
+    # /hint passes through as a Say !hint
+    c = make_energy_client()
+    asyncio.run(c.handle_command("/hint Winged Boots"))
+    say = [s for s in c.ws.sent if s.get("cmd") == "Say"][-1]
+    assert say["text"] == "!hint Winged Boots"
+    # an incoming hint for our own item -> banner (game frame with msg)
+    c2 = make_client()
+    c2.slot_num = 1
+    c2.in_game_messages = True
+    c2.item_names[C.GAME] = {500: "Axe"}
+    c2.player_game = {1: C.GAME}
+    c2.game_writer = FakeWriter()
+    asyncio.run(c2.on_hint({"item": {"item": 500, "player": 2}, "receiving": 1,
+                            "found": False}))
+    assert any(f.get("type") == "msg" and "Axe" in f.get("text", "")
+               for f in c2.game_writer.frames)
+
+
 def test_energy_off_ignores_commands():
     c = make_client()
     c.ws = FakeWS()
@@ -182,5 +201,6 @@ if __name__ == "__main__":
     test_deposit_asks_game_then_pools_reply()
     test_withdraw_requests_then_grants_actual()
     test_energy_balance_retrieved()
+    test_hint_command_and_incoming_banner()
     test_energy_off_ignores_commands()
     print("client ok")

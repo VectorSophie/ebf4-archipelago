@@ -57,3 +57,7 @@ Epic Battle Fantasy 4:
 
   # death_link: false          # a party wipe sends a death; incoming deaths
   #                            # wipe your party
+
+  # start_hints: []            # AP-core: start with hints for these of your own
+  #                            # items, e.g. [Winged Boots]. The client also has
+  #                            # /hint <item>, and banners hints that concern you.
