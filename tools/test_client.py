@@ -182,6 +182,29 @@ def test_hint_command_and_incoming_banner():
                for f in c2.game_writer.frames)
 
 
+def test_status_commands():
+    c = make_client()
+    logs = []
+    c._log_sink = logs.append
+    c.slot_num = 1
+    c.players = {1: "Player1", 2: "Ally"}
+    c.player_game = {1: C.GAME, 2: C.GAME}
+    c.item_names[C.GAME] = {500: "Axe", 501: "Candle"}
+    c.location_keys = {"chest_1_0": 10, "chest_1_1": 11, "battle_2_0": 12}
+    c.checked = {10}
+    c.items_received = [(500, 2), (500, 1), (501, 2)]
+    for cmd in ("/received", "/checked", "/missing", "/players"):
+        logs.clear()
+        asyncio.run(c.handle_command(cmd))
+        assert logs, cmd
+    logs.clear(); asyncio.run(c.handle_command("/received"))
+    assert "Axe x2" in logs[0] and "Candle" in logs[0]
+    logs.clear(); asyncio.run(c.handle_command("/checked"))
+    assert "1 / 3" in logs[0]
+    logs.clear(); asyncio.run(c.handle_command("/missing"))
+    assert "2 locations left" in logs[0]
+
+
 def test_energy_off_ignores_commands():
     c = make_client()
     c.ws = FakeWS()
@@ -202,5 +225,6 @@ if __name__ == "__main__":
     test_withdraw_requests_then_grants_actual()
     test_energy_balance_retrieved()
     test_hint_command_and_incoming_banner()
+    test_status_commands()
     test_energy_off_ignores_commands()
     print("client ok")

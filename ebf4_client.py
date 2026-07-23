@@ -17,6 +17,7 @@ Launcher. A standalone process sidesteps that entirely.
 import argparse
 import asyncio
 import json
+from collections import Counter
 import struct
 import sys
 import time
@@ -426,9 +427,30 @@ class Client:
             return
         if line in ("/help", "help", "?"):
             self.log("commands: /tool <name> — grant a tool (failsafe); /tools — list tools; "
-                     "/hint <item> — ask the server to hint an item"
+                     "/hint <item> — ask the server to hint an item; "
+                     "/received /missing /checked /players — status"
                      + ("; /deposit <n>, /withdraw <n>, /energy — shared gold pool"
                         if self.energy_key else ""))
+        elif line == "/received":
+            if not self.items_received:
+                self.log("no items received yet")
+            else:
+                counts = Counter(self.item_name(i, self.slot_num)
+                                 for i, _ in self.items_received)
+                self.log(f"received {len(self.items_received)} items: "
+                         + ", ".join(f"{n} x{c}" if c > 1 else n
+                                     for n, c in counts.most_common()))
+        elif line == "/checked":
+            self.log(f"checked {len(self.checked)} / {len(self.location_keys)} locations")
+        elif line == "/missing":
+            missing = [k for k, i in self.location_keys.items() if i not in self.checked]
+            head = ", ".join(missing[:20])
+            self.log(f"{len(missing)} locations left"
+                     + (f": {head}{' …' if len(missing) > 20 else ''}" if missing else ""))
+        elif line == "/players":
+            self.log("players: " + ", ".join(
+                f"{n}{' (you)' if s == self.slot_num else ''}"
+                for s, n in sorted(self.players.items())))
         elif line == "/tools":
             self.log("tools: " + ", ".join(sorted(self.tool_names)))
         elif line.startswith("/tool"):
