@@ -84,6 +84,21 @@ consumable **keys** stay in their vanilla chests so key-gated content is always
 reachable in order. If you ever feel stuck, the client's **`/tool <name>`** command
 (or the GUI's "Grant tool" menu) hands you a tool as a failsafe.
 
+## Trackers
+
+**Universal Tracker** works out of the box — no EBF4-specific setup. UT re-runs the
+world's own logic from your `.apworld` + YAML to show which locations are currently
+in logic. EBF4's logic is deterministic (region gating accumulates along the fixed
+area order; no entrance randomization), so UT tracks it accurately.
+
+1. Put the Universal Tracker `.apworld` in `custom_worlds` (same folder as
+   `ebf4.apworld`).
+2. Launch it from the Archipelago Launcher and point it at your room + slot.
+
+The in-game HUD also shows a live `AP <checked>/<total>` counter (top-left), and the
+client's `/checked` / `/missing` commands list your progress. (No PopTracker pack is
+shipped — Universal Tracker covers the same ground without a separate map pack.)
+
 ## Troubleshooting
 
 - **"Could not find Epic Battle Fantasy 4.swf"** — pass `--game-dir "…"` pointing at
