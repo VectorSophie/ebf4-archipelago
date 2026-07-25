@@ -1,13 +1,17 @@
 # EBF4 Archipelago
 
 [Archipelago](https://archipelago.gg) multiworld support for the Steam version of Epic
-Battle Fantasy 4. Location checks span **treasure chests, boss battles, medals, and the
-bestiary** (first defeat of each foe); doing any of them sends a check and you receive
-other players' items in return. The traversal **tools** (axe, candle, hammer, boots,
-ladder) are shuffled into the multiworld with region logic that keeps every seed beatable;
-the consumable **keys** stay vanilla so key-gated content is always reachable in order.
-Configurable goal (beat Godcat / hunt N bosses / check a %), order/chaos presets, traps,
-difficulty, DeathLink, and an on-screen banner for every major event.
+Battle Fantasy 4. Location checks span **treasure chests, boss battles, medals, the
+bestiary** (first defeat of each foe), **summons** (first cast), and **quest/level
+milestones**; doing any of them sends a check and you receive other players' items in
+return. The traversal **tools** (axe, candle, hammer, boots, ladder) are shuffled into the
+multiworld with region logic that keeps every seed beatable; the consumable **keys** stay
+vanilla so key-gated content is always reachable in order. Optional **party shuffle**
+(receive Matt/Natalie/Lance as items) and **gear shuffle** (~179 equips/spells as
+individual items) add real progression depth. Configurable goal (beat Godcat / hunt N
+bosses / check a %), order/chaos presets, traps, difficulty, **EnergyLink** (shared gold),
+DeathLink, a live in-game check counter, and an on-screen banner + sound for every major
+event.
 
 **No game assets are distributed.** The patcher modifies your own legally installed copy
 and keeps a backup.
