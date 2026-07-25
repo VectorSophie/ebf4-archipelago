@@ -823,17 +823,27 @@ package
          });
       }
 
-      // Summons: casting a summon for the first time is a check. Keyed by index
-      // into Spells.summons (BattleMenu passes the Spell object on cast).
-      public static function AP_summonUsed(param1:*) : *
+      // Summons: casting a summon for the first time is a check. Hooked by
+      // POLLING Battle.selectedSkill each frame (set by Player.useSkill on cast)
+      // rather than editing BattleMenu — FFDec's script re-import corrupts that
+      // symbol-bound display class (ReferenceError #1056 in its constructor).
+      // AP_summonCast dedups via checks, so polling is safe.
+      public static function AP_summonPollTick() : *
       {
-         var _loc2_:int = 0;
+         var _loc1_:int = 0;
+         if(mode != BATTLE || AP_managed == null)
+         {
+            return;
+         }
          try
          {
-            _loc2_ = Spells.summons.indexOf(param1);
-            if(_loc2_ >= 0)
+            if(Battle.selectedSkill != null)
             {
-               AP_summonCast(_loc2_);
+               _loc1_ = Spells.summons.indexOf(Battle.selectedSkill);
+               if(_loc1_ >= 0)
+               {
+                  AP_summonCast(_loc1_);
+               }
             }
          }
          catch(e:Error)
@@ -852,11 +862,12 @@ package
          {
             AP_state.data.checks = [];
          }
-         if(AP_state.data.checks.indexOf(_loc2_) < 0)
+         if(AP_state.data.checks.indexOf(_loc2_) >= 0)
          {
-            AP_state.data.checks.push(_loc2_);
-            AP_state.flush();
+            return;    // already sent this run; poll repeats so guard the send
          }
+         AP_state.data.checks.push(_loc2_);
+         AP_state.flush();
          AP_send({
             "type":"check",
             "location":_loc2_
@@ -1046,6 +1057,7 @@ package
             AP_tick();
             AP_toastTick();
             AP_counterTick();
+            AP_summonPollTick();
             AP_deathTick();
          }
          catch(e:Error)
