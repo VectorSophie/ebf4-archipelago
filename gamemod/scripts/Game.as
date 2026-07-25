@@ -370,6 +370,13 @@ package
          AP_toastField.visible = true;
          root.stage.addChild(AP_toastField);
          AP_toastTimer = 130;
+         try
+         {
+            SFX.playSound("secret");   // audible cue when an AP banner appears
+         }
+         catch(sfxErr:Error)
+         {
+         }
       }
 
       // Persistent corner HUD "AP <checked>/<total>". Gated on in_game_messages
