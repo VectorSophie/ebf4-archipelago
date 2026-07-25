@@ -851,10 +851,53 @@ package
          }
       }
 
-      public static function AP_summonCast(param1:int) : *
+      // Quest completion + party-level milestones, polled each frame (safe: only
+      // reads SaveData.questNo / Player.level, no display-class edits). Fires
+      // quest_<n> for each completed quest and level_<n> for each milestone the
+      // party's top level has reached. AP_sendCheckOnce dedups via checks.
+      public static function AP_progressPollTick() : *
       {
-         var _loc2_:String = "summon_" + param1;
-         if(AP_managed == null || AP_managed[_loc2_] != true)
+         var _loc1_:int = 0;
+         var _loc2_:int = 0;
+         var _loc3_:Object = null;
+         if(AP_managed == null || !SaveData.inGame)
+         {
+            return;
+         }
+         try
+         {
+            _loc1_ = 1;
+            while(_loc1_ <= int(SaveData.questNo))
+            {
+               AP_sendCheckOnce("quest_" + _loc1_);
+               _loc1_++;
+            }
+            _loc2_ = 0;
+            for each(_loc3_ in Players.PLAYERS)
+            {
+               if(_loc3_ != null && _loc3_.level > _loc2_)
+               {
+                  _loc2_ = _loc3_.level;
+               }
+            }
+            for each(var _loc4_:int in [5,10,15,20,25,30])
+            {
+               if(_loc2_ >= _loc4_)
+               {
+                  AP_sendCheckOnce("level_" + _loc4_);
+               }
+            }
+         }
+         catch(e:Error)
+         {
+         }
+      }
+
+      // Send a check the first time only (managed + not already recorded). For
+      // poll-driven checks that would otherwise re-fire every frame.
+      public static function AP_sendCheckOnce(param1:String) : *
+      {
+         if(AP_managed == null || AP_managed[param1] != true)
          {
             return;
          }
@@ -862,16 +905,21 @@ package
          {
             AP_state.data.checks = [];
          }
-         if(AP_state.data.checks.indexOf(_loc2_) >= 0)
+         if(AP_state.data.checks.indexOf(param1) >= 0)
          {
-            return;    // already sent this run; poll repeats so guard the send
+            return;
          }
-         AP_state.data.checks.push(_loc2_);
+         AP_state.data.checks.push(param1);
          AP_state.flush();
          AP_send({
             "type":"check",
-            "location":_loc2_
+            "location":param1
          });
+      }
+
+      public static function AP_summonCast(param1:int) : *
+      {
+         AP_sendCheckOnce("summon_" + param1);   // poll-driven; dedups the send
       }
 
       public static function AP_resendChecks() : *
@@ -1058,6 +1106,7 @@ package
             AP_toastTick();
             AP_counterTick();
             AP_summonPollTick();
+            AP_progressPollTick();
             AP_deathTick();
          }
          catch(e:Error)

@@ -20,7 +20,8 @@ from .data import (GODCAT_KEY, GODCAT_LOCATION, TRAP_NAMES, areas,
                    foe_locations, gear_item_names, gear_remainder_names,
                    item_name_to_id, items, location_name_to_id, locations,
                    medal_locations, nongear_bundle_names, party_item_names,
-                   summon_locations, tool_chest_item, tool_item_names)
+                   progress_locations, summon_locations, tool_chest_item,
+                   tool_item_names)
 from .options import EBF4Options
 
 _CLASSIFICATION = {
@@ -82,6 +83,8 @@ class EBF4World(World):
                              if self.options.randomize_bestiary else {})
         self._active_summons = (dict(summon_locations)
                                 if self.options.randomize_summons else {})
+        self._active_progress = (dict(progress_locations)
+                                 if self.options.randomize_progress else {})
 
     # ---- items ----
 
@@ -107,9 +110,9 @@ class EBF4World(World):
         # one reward item per active boss battle (keeps item/location counts equal)
         for d in self._active_battles.values():
             pool.append(f"Battle Reward ({d['map']}-{d['idx']})")
-        # one filler reward per active medal / bestiary / summon check
+        # one filler reward per active medal / bestiary / summon / progress check
         for d in (*self._active_medals.values(), *self._active_foes.values(),
-                  *self._active_summons.values()):
+                  *self._active_summons.values(), *self._active_progress.values()):
             pool.append(d["reward"])
         if self.options.randomize_tools:
             # tools go in the pool, shuffled with everything else
@@ -167,7 +170,8 @@ class EBF4World(World):
         # progression can hide behind an achievement/kill that may not be
         # reliably earnable.
         for loc_name, loc in (*self._active_medals.items(), *self._active_foes.items(),
-                              *self._active_summons.items()):
+                              *self._active_summons.items(),
+                              *self._active_progress.items()):
             location = EBF4Location(self.player, loc_name, loc["id"], region)
             location.item_rule = lambda item: not item.advancement
             region.locations.append(location)
@@ -199,6 +203,7 @@ class EBF4World(World):
         loc_keys.update({d["key"]: d["id"] for d in self._active_medals.values()})
         loc_keys.update({d["key"]: d["id"] for d in self._active_foes.values()})
         loc_keys.update({d["key"]: d["id"] for d in self._active_summons.values()})
+        loc_keys.update({d["key"]: d["id"] for d in self._active_progress.values()})
         return {
             "location_keys": loc_keys,
             "item_grants": {str(i): g for i, g in item_id_to_grant.items()},

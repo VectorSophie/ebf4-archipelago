@@ -73,6 +73,12 @@ class RandomizeSummons(Toggle):
     display_name = "Randomize Summons"
 
 
+class RandomizeProgress(Toggle):
+    """Completing each story quest (1-3) and reaching party-level milestones
+    (5/10/15/20/25/30) are location checks. Off by default."""
+    display_name = "Randomize Progress"
+
+
 class StartingTools(Range):
     """Begin with this many random tools already in hand (eases the opening)."""
     display_name = "Starting Tools"
@@ -149,6 +155,7 @@ class EBF4Options(PerGameCommonOptions):
     randomize_medals: RandomizeMedals
     randomize_bestiary: RandomizeBestiary
     randomize_summons: RandomizeSummons
+    randomize_progress: RandomizeProgress
     starting_tools: StartingTools
     shuffle_gear: ShuffleGear
     party_shuffle: PartyShuffle

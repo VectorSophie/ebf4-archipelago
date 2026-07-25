@@ -273,9 +273,27 @@ for _si, _sname in enumerate(SUMMON_ORDER):
         "id": SUMMON_ID_BASE + _si, "key": f"summon_{_si}", "reward": reward}
     _add_item(reward, [["money", "", 250]], "filler")
 
+# ---- quest + level-milestone locations (poll-based, filler-only) ----
+# The mod polls SaveData.questNo and party level each frame and fires these.
+# Filler-only (they ride along with normal progression), like the other families.
+QUEST_MAX = 3                        # questNo runs 1..3 (quest1/2/3 medals)
+LEVEL_MILESTONES = [5, 10, 15, 20, 25, 30]
+PROGRESS_ID_BASE = BASE_ID + 5000
+progress_locations = {}              # loc name -> dict(id, key, reward)
+for _q in range(1, QUEST_MAX + 1):
+    _r = f"Quest Reward ({_q})"
+    progress_locations[f"Quest {_q} Complete"] = {
+        "id": PROGRESS_ID_BASE + _q, "key": f"quest_{_q}", "reward": _r}
+    _add_item(_r, [["money", "", 400]], "filler")
+for _li, _lv in enumerate(LEVEL_MILESTONES):
+    _r = f"Level Reward ({_lv})"
+    progress_locations[f"Reach Level {_lv}"] = {
+        "id": PROGRESS_ID_BASE + 100 + _li, "key": f"level_{_lv}", "reward": _r}
+    _add_item(_r, [["money", "", 400]], "filler")
+
 # maps AP code needs
 _all_locs = {**locations, **battle_locations, **medal_locations, **foe_locations,
-             **summon_locations}
+             **summon_locations, **progress_locations}
 location_name_to_id = {n: d["id"] for n, d in _all_locs.items()}
 item_name_to_id = {n: d["id"] for n, d in items.items()}
 location_key_to_id = {d["key"]: d["id"] for d in _all_locs.values()}
